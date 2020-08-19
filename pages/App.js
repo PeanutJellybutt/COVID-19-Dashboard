@@ -60,6 +60,8 @@ class App extends React.Component {
 	
   constructor(props) {
 		super(props);
+		
+		let d = new Date();
 		this.state = {
 			dataTimeline: [],
 			dataTimeline15: [],
@@ -75,6 +77,12 @@ class App extends React.Component {
 				newRecovered: '',
 			},
 			data_pie: [{}],
+			lastConfirmed: 0,
+			lastDeath: 0,
+			rateRecovery: 0,
+			rateDeath: 0,
+			showGraph: false,
+			today: d.getTime(),
 		};
   }
   
@@ -135,7 +143,8 @@ class App extends React.Component {
 				<AppBar style={{background:'#BB0A1E'}}>
 					<Toolbar>
 						<Typography variant="h4" className={classes.title} align="center">
-							<b>Simple COVID-19 Dashboard</b>
+							{/*<b>Simple COVID-19 Dashboard</b>*/}
+							{this.state.today}
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -187,76 +196,83 @@ class App extends React.Component {
 								<Typography variant="h5">({data_text.newRecovered.toLocaleString()})</Typography>
 							</Paper>
 						</Grid>
-						
-						{/*-------------------------------- Graphs --------------------------------*/}
-						{ true && (	//Whether or not to display graphs
-							<>
-							
-							{/*Bar, last 14 days*/}
-							<Grid item xs={12} sm={6}>
-								<Paper className={classes.paper}>
-									<ResponsiveContainer width="100%" height={300}>
-										<BarChart
-											width={500}
-											height={300}
-											data={dataTimeline15}
-											margin={{top: 5, right: 5, left: 0, bottom: 5}}
-										>
-											<CartesianGrid strokeDasharray="3 3" />
-											<XAxis dataKey="Date"/>
-											<YAxis />
-											<Tooltip />
-											<Legend />
-											<Bar dataKey="NewConfirmed" fill={graphBlue} />
-											<Bar dataKey="NewDeaths" fill={graphRed} />
-										</BarChart>
-									</ResponsiveContainer>
-								</Paper>
-							</Grid>
-							
-							{/*Pie, in total*/}
-							<Grid item xs={12} sm={6}>
-								<Paper className={classes.paper}>
-									<ResponsiveContainer width="100%" height={300}>
-										<PieChart width={400}	height={400}>
-											<Legend />
-											<Pie dataKey="value" isAnimationActive={false} data={data_pie} outerRadius={100} label>
-												<Cell fill={graphYellow} />
-												<Cell fill={graphRed} />
-												<Cell fill={graphGreen} />
-											</Pie>
-											<Tooltip />
-										</PieChart>
-									</ResponsiveContainer>
-								</Paper>
-							</Grid>
-							
-							{/*Bar, in total*/}
-							<Grid item xs={12}>
-								<Paper className={classes.paper}>
-									<ResponsiveContainer width="100%" height={500}>
-										<LineChart
-											data={dataTimeline}
-											margin={{top: 5, right: 5, left: 0, bottom: 5 }}
-										>
-											<CartesianGrid strokeDasharray="3 3" />
-											<XAxis dataKey="Date" />
-											<YAxis />
-											<Tooltip />
-											<Legend />
-											<Line type="monotone" dataKey="Confirmed" stroke={graphBlue} dot={false} />
-											<Line type="monotone" dataKey="Hospitalized" stroke={graphYellow} dot={false} />
-											<Line type="monotone" dataKey="Deaths" stroke={graphRed} dot={false} />
-											<Line type="monotone" dataKey="Recovered" stroke={graphGreen} dot={false} />
-										</LineChart>
-									</ResponsiveContainer>
-								</Paper>
-							</Grid>
-							
-							</>
-						)}
 					</Grid>
+						
+					{/*-------------------------------- Graphs --------------------------------*/}
+				
+					{/*Button to toggle graph display*/}
+					<br/>
+					<button onClick={() => this.setState({ showGraph: !this.state.showGraph })}>
+						Show/Hide Graph
+					</button>
+					<br/> <br/>
 					
+					{ this.state.showGraph && (	//Whether or not to display graphs
+					<>
+					<Grid container spacing={2}>
+						{/*Bar, last 14 days*/}
+						<Grid item xs={12} sm={6}>
+							<Paper className={classes.paper}>
+								<ResponsiveContainer width="100%" height={300}>
+									<BarChart
+										width={500}
+										height={300}
+										data={dataTimeline15}
+										margin={{top: 5, right: 5, left: 0, bottom: 5}}
+									>
+										<CartesianGrid strokeDasharray="3 3" />
+										<XAxis dataKey="Date"/>
+										<YAxis />
+										<Tooltip />
+										<Legend />
+										<Bar dataKey="NewConfirmed" fill={graphBlue} />
+										<Bar dataKey="NewDeaths" fill={graphRed} />
+									</BarChart>
+								</ResponsiveContainer>
+							</Paper>
+						</Grid>
+						
+						{/*Pie, in total*/}
+						<Grid item xs={12} sm={6}>
+							<Paper className={classes.paper}>
+								<ResponsiveContainer width="100%" height={300}>
+									<PieChart width={400}	height={400}>
+										<Legend />
+										<Pie dataKey="value" isAnimationActive={false} data={data_pie} outerRadius={100} label>
+											<Cell fill={graphYellow} />
+											<Cell fill={graphRed} />
+											<Cell fill={graphGreen} />
+										</Pie>
+										<Tooltip />
+									</PieChart>
+								</ResponsiveContainer>
+							</Paper>
+						</Grid>
+						
+						{/*Bar, in total*/}
+						<Grid item xs={12}>
+							<Paper className={classes.paper}>
+								<ResponsiveContainer width="100%" height={500}>
+									<LineChart
+										data={dataTimeline}
+										margin={{top: 5, right: 5, left: 0, bottom: 5 }}
+									>
+										<CartesianGrid strokeDasharray="3 3" />
+										<XAxis dataKey="Date" />
+										<YAxis />
+										<Tooltip />
+										<Legend />
+										<Line type="monotone" dataKey="Confirmed" stroke={graphBlue} dot={false} />
+										<Line type="monotone" dataKey="Hospitalized" stroke={graphYellow} dot={false} />
+										<Line type="monotone" dataKey="Deaths" stroke={graphRed} dot={false} />
+										<Line type="monotone" dataKey="Recovered" stroke={graphGreen} dot={false} />
+									</LineChart>
+								</ResponsiveContainer>
+							</Paper>
+						</Grid>
+					</Grid>
+					</>
+					)}
 				</Container>
 				<footer className={classes.footer}>
 					<Paper className={classes.paperFoot}>
