@@ -31,13 +31,22 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+		backgroundColor: "#FFFEFE",
+  },
+	paperFoot: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+		backgroundColor: "#777070",
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
     marginTop: theme.spacing.unit * 2,
   },
 	root: {
-    backgroundColor: "#000001",
+    backgroundColor: "#000000",
   },
 });
 
@@ -114,6 +123,10 @@ class App extends React.Component {
 	}
 	
 	render() {
+		const graphBlue = '#20A0E0';
+		const graphYellow = '#FFC060';
+		const graphRed = '#E04040';
+		const graphGreen = '#80E080';
 		const { classes } = this.props;
 		const { dataTimeline, dataTimeline15, data_text, data_pie } = this.state;
 		return (
@@ -121,17 +134,17 @@ class App extends React.Component {
 				<CssBaseline />
 				<AppBar style={{background:'#BB0A1E'}}>
 					<Toolbar>
-						<Typography variant="h6" className={classes.title}>
-							Simple COVID-19 Dashboard
+						<Typography variant="h4" className={classes.title} align="center">
+							<b>Simple COVID-19 Dashboard</b>
 						</Typography>
 					</Toolbar>
 				</AppBar>
 				<div className={classes.appBarSpacer}/>
 				<Container>
 					<Grid container spacing={2}>
-						{/*<MuiThemeProvider theme={darkTheme}>*/}
-							<Grid item xs={12}>
-								<Typography align="right">
+						<Grid item xs={12}>
+							<MuiThemeProvider theme={darkTheme}>
+								<Typography align="right" color="textPrimary">
 									<br/>
 									Last updated: {data_text.updatedDate}
 								</Typography>
@@ -144,8 +157,8 @@ class App extends React.Component {
 									}
 									</a>
 								</Typography>
-							</Grid>
-							{/*</MuiThemeProvider>*/}
+							</MuiThemeProvider>
+						</Grid>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
 								<Typography>Confirmed</Typography>
@@ -194,8 +207,8 @@ class App extends React.Component {
 											<YAxis />
 											<Tooltip />
 											<Legend />
-											<Bar dataKey="NewConfirmed" fill="#8884d8" />
-											<Bar dataKey="NewDeaths" fill="#FF9AA2" />
+											<Bar dataKey="NewConfirmed" fill={graphBlue} />
+											<Bar dataKey="NewDeaths" fill={graphRed} />
 										</BarChart>
 									</ResponsiveContainer>
 								</Paper>
@@ -208,9 +221,9 @@ class App extends React.Component {
 										<PieChart width={400}	height={400}>
 											<Legend />
 											<Pie dataKey="value" isAnimationActive={false} data={data_pie} outerRadius={100} label>
-												<Cell fill="#8884d8" />
-												<Cell fill="#FF9AA2" />
-												<Cell fill="#8FC1A9" />
+												<Cell fill={graphYellow} />
+												<Cell fill={graphRed} />
+												<Cell fill={graphGreen} />
 											</Pie>
 											<Tooltip />
 										</PieChart>
@@ -231,10 +244,10 @@ class App extends React.Component {
 											<YAxis />
 											<Tooltip />
 											<Legend />
-											<Line type="monotone" dataKey="Confirmed" stroke="blue" dot={false} />
-											<Line type="monotone" dataKey="Hospitalized" stroke="orange" dot={false} />
-											<Line type="monotone" dataKey="Deaths" stroke="red" dot={false} />
-											<Line type="monotone" dataKey="Recovered" stroke="green" dot={false} />
+											<Line type="monotone" dataKey="Confirmed" stroke={graphBlue} dot={false} />
+											<Line type="monotone" dataKey="Hospitalized" stroke={graphYellow} dot={false} />
+											<Line type="monotone" dataKey="Deaths" stroke={graphRed} dot={false} />
+											<Line type="monotone" dataKey="Recovered" stroke={graphGreen} dot={false} />
 										</LineChart>
 									</ResponsiveContainer>
 								</Paper>
@@ -246,7 +259,7 @@ class App extends React.Component {
 					
 				</Container>
 				<footer className={classes.footer}>
-					<Paper className={classes.paper}>
+					<Paper className={classes.paperFoot}>
 						<Typography variant="h6">
 							Simple Covid-19 Dashboard for Tencent Thailand's Internship Project
 						</Typography>

@@ -2102,7 +2102,16 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: "#FFFEFE"
+  },
+  paperFoot: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#777070"
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -2186,6 +2195,10 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   }
 
   render() {
+    const graphBlue = '#20A0E0';
+    const graphYellow = '#FFC060';
+    const graphRed = '#E04040';
+    const graphGreen = '#80E080';
     const {
       classes
     } = this.props;
@@ -2200,14 +2213,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 120,
+        lineNumber: 133,
         columnNumber: 4
       }
     }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5___default.a, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 121,
+        lineNumber: 134,
         columnNumber: 5
       }
     }), __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -2217,38 +2230,46 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122,
+        lineNumber: 135,
         columnNumber: 5
       }
     }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3___default.a, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123,
+        lineNumber: 136,
         columnNumber: 6
       }
     }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h6",
+      variant: "h4",
       className: classes.title,
+      align: "center",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 124,
+        lineNumber: 137,
         columnNumber: 7
       }
-    }, "Simple COVID-19 Dashboard"))), __jsx("div", {
+    }, __jsx("b", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 138,
+        columnNumber: 8
+      }
+    }, "Simple COVID-19 Dashboard")))), __jsx("div", {
       className: classes.appBarSpacer,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 129,
+        lineNumber: 142,
         columnNumber: 5
       }
     }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_6___default.a, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 130,
+        lineNumber: 143,
         columnNumber: 5
       }
     }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -2257,7 +2278,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 131,
+        lineNumber: 144,
         columnNumber: 6
       }
     }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -2266,22 +2287,31 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 133,
+        lineNumber: 145,
+        columnNumber: 7
+      }
+    }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["MuiThemeProvider"], {
+      theme: darkTheme,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 146,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
       align: "right",
+      color: "textPrimary",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 134,
+        lineNumber: 147,
         columnNumber: 9
       }
     }, __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 135,
+        lineNumber: 148,
         columnNumber: 10
       }
     }), "Last updated: ", data_text.updatedDate), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2290,7 +2320,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 138,
+        lineNumber: 151,
         columnNumber: 9
       }
     }, __jsx("a", {
@@ -2300,17 +2330,17 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 139,
+        lineNumber: 152,
         columnNumber: 10
       }
-    }, " ", data_text.source))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, " ", data_text.source)))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
       item: true,
       xs: 6,
       sm: 3,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 149,
+        lineNumber: 162,
         columnNumber: 7
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -2318,14 +2348,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 150,
+        lineNumber: 163,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 151,
+        lineNumber: 164,
         columnNumber: 9
       }
     }, "Confirmed"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2333,7 +2363,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 152,
+        lineNumber: 165,
         columnNumber: 9
       }
     }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2341,7 +2371,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 153,
+        lineNumber: 166,
         columnNumber: 9
       }
     }, "(", data_text.newConfirmed.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -2351,7 +2381,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 156,
+        lineNumber: 169,
         columnNumber: 7
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -2359,14 +2389,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 157,
+        lineNumber: 170,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 158,
+        lineNumber: 171,
         columnNumber: 9
       }
     }, "Hospitalized"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2374,7 +2404,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 159,
+        lineNumber: 172,
         columnNumber: 9
       }
     }, data_text.hospitalized.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2382,7 +2412,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 160,
+        lineNumber: 173,
         columnNumber: 9
       }
     }, "(", data_text.newHospitalized.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -2392,7 +2422,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 163,
+        lineNumber: 176,
         columnNumber: 7
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -2400,14 +2430,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 164,
+        lineNumber: 177,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 165,
+        lineNumber: 178,
         columnNumber: 9
       }
     }, "Deaths"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2415,7 +2445,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 166,
+        lineNumber: 179,
         columnNumber: 9
       }
     }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2423,7 +2453,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 167,
+        lineNumber: 180,
         columnNumber: 9
       }
     }, "(", data_text.newDeaths.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -2433,7 +2463,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 170,
+        lineNumber: 183,
         columnNumber: 7
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -2441,14 +2471,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 171,
+        lineNumber: 184,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 172,
+        lineNumber: 185,
         columnNumber: 9
       }
     }, "Recovered"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2456,7 +2486,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 173,
+        lineNumber: 186,
         columnNumber: 9
       }
     }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2464,7 +2494,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 174,
+        lineNumber: 187,
         columnNumber: 9
       }
     }, "(", data_text.newRecovered.toLocaleString(), ")"))),  true && //Whether or not to display graphs
@@ -2475,7 +2505,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 183,
+        lineNumber: 196,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -2483,7 +2513,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 184,
+        lineNumber: 197,
         columnNumber: 9
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["ResponsiveContainer"], {
@@ -2492,7 +2522,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 185,
+        lineNumber: 198,
         columnNumber: 10
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["BarChart"], {
@@ -2508,7 +2538,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 186,
+        lineNumber: 199,
         columnNumber: 11
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["CartesianGrid"], {
@@ -2516,7 +2546,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 192,
+        lineNumber: 205,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["XAxis"], {
@@ -2524,46 +2554,46 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 193,
+        lineNumber: 206,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["YAxis"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 194,
+        lineNumber: 207,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Tooltip"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 195,
+        lineNumber: 208,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Legend"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 196,
+        lineNumber: 209,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Bar"], {
       dataKey: "NewConfirmed",
-      fill: "#8884d8",
+      fill: graphBlue,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 197,
+        lineNumber: 210,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Bar"], {
       dataKey: "NewDeaths",
-      fill: "#FF9AA2",
+      fill: graphRed,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 198,
+        lineNumber: 211,
         columnNumber: 12
       }
     }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -2573,7 +2603,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 205,
+        lineNumber: 218,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -2581,7 +2611,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 206,
+        lineNumber: 219,
         columnNumber: 9
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["ResponsiveContainer"], {
@@ -2590,7 +2620,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 207,
+        lineNumber: 220,
         columnNumber: 10
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["PieChart"], {
@@ -2599,14 +2629,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 208,
+        lineNumber: 221,
         columnNumber: 11
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Legend"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 209,
+        lineNumber: 222,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Pie"], {
@@ -2618,38 +2648,38 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 210,
+        lineNumber: 223,
         columnNumber: 12
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Cell"], {
-      fill: "#8884d8",
+      fill: graphYellow,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 211,
+        lineNumber: 224,
         columnNumber: 13
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Cell"], {
-      fill: "#FF9AA2",
+      fill: graphRed,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 212,
+        lineNumber: 225,
         columnNumber: 13
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Cell"], {
-      fill: "#8FC1A9",
+      fill: graphGreen,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 213,
+        lineNumber: 226,
         columnNumber: 13
       }
     })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Tooltip"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 215,
+        lineNumber: 228,
         columnNumber: 12
       }
     }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -2658,7 +2688,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 222,
+        lineNumber: 235,
         columnNumber: 8
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -2666,7 +2696,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 223,
+        lineNumber: 236,
         columnNumber: 9
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["ResponsiveContainer"], {
@@ -2675,7 +2705,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 224,
+        lineNumber: 237,
         columnNumber: 10
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["LineChart"], {
@@ -2689,7 +2719,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 225,
+        lineNumber: 238,
         columnNumber: 11
       }
     }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["CartesianGrid"], {
@@ -2697,7 +2727,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 229,
+        lineNumber: 242,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["XAxis"], {
@@ -2705,72 +2735,72 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 230,
+        lineNumber: 243,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["YAxis"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 231,
+        lineNumber: 244,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Tooltip"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 232,
+        lineNumber: 245,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Legend"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 233,
+        lineNumber: 246,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
       type: "monotone",
       dataKey: "Confirmed",
-      stroke: "blue",
+      stroke: graphBlue,
       dot: false,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 234,
+        lineNumber: 247,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
       type: "monotone",
       dataKey: "Hospitalized",
-      stroke: "orange",
+      stroke: graphYellow,
       dot: false,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 235,
+        lineNumber: 248,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
       type: "monotone",
       dataKey: "Deaths",
-      stroke: "red",
+      stroke: graphRed,
       dot: false,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 236,
+        lineNumber: 249,
         columnNumber: 12
       }
     }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
       type: "monotone",
       dataKey: "Recovered",
-      stroke: "green",
+      stroke: graphGreen,
       dot: false,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 237,
+        lineNumber: 250,
         columnNumber: 12
       }
     })))))))), __jsx("footer", {
@@ -2778,15 +2808,15 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 248,
+        lineNumber: 261,
         columnNumber: 5
       }
     }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
+      className: classes.paperFoot,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 249,
+        lineNumber: 262,
         columnNumber: 6
       }
     }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2794,7 +2824,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 250,
+        lineNumber: 263,
         columnNumber: 7
       }
     }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -2802,7 +2832,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 253,
+        lineNumber: 266,
         columnNumber: 7
       }
     }, "By Thanjira S. and Woottipat H."))));
