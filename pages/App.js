@@ -61,7 +61,6 @@ class App extends React.Component {
   constructor(props) {
 		super(props);
 		
-		let d = new Date();
 		this.state = {
 			dataTimeline: [],
 			dataTimeline15: [],
@@ -79,17 +78,30 @@ class App extends React.Component {
 			data_pie: [{}],
 			lastConfirmed: 0,
 			lastDeath: 0,
+			noConfirmedStreak: 0,
+			noDeathStreak: 0,
 			rateRecovery: 0,
 			rateDeath: 0,
 			showGraph: false,
-			today: d.getTime(),
 		};
   }
+	
+	getLastDate(type, data) {
+		for (let i=data.length-1; i>=0; i--) {
+			if (data[i][type] != 0)
+				return data[i]['Date'];
+		}
+	}
+	
+	getDateDiff(date) {
+		let now = (new Date()).getTime();
+		return Math.floor((now - (new Date(date)).getTime())/86400000);
+	}
   
   componentDidMount() {
 	  this.callAPI();
   }
-  
+	
   callAPI() {
 		axios.get('https://covid19.th-stat.com/api/open/timeline')
 		.then(response => {
@@ -103,6 +115,10 @@ class App extends React.Component {
 					})
 				);
 			});
+			
+			let lastConfirmed = this.getLastDate('NewConfirmed',data);
+			let lastDeath = this.getLastDate('NewDeaths',data);
+			
 			this.setState({
 				dataTimeline: dataDateShorten,
 				dataTimeline15: dataDateShorten.slice(1).slice(-15),
@@ -119,10 +135,16 @@ class App extends React.Component {
 					newRecovered: lastData['NewRecovered'],
 				},
 				data_pie: [
-					{ name: 'hospitalized', value: lastData['Hospitalized'] },
-					{ name: 'deaths', value: lastData['Deaths'] },
-					{ name: 'recovered', value: lastData['Recovered'] },
+					{ name: 'Hospitalized', value: lastData['Hospitalized'] },
+					{ name: 'Deaths', value: lastData['Deaths'] },
+					{ name: 'Recovered', value: lastData['Recovered'] },
 				],
+				lastConfirmed: lastConfirmed,
+				lastDeath: lastDeath,
+				noConfirmedStreak: this.getDateDiff(lastConfirmed),
+				noDeathStreak: this.getDateDiff(lastDeath),
+				rateRecovery: (100*lastData['Recovered']/lastData['Confirmed']).toFixed(2) + '%',
+				rateDeath: (100*lastData['Deaths']/lastData['Confirmed']).toFixed(2) + '%',
 			});
 		})
 		.catch(function (error) {
@@ -143,8 +165,7 @@ class App extends React.Component {
 				<AppBar style={{background:'#BB0A1E'}}>
 					<Toolbar>
 						<Typography variant="h4" className={classes.title} align="center">
-							{/*<b>Simple COVID-19 Dashboard</b>*/}
-							{this.state.today}
+							<b>Simple COVID-19 Dashboard</b>
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -194,6 +215,26 @@ class App extends React.Component {
 								<Typography>Recovered</Typography>
 								<Typography variant="h3">{data_text.recovered.toLocaleString()}</Typography>
 								<Typography variant="h5">({data_text.newRecovered.toLocaleString()})</Typography>
+							</Paper>
+						</Grid>
+						<Grid item xs={6}>
+							<Paper className={classes.paper}>
+								<Typography variant='h6'>
+									Last confirmed: {this.state.lastConfirmed} ({this.state.noConfirmedStreak} days ago)
+								</Typography>
+								<Typography variant='h6'>
+									Last death: {this.state.lastDeath} ({this.state.noDeathStreak} days ago)
+								</Typography>
+							</Paper>
+						</Grid>
+						<Grid item xs={6}>
+							<Paper className={classes.paper}>
+								<Typography variant='h6'>
+									Recovery Rate: {this.state.rateRecovery}
+								</Typography>
+								<Typography variant='h6' >
+									Mortality Rate: {this.state.rateDeath}
+								</Typography>
 							</Paper>
 						</Grid>
 					</Grid>
