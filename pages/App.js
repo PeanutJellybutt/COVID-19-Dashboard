@@ -303,10 +303,10 @@ class App extends React.Component {
 										<YAxis />
 										<Tooltip />
 										<Legend />
-										<Line type="monotone" dataKey="Confirmed" stroke={graphBlue} dot={false} />
-										<Line type="monotone" dataKey="Hospitalized" stroke={graphYellow} dot={false} />
-										<Line type="monotone" dataKey="Deaths" stroke={graphRed} dot={false} />
-										<Line type="monotone" dataKey="Recovered" stroke={graphGreen} dot={false} />
+										<Line type="monotone" strokeWidth={2} dataKey="Confirmed" stroke={graphBlue} dot={false} />
+										<Line type="monotone" strokeWidth={2} dataKey="Hospitalized" stroke={graphYellow} dot={false} />
+										<Line type="monotone" strokeWidth={2} dataKey="Deaths" stroke={graphRed} dot={false} />
+										<Line type="monotone" strokeWidth={2} dataKey="Recovered" stroke={graphGreen} dot={false} />
 									</LineChart>
 								</ResponsiveContainer>
 							</Paper>
