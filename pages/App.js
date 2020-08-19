@@ -37,7 +37,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 2,
   },
 	root: {
-    backgroundColor: "#000000",
+    backgroundColor: "#000001",
   },
 });
 
