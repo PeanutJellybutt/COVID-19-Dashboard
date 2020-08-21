@@ -123,9 +123,7 @@ class App extends React.Component {
      		(prevState.selectCity != this.state.selectCity) ||
 				(prevState.fastMode != this.state.fastMode))
 		{
-			if (!prevState.fastMode && this.state.fastMode)
-				this.clearAxiosCalls();
-			
+			this.clearAxiosCalls();
 			this.fetchData(this.referenceDate);
 		}
 	}
@@ -232,8 +230,6 @@ class App extends React.Component {
 			});
 			//console.log(this.state.countries);
 		}
-		
-		
 	}
 	
 	//When foreign country is selected
@@ -539,13 +535,14 @@ class App extends React.Component {
 	}
 	
 	render() {
-		const graphBlue = '#20A0E0';
-		const graphYellow = '#FFC060';
-		const graphRed = '#E04040';
-		const graphGreen = '#80E080';
+		const cBlue = '#20A0E0';
+		const cOrange = '#F7B860';
+		const cRed = '#E04040';
+		const cGreen = '#80D080';
+		const cDRed = '#BB0A1E';
 		
 		const { classes } = this.props;
-		const { selectCountry, selectCity, dataTimeline, dataTimeline15, data_text, data_pie } = this.state;
+		const { selectCountry, selectCity, fastMode, dataTimeline, dataTimeline15, data_text, data_pie } = this.state;
 		
 		const selectedCountryData = this.state.globalData[selectCountry];
 		let cityChoice = ["Overall"];
@@ -556,12 +553,11 @@ class App extends React.Component {
 		
 		return (
 			<div className={classes.root}>
-				<CssBaseline />
-				<AppBar style={{background:'#BB0A1E'}}>
+				<CssBaseline/>
+				<AppBar style={{background: cDRed}}>
 					<Toolbar>
 						<Typography variant="h4" className={classes.title} align="center">
 							<b>Simple COVID-19 Dashboard</b>
-							{/*this.state.selectCity*/}
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -588,8 +584,8 @@ class App extends React.Component {
 						<Grid item xs={1}>
 							<br/>
 							<br/>
-							<button onClick={() => this.setState({ fastMode: !this.state.fastMode })}>
-								{this.state.fastMode ? "FAST MODE" : "FULL MODE"}
+							<button style={{ color: (fastMode ? cDRed : 'blue') }} onClick={() => this.setState({ fastMode: !fastMode })}>
+								<b>{fastMode ? "FAST MODE" : "FULL MODE"}</b>
 							</button>
 						</Grid>
 						<Grid item xs={3}>
@@ -608,30 +604,32 @@ class App extends React.Component {
 					<Grid container spacing={2}>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography>Confirmed</Typography>
-								<Typography variant="h3">{data_text.confirmed.toLocaleString()}</Typography>
-								<Typography variant="h5">({data_text.newConfirmed.toLocaleString()})</Typography>
+								<Typography style={{ color: cBlue }}><b>Confirmed</b></Typography>
+								<Typography style={{ color: cBlue }} variant="h3">{data_text.confirmed.toLocaleString()}</Typography>
+								<Typography style={{ color: cBlue }} variant="h5">+ {data_text.newConfirmed.toLocaleString()}</Typography>
 							</Paper>
 						</Grid>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography>Hospitalized</Typography>
-								<Typography variant="h3">{data_text.hospitalized.toLocaleString()}</Typography>
-								<Typography variant="h5">({data_text.newHospitalized.toLocaleString()})</Typography>
+								<Typography style={{ color: cOrange }}><b>Hospitalized</b></Typography>
+								<Typography style={{ color: cOrange }} variant="h3">{data_text.hospitalized.toLocaleString()}</Typography>
+								<Typography style={{ color: cOrange }} variant="h5">
+									{(data_text.newHospitalized >= 0) ? '+' : '-'} {Math.abs(data_text.newHospitalized).toLocaleString()}
+								</Typography>
 							</Paper>
 						</Grid>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography>Deaths</Typography>
-								<Typography variant="h3">{data_text.deaths.toLocaleString()}</Typography>
-								<Typography variant="h5">({data_text.newDeaths.toLocaleString()})</Typography>
+								<Typography style={{ color: cRed }}><b>Deaths</b></Typography>
+								<Typography style={{ color: cRed }} variant="h3">{data_text.deaths.toLocaleString()}</Typography>
+								<Typography style={{ color: cRed }} variant="h5">+ {data_text.newDeaths.toLocaleString()}</Typography>
 							</Paper>
 						</Grid>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography>Recovered</Typography>
-								<Typography variant="h3">{data_text.recovered.toLocaleString()}</Typography>
-								<Typography variant="h5">({data_text.newRecovered.toLocaleString()})</Typography>
+								<Typography style={{ color: cGreen }}><b>Recovered</b></Typography>
+								<Typography style={{ color: cGreen }} variant="h3">{data_text.recovered.toLocaleString()}</Typography>
+								<Typography style={{ color: cGreen }} variant="h5">+ {data_text.newRecovered.toLocaleString()}</Typography>
 							</Paper>
 						</Grid>
 						{ this.state.hasTimeline && (
@@ -650,10 +648,10 @@ class App extends React.Component {
 						)}
 						<Grid item xs={ this.state.hasTimeline ? 6 : 12}>
 							<Paper className={classes.paper}>
-								<Typography variant='h6'>
+								<Typography variant='h6' style={{ color: 'green' }}>
 									Recovery Rate: {this.state.rateRecovery}
 								</Typography>
-								<Typography variant='h6' >
+								<Typography variant='h6' style={{ color: cDRed }}>
 									Mortality Rate: {this.state.rateDeath}
 								</Typography>
 							</Paper>
@@ -689,11 +687,11 @@ class App extends React.Component {
 									>
 										<CartesianGrid strokeDasharray="3 3" />
 										<XAxis dataKey="Date"/>
-										<YAxis />
-										<Tooltip />
-										<Legend />
-										<Bar dataKey="NewConfirmed" fill={graphBlue} />
-										<Bar dataKey="NewDeaths" fill={graphRed} />
+										<YAxis/>
+										<Tooltip/>
+										<Legend/>
+										<Bar dataKey="NewConfirmed" fill={cBlue}/>
+										<Bar dataKey="NewDeaths" fill={cRed}/>
 									</BarChart>
 								</ResponsiveContainer>
 							</Paper>
@@ -704,13 +702,13 @@ class App extends React.Component {
 							<Paper className={classes.paper}>
 								<ResponsiveContainer width="100%" height={300}>
 									<PieChart width={400}	height={400}>
-										<Legend />
+										<Legend/>
 										<Pie dataKey="value" isAnimationActive={false} data={data_pie} outerRadius={100} label>
-											<Cell fill={graphYellow} />
-											<Cell fill={graphRed} />
-											<Cell fill={graphGreen} />
+											<Cell fill={cOrange} />
+											<Cell fill={cRed} />
+											<Cell fill={cGreen} />
 										</Pie>
-										<Tooltip />
+										<Tooltip/>
 									</PieChart>
 								</ResponsiveContainer>
 							</Paper>
@@ -726,13 +724,13 @@ class App extends React.Component {
 									>
 										<CartesianGrid strokeDasharray="3 3" />
 										<XAxis dataKey="Date" />
-										<YAxis />
-										<Tooltip />
-										<Legend />
-										<Line type="monotone" strokeWidth={2} dataKey="Confirmed" stroke={graphBlue} dot={false} />
-										<Line type="monotone" strokeWidth={2} dataKey="Hospitalized" stroke={graphYellow} dot={false} />
-										<Line type="monotone" strokeWidth={2} dataKey="Deaths" stroke={graphRed} dot={false} />
-										<Line type="monotone" strokeWidth={2} dataKey="Recovered" stroke={graphGreen} dot={false} />
+										<YAxis/>
+										<Tooltip/>
+										<Legend/>
+										<Line type="monotone" strokeWidth={2} dataKey="Confirmed" stroke={cBlue} dot={false} />
+										<Line type="monotone" strokeWidth={2} dataKey="Hospitalized" stroke={cOrange} dot={false} />
+										<Line type="monotone" strokeWidth={2} dataKey="Deaths" stroke={cRed} dot={false} />
+										<Line type="monotone" strokeWidth={2} dataKey="Recovered" stroke={cGreen} dot={false} />
 									</LineChart>
 								</ResponsiveContainer>
 							</Paper>
@@ -744,7 +742,7 @@ class App extends React.Component {
 				<footer className={classes.footer}>
 					<Paper className={classes.paperFoot}>
 						<Typography variant="h6">
-							Simple Covid-19 Dashboard for Tencent Thailand's Internship Project
+							<b>Simple Covid-19 Dashboard for Tencent Thailand's Internship Project</b>
 						</Typography>
 						<Typography component="p">
 							By Thanjira S. and Woottipat H.

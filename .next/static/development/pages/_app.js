@@ -11379,7 +11379,7 @@ $export($export.P + $export.F * ($fails(function () {
 
 exports = module.exports = __webpack_require__(/*! ../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, ".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n", "",{"version":3,"sources":["C:/Users/Herabat/react-js/covid-19-dashboard/node_modules/react-dropdown/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;AAC5B;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,0CAA0C;EAC1C,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,SAAS;EACT,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,SAAS;EACT;AACF;;AAEA;EACE,0CAA0C;EAC1C,uBAAuB;AACzB;;AAEA;EACE,uBAAuB;EACvB,sBAAsB;EACtB,uCAAuC;EACvC,sBAAsB;EACtB,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,iCAAiC;AACnC;;AAEA;EACE,iBAAiB;EACjB,0BAA0B;EAC1B,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,+BAA+B;GAC9B,8BAA8B;AACjC;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB","file":"style.css","sourcesContent":[".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n"]}]);
+exports.push([module.i, ".Dropdown-root {\r\n  position: relative;\r\n}\r\n\r\n.Dropdown-control {\r\n  position: relative;\r\n  overflow: hidden;\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  border-radius: 2px;\r\n  box-sizing: border-box;\r\n  color: #333;\r\n  cursor: default;\r\n  outline: none;\r\n  padding: 8px 52px 8px 10px;\r\n  transition: all 200ms ease;\r\n}\r\n\r\n.Dropdown-control:hover {\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n}\r\n\r\n.Dropdown-arrow {\r\n  border-color: #999 transparent transparent;\r\n  border-style: solid;\r\n  border-width: 5px 5px 0;\r\n  content: ' ';\r\n  display: block;\r\n  height: 0;\r\n  margin-top: -ceil(2.5);\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  width: 0\r\n}\r\n\r\n.is-open .Dropdown-arrow {\r\n  border-color: transparent transparent #999;\r\n  border-width: 0 5px 5px;\r\n}\r\n\r\n.Dropdown-menu {\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n  box-sizing: border-box;\r\n  margin-top: -1px;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  position: absolute;\r\n  top: 100%;\r\n  width: 100%;\r\n  z-index: 1000;\r\n  -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\r\n  padding: 8px 10px;\r\n  color: rgba(51, 51, 51, 1);\r\n  font-weight: bold;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.Dropdown-option {\r\n  box-sizing: border-box;\r\n  color: rgba(51, 51, 51, 0.8);\r\n  cursor: pointer;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n\r\n.Dropdown-option:last-child {\r\n  border-bottom-right-radius: 2px;\r\n   border-bottom-left-radius: 2px;\r\n}\r\n\r\n.Dropdown-option:hover {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-option.is-selected {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-noresults {\r\n  box-sizing: border-box;\r\n  color: #ccc;\r\n  cursor: default;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n", "",{"version":3,"sources":["C:/Users/Vava/Desktop/covid-19-dashboard/node_modules/react-dropdown/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;AAC5B;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,0CAA0C;EAC1C,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,SAAS;EACT,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,SAAS;EACT;AACF;;AAEA;EACE,0CAA0C;EAC1C,uBAAuB;AACzB;;AAEA;EACE,uBAAuB;EACvB,sBAAsB;EACtB,uCAAuC;EACvC,sBAAsB;EACtB,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,iCAAiC;AACnC;;AAEA;EACE,iBAAiB;EACjB,0BAA0B;EAC1B,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,+BAA+B;GAC9B,8BAA8B;AACjC;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB","file":"style.css","sourcesContent":[".Dropdown-root {\r\n  position: relative;\r\n}\r\n\r\n.Dropdown-control {\r\n  position: relative;\r\n  overflow: hidden;\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  border-radius: 2px;\r\n  box-sizing: border-box;\r\n  color: #333;\r\n  cursor: default;\r\n  outline: none;\r\n  padding: 8px 52px 8px 10px;\r\n  transition: all 200ms ease;\r\n}\r\n\r\n.Dropdown-control:hover {\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n}\r\n\r\n.Dropdown-arrow {\r\n  border-color: #999 transparent transparent;\r\n  border-style: solid;\r\n  border-width: 5px 5px 0;\r\n  content: ' ';\r\n  display: block;\r\n  height: 0;\r\n  margin-top: -ceil(2.5);\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  width: 0\r\n}\r\n\r\n.is-open .Dropdown-arrow {\r\n  border-color: transparent transparent #999;\r\n  border-width: 0 5px 5px;\r\n}\r\n\r\n.Dropdown-menu {\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n  box-sizing: border-box;\r\n  margin-top: -1px;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  position: absolute;\r\n  top: 100%;\r\n  width: 100%;\r\n  z-index: 1000;\r\n  -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\r\n  padding: 8px 10px;\r\n  color: rgba(51, 51, 51, 1);\r\n  font-weight: bold;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.Dropdown-option {\r\n  box-sizing: border-box;\r\n  color: rgba(51, 51, 51, 0.8);\r\n  cursor: pointer;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n\r\n.Dropdown-option:last-child {\r\n  border-bottom-right-radius: 2px;\r\n   border-bottom-left-radius: 2px;\r\n}\r\n\r\n.Dropdown-option:hover {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-option.is-selected {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-noresults {\r\n  box-sizing: border-box;\r\n  color: #ccc;\r\n  cursor: default;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n"]}]);
 
 
 /***/ }),
@@ -38644,12 +38644,12 @@ var e,t=(e=__webpack_require__(/*! querystring */ "./node_modules/querystring-es
 
 /***/ "./node_modules/next/dist/build/polyfills/object-assign.js":
 /*!***********************************************************************************************************************!*\
-  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_e9e577f89808b21d8ba8 ***!
   \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/next/dist/build/polyfills/object-assign.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_e9e577f89808b21d8ba8 */ "dll-reference dll_e9e577f89808b21d8ba8"))("./node_modules/next/dist/build/polyfills/object-assign.js");
 
 /***/ }),
 
@@ -40907,12 +40907,12 @@ process.umask = function() { return 0; };
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_e9e577f89808b21d8ba8 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_e9e577f89808b21d8ba8 */ "dll-reference dll_e9e577f89808b21d8ba8"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -41547,12 +41547,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_e9e577f89808b21d8ba8 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_e9e577f89808b21d8ba8 */ "dll-reference dll_e9e577f89808b21d8ba8"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -41854,12 +41854,12 @@ module.exports.polyfill = function(object) {
 
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_e9e577f89808b21d8ba8 ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/react-dom/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_e9e577f89808b21d8ba8 */ "dll-reference dll_e9e577f89808b21d8ba8"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
@@ -45822,12 +45822,12 @@ exports.classNamesShape = classNamesShape;
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_e9e577f89808b21d8ba8 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_e9e577f89808b21d8ba8 */ "dll-reference dll_e9e577f89808b21d8ba8"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -68236,7 +68236,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\pages\\_app.js";
+var _jsxFileName = "C:\\Users\\Vava\\Desktop\\covid-19-dashboard\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
@@ -68370,7 +68370,7 @@ var App = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       if (prevState.selectCountry != this.state.selectCountry || prevState.selectCity != this.state.selectCity || prevState.fastMode != this.state.fastMode) {
-        if (!prevState.fastMode && this.state.fastMode) this.clearAxiosCalls();
+        this.clearAxiosCalls();
         this.fetchData(this.referenceDate);
       }
     }
@@ -68993,14 +68993,16 @@ var App = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var graphBlue = '#20A0E0';
-      var graphYellow = '#FFC060';
-      var graphRed = '#E04040';
-      var graphGreen = '#80E080';
+      var cBlue = '#20A0E0';
+      var cOrange = '#F7B860';
+      var cRed = '#E04040';
+      var cGreen = '#80D080';
+      var cDRed = '#BB0A1E';
       var classes = this.props.classes;
       var _this$state = this.state,
           selectCountry = _this$state.selectCountry,
           selectCity = _this$state.selectCity,
+          fastMode = _this$state.fastMode,
           dataTimeline = _this$state.dataTimeline,
           dataTimeline15 = _this$state.dataTimeline15,
           data_text = _this$state.data_text,
@@ -69018,31 +69020,31 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 558,
+          lineNumber: 555,
           columnNumber: 4
         }
       }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_11__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 559,
+          lineNumber: 556,
           columnNumber: 5
         }
       }), __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
         style: {
-          background: '#BB0A1E'
+          background: cDRed
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 560,
+          lineNumber: 557,
           columnNumber: 5
         }
       }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 561,
+          lineNumber: 558,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69052,14 +69054,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 562,
+          lineNumber: 559,
           columnNumber: 7
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 563,
+          lineNumber: 560,
           columnNumber: 8
         }
       }, "Simple COVID-19 Dashboard")))), __jsx("div", {
@@ -69067,14 +69069,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 568,
+          lineNumber: 564,
           columnNumber: 5
         }
       }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_12__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 569,
+          lineNumber: 565,
           columnNumber: 5
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69083,7 +69085,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 570,
+          lineNumber: 566,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69092,7 +69094,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 571,
+          lineNumber: 567,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["MuiThemeProvider"], {
@@ -69100,7 +69102,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 572,
+          lineNumber: 568,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69109,14 +69111,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 573,
+          lineNumber: 569,
           columnNumber: 9
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 574,
+          lineNumber: 570,
           columnNumber: 10
         }
       }), "Last updated: ", data_text.updatedDate), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69125,7 +69127,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 577,
+          lineNumber: 573,
           columnNumber: 9
         }
       }, __jsx("a", {
@@ -69135,7 +69137,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 578,
+          lineNumber: 574,
           columnNumber: 10
         }
       }, " ", data_text.source)))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69144,56 +69146,66 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 588,
+          lineNumber: 584,
           columnNumber: 7
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 589,
+          lineNumber: 585,
           columnNumber: 8
         }
       }), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 590,
+          lineNumber: 586,
           columnNumber: 8
         }
       }), __jsx("button", {
+        style: {
+          color: fastMode ? cDRed : 'blue'
+        },
         onClick: function onClick() {
           return _this2.setState({
-            fastMode: !_this2.state.fastMode
+            fastMode: !fastMode
           });
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 591,
+          lineNumber: 587,
           columnNumber: 8
         }
-      }, this.state.fastMode ? "FAST MODE" : "FULL MODE")), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 588,
+          columnNumber: 9
+        }
+      }, fastMode ? "FAST MODE" : "FULL MODE"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 595,
+          lineNumber: 591,
           columnNumber: 7
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 596,
+          lineNumber: 592,
           columnNumber: 8
         }
       }), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 596,
+          lineNumber: 592,
           columnNumber: 13
         }
       }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
@@ -69208,7 +69220,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 597,
+          lineNumber: 593,
           columnNumber: 8
         }
       })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69217,21 +69229,21 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 601,
+          lineNumber: 597,
           columnNumber: 7
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 602,
+          lineNumber: 598,
           columnNumber: 8
         }
       }), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 602,
+          lineNumber: 598,
           columnNumber: 13
         }
       }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
@@ -69245,7 +69257,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 603,
+          lineNumber: 599,
           columnNumber: 8
         }
       }))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69254,7 +69266,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 608,
+          lineNumber: 604,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69264,7 +69276,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 609,
+          lineNumber: 605,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69272,81 +69284,113 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 610,
+          lineNumber: 606,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cBlue
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 611,
+          lineNumber: 607,
           columnNumber: 9
         }
-      }, "Confirmed"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 607,
+          columnNumber: 46
+        }
+      }, "Confirmed")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cBlue
+        },
         variant: "h3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 608,
+          columnNumber: 9
+        }
+      }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cBlue
+        },
+        variant: "h5",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 609,
+          columnNumber: 9
+        }
+      }, "+ ", data_text.newConfirmed.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: 6,
+        sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 612,
-          columnNumber: 9
+          columnNumber: 7
         }
-      }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h5",
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 613,
-          columnNumber: 9
-        }
-      }, "(", data_text.newConfirmed.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        item: true,
-        xs: 6,
-        sm: 3,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 616,
-          columnNumber: 7
-        }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 617,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cOrange
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 618,
+          lineNumber: 614,
           columnNumber: 9
         }
-      }, "Hospitalized"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 614,
+          columnNumber: 48
+        }
+      }, "Hospitalized")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cOrange
+        },
         variant: "h3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 619,
+          lineNumber: 615,
           columnNumber: 9
         }
       }, data_text.hospitalized.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cOrange
+        },
         variant: "h5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 620,
+          lineNumber: 616,
           columnNumber: 9
         }
-      }, "(", data_text.newHospitalized.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, data_text.newHospitalized >= 0 ? '+' : '-', " ", Math.abs(data_text.newHospitalized).toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 623,
+          lineNumber: 621,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69354,40 +69398,56 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 624,
+          lineNumber: 622,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cRed
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 623,
+          columnNumber: 9
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 623,
+          columnNumber: 45
+        }
+      }, "Deaths")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cRed
+        },
+        variant: "h3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 624,
+          columnNumber: 9
+        }
+      }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cRed
+        },
+        variant: "h5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 625,
           columnNumber: 9
         }
-      }, "Deaths"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 626,
-          columnNumber: 9
-        }
-      }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h5",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 627,
-          columnNumber: 9
-        }
-      }, "(", data_text.newDeaths.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, "+ ", data_text.newDeaths.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 630,
+          lineNumber: 628,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69395,39 +69455,55 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 631,
+          lineNumber: 629,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cGreen
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 630,
+          columnNumber: 9
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 630,
+          columnNumber: 47
+        }
+      }, "Recovered")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cGreen
+        },
+        variant: "h3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 631,
+          columnNumber: 9
+        }
+      }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        style: {
+          color: cGreen
+        },
+        variant: "h5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 632,
           columnNumber: 9
         }
-      }, "Recovered"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 633,
-          columnNumber: 9
-        }
-      }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h5",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 634,
-          columnNumber: 9
-        }
-      }, "(", data_text.newRecovered.toLocaleString(), ")"))), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, "+ ", data_text.newRecovered.toLocaleString()))), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 6,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 639,
+          lineNumber: 637,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69435,7 +69511,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 640,
+          lineNumber: 638,
           columnNumber: 9
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69443,7 +69519,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 641,
+          lineNumber: 639,
           columnNumber: 10
         }
       }, "Last confirmed: ", this.state.lastConfirmed, " (", this.state.noConfirmedStreak, " days ago)"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69451,7 +69527,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 644,
+          lineNumber: 642,
           columnNumber: 10
         }
       }, "Last death: ", this.state.lastDeath, " (", this.state.noDeathStreak, " days ago)")))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69460,7 +69536,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 651,
+          lineNumber: 649,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69468,30 +69544,36 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 652,
+          lineNumber: 650,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h6",
+        style: {
+          color: 'green'
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 653,
+          lineNumber: 651,
           columnNumber: 9
         }
       }, "Recovery Rate: ", this.state.rateRecovery), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h6",
+        style: {
+          color: cDRed
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 656,
+          lineNumber: 654,
           columnNumber: 9
         }
       }, "Mortality Rate: ", this.state.rateDeath)))), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 666,
+          lineNumber: 664,
           columnNumber: 6
         }
       }), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("button", {
@@ -69503,21 +69585,21 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 669,
+          lineNumber: 667,
           columnNumber: 7
         }
       }, "Show/Hide Graph"), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 672,
+          lineNumber: 670,
           columnNumber: 7
         }
       })), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 675,
+          lineNumber: 673,
           columnNumber: 6
         }
       }), this.state.showGraph && //Whether or not to display graphs
@@ -69527,7 +69609,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 679,
+          lineNumber: 677,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69537,7 +69619,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 681,
+          lineNumber: 679,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69545,7 +69627,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 682,
+          lineNumber: 680,
           columnNumber: 8
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
@@ -69554,7 +69636,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 683,
+          lineNumber: 681,
           columnNumber: 9
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["BarChart"], {
@@ -69570,7 +69652,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 684,
+          lineNumber: 682,
           columnNumber: 10
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
@@ -69578,7 +69660,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 690,
+          lineNumber: 688,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
@@ -69586,46 +69668,46 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 691,
+          lineNumber: 689,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 692,
+          lineNumber: 690,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 693,
+          lineNumber: 691,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 694,
+          lineNumber: 692,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
         dataKey: "NewConfirmed",
-        fill: graphBlue,
+        fill: cBlue,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 695,
+          lineNumber: 693,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
         dataKey: "NewDeaths",
-        fill: graphRed,
+        fill: cRed,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 696,
+          lineNumber: 694,
           columnNumber: 11
         }
       }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69635,7 +69717,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 703,
+          lineNumber: 701,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69643,7 +69725,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 704,
+          lineNumber: 702,
           columnNumber: 8
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
@@ -69652,7 +69734,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 705,
+          lineNumber: 703,
           columnNumber: 9
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["PieChart"], {
@@ -69661,14 +69743,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 706,
+          lineNumber: 704,
           columnNumber: 10
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 707,
+          lineNumber: 705,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Pie"], {
@@ -69680,38 +69762,38 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 708,
+          lineNumber: 706,
           columnNumber: 11
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
-        fill: graphYellow,
+        fill: cOrange,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 707,
+          columnNumber: 12
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
+        fill: cRed,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 708,
+          columnNumber: 12
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
+        fill: cGreen,
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 709,
           columnNumber: 12
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
-        fill: graphRed,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 710,
-          columnNumber: 12
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
-        fill: graphGreen,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 711,
-          columnNumber: 12
-        }
       })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 713,
+          lineNumber: 711,
           columnNumber: 11
         }
       }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69720,7 +69802,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 720,
+          lineNumber: 718,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69728,7 +69810,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 721,
+          lineNumber: 719,
           columnNumber: 8
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
@@ -69737,7 +69819,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 722,
+          lineNumber: 720,
           columnNumber: 9
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["LineChart"], {
@@ -69751,7 +69833,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 723,
+          lineNumber: 721,
           columnNumber: 10
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
@@ -69759,7 +69841,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 727,
+          lineNumber: 725,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
@@ -69767,24 +69849,48 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 728,
+          lineNumber: 726,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 729,
+          lineNumber: 727,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 730,
+          lineNumber: 728,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 729,
+          columnNumber: 11
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
+        type: "monotone",
+        strokeWidth: 2,
+        dataKey: "Confirmed",
+        stroke: cBlue,
+        dot: false,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 730,
+          columnNumber: 11
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
+        type: "monotone",
+        strokeWidth: 2,
+        dataKey: "Hospitalized",
+        stroke: cOrange,
+        dot: false,
         __self: this,
         __source: {
           fileName: _jsxFileName,
@@ -69794,8 +69900,8 @@ var App = /*#__PURE__*/function (_React$Component) {
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
         type: "monotone",
         strokeWidth: 2,
-        dataKey: "Confirmed",
-        stroke: graphBlue,
+        dataKey: "Deaths",
+        stroke: cRed,
         dot: false,
         __self: this,
         __source: {
@@ -69806,8 +69912,8 @@ var App = /*#__PURE__*/function (_React$Component) {
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
         type: "monotone",
         strokeWidth: 2,
-        dataKey: "Hospitalized",
-        stroke: graphYellow,
+        dataKey: "Recovered",
+        stroke: cGreen,
         dot: false,
         __self: this,
         __source: {
@@ -69815,36 +69921,12 @@ var App = /*#__PURE__*/function (_React$Component) {
           lineNumber: 733,
           columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
-        type: "monotone",
-        strokeWidth: 2,
-        dataKey: "Deaths",
-        stroke: graphRed,
-        dot: false,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 734,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
-        type: "monotone",
-        strokeWidth: 2,
-        dataKey: "Recovered",
-        stroke: graphGreen,
-        dot: false,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 735,
-          columnNumber: 11
-        }
       })))))))), __jsx("footer", {
         className: classes.footer,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 744,
+          lineNumber: 742,
           columnNumber: 5
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69852,7 +69934,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 745,
+          lineNumber: 743,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69860,15 +69942,22 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 746,
+          lineNumber: 744,
           columnNumber: 7
         }
-      }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 745,
+          columnNumber: 8
+        }
+      }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         component: "p",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 749,
+          lineNumber: 747,
           columnNumber: 7
         }
       }, "By Thanjira S. and Woottipat H."))));
@@ -69890,19 +69979,19 @@ var App = /*#__PURE__*/function (_React$Component) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! next-client-pages-loader?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./");
-module.exports = __webpack_require__(/*! C:\Users\Herabat\react-js\covid-19-dashboard\node_modules\next\dist\client\router.js */"./node_modules/next/dist/client/router.js");
+module.exports = __webpack_require__(/*! C:\Users\Vava\Desktop\covid-19-dashboard\node_modules\next\dist\client\router.js */"./node_modules/next/dist/client/router.js");
 
 
 /***/ }),
 
-/***/ "dll-reference dll_2adc2403d89adc16ead0":
+/***/ "dll-reference dll_e9e577f89808b21d8ba8":
 /*!*******************************************!*\
-  !*** external "dll_2adc2403d89adc16ead0" ***!
+  !*** external "dll_e9e577f89808b21d8ba8" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_2adc2403d89adc16ead0;
+module.exports = dll_e9e577f89808b21d8ba8;
 
 /***/ })
 
