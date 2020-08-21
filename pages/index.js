@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link';
-import App from './App';
+import _app from './_app';
 
 export default function Home() {
   return (
-    <App/>
+    <_app/>
   );
 }
