@@ -553,6 +553,18 @@ module.exports = _interopRequireDefault;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/AppBar/AppBar.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/AppBar/AppBar.js ***!
@@ -11355,6 +11367,121 @@ $export($export.P + $export.F * ($fails(function () {
   }
 });
 
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/react-dropdown/style.css":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/react-dropdown/style.css ***!
+  \**************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
+// Module
+exports.push([module.i, ".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n", "",{"version":3,"sources":["C:/Users/Herabat/react-js/covid-19-dashboard/node_modules/react-dropdown/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;AAC5B;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,0CAA0C;EAC1C,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,SAAS;EACT,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,SAAS;EACT;AACF;;AAEA;EACE,0CAA0C;EAC1C,uBAAuB;AACzB;;AAEA;EACE,uBAAuB;EACvB,sBAAsB;EACtB,uCAAuC;EACvC,sBAAsB;EACtB,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,iCAAiC;AACnC;;AAEA;EACE,iBAAiB;EACjB,0BAA0B;EAC1B,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,+BAA+B;GAC9B,8BAA8B;AACjC;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB","file":"style.css","sourcesContent":[".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n"]}]);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (useSourceMap) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item, useSourceMap);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], "{").concat(content, "}");
+      }
+
+      return content;
+    }).join('');
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery) {
+    if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, '']];
+    }
+
+    var alreadyImportedModules = {};
+
+    for (var i = 0; i < this.length; i++) {
+      // eslint-disable-next-line prefer-destructuring
+      var id = this[i][0];
+
+      if (id != null) {
+        alreadyImportedModules[id] = true;
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = modules[_i]; // skip already imported module
+      // this implementation is not 100% perfect for weird media query combinations
+      // when a module is imported multiple times with different media queries.
+      // I hope this will never occur (Hey this way we have smaller bundles)
+
+      if (item[0] == null || !alreadyImportedModules[item[0]]) {
+        if (mediaQuery && !item[2]) {
+          item[2] = mediaQuery;
+        } else if (mediaQuery) {
+          item[2] = "(".concat(item[2], ") and (").concat(mediaQuery, ")");
+        }
+
+        list.push(item);
+      }
+    }
+  };
+
+  return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+  var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring
+
+  var cssMapping = item[3];
+
+  if (!cssMapping) {
+    return content;
+  }
+
+  if (useSourceMap && typeof btoa === 'function') {
+    var sourceMapping = toComment(cssMapping);
+    var sourceURLs = cssMapping.sources.map(function (source) {
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot).concat(source, " */");
+    });
+    return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+  }
+
+  return [content].join('\n');
+} // Adapted from convert-source-map (MIT)
+
+
+function toComment(sourceMap) {
+  // eslint-disable-next-line no-undef
+  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+  var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+  return "/*# ".concat(data, " */");
+}
 
 /***/ }),
 
@@ -42863,6 +42990,366 @@ module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0
 
 /***/ }),
 
+/***/ "./node_modules/react-dropdown/dist/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/react-dropdown/dist/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var DEFAULT_PLACEHOLDER_STRING = 'Select...';
+
+var Dropdown =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Dropdown, _Component);
+
+  function Dropdown(props) {
+    var _this;
+
+    _classCallCheck(this, Dropdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, props));
+    _this.state = {
+      selected: _this.parseValue(props.value, props.options) || {
+        label: typeof props.placeholder === 'undefined' ? DEFAULT_PLACEHOLDER_STRING : props.placeholder,
+        value: ''
+      },
+      isOpen: false
+    };
+    _this.mounted = true;
+    _this.handleDocumentClick = _this.handleDocumentClick.bind(_assertThisInitialized(_this));
+    _this.fireChangeEvent = _this.fireChangeEvent.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Dropdown, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.value !== prevProps.value) {
+        if (this.props.value) {
+          var selected = this.parseValue(this.props.value, this.props.options);
+
+          if (selected !== this.state.selected) {
+            this.setState({
+              selected: selected
+            });
+          }
+        } else {
+          this.setState({
+            selected: {
+              label: typeof this.props.placeholder === 'undefined' ? DEFAULT_PLACEHOLDER_STRING : this.props.placeholder,
+              value: ''
+            }
+          });
+        }
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('click', this.handleDocumentClick, false);
+      document.addEventListener('touchend', this.handleDocumentClick, false);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.mounted = false;
+      document.removeEventListener('click', this.handleDocumentClick, false);
+      document.removeEventListener('touchend', this.handleDocumentClick, false);
+    }
+  }, {
+    key: "handleMouseDown",
+    value: function handleMouseDown(event) {
+      if (this.props.onFocus && typeof this.props.onFocus === 'function') {
+        this.props.onFocus(this.state.isOpen);
+      }
+
+      if (event.type === 'mousedown' && event.button !== 0) return;
+      event.stopPropagation();
+      event.preventDefault();
+
+      if (!this.props.disabled) {
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
+      }
+    }
+  }, {
+    key: "parseValue",
+    value: function parseValue(value, options) {
+      var option;
+
+      if (typeof value === 'string') {
+        for (var i = 0, num = options.length; i < num; i++) {
+          if (options[i].type === 'group') {
+            var match = options[i].items.filter(function (item) {
+              return item.value === value;
+            });
+
+            if (match.length) {
+              option = match[0];
+            }
+          } else if (typeof options[i].value !== 'undefined' && options[i].value === value) {
+            option = options[i];
+          }
+        }
+      }
+
+      return option || value;
+    }
+  }, {
+    key: "setValue",
+    value: function setValue(value, label) {
+      var newState = {
+        selected: {
+          value: value,
+          label: label
+        },
+        isOpen: false
+      };
+      this.fireChangeEvent(newState);
+      this.setState(newState);
+    }
+  }, {
+    key: "fireChangeEvent",
+    value: function fireChangeEvent(newState) {
+      if (newState.selected !== this.state.selected && this.props.onChange) {
+        this.props.onChange(newState.selected);
+      }
+    }
+  }, {
+    key: "renderOption",
+    value: function renderOption(option) {
+      var _classes;
+
+      var value = option.value;
+
+      if (typeof value === 'undefined') {
+        value = option.label || option;
+      }
+
+      var label = option.label || option.value || option;
+      var isSelected = value === this.state.selected.value || value === this.state.selected;
+      var classes = (_classes = {}, _defineProperty(_classes, "".concat(this.props.baseClassName, "-option"), true), _defineProperty(_classes, option.className, !!option.className), _defineProperty(_classes, 'is-selected', isSelected), _classes);
+      var optionClass = (0, _classnames["default"])(classes);
+      return _react["default"].createElement("div", {
+        key: value,
+        className: optionClass,
+        onMouseDown: this.setValue.bind(this, value, label),
+        onClick: this.setValue.bind(this, value, label),
+        role: "option",
+        "aria-selected": isSelected ? 'true' : 'false'
+      }, label);
+    }
+  }, {
+    key: "buildMenu",
+    value: function buildMenu() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          options = _this$props.options,
+          baseClassName = _this$props.baseClassName;
+      var ops = options.map(function (option) {
+        if (option.type === 'group') {
+          var groupTitle = _react["default"].createElement("div", {
+            className: "".concat(baseClassName, "-title")
+          }, option.name);
+
+          var _options = option.items.map(function (item) {
+            return _this2.renderOption(item);
+          });
+
+          return _react["default"].createElement("div", {
+            className: "".concat(baseClassName, "-group"),
+            key: option.name,
+            role: "listbox",
+            tabIndex: "-1"
+          }, groupTitle, _options);
+        } else {
+          return _this2.renderOption(option);
+        }
+      });
+      return ops.length ? ops : _react["default"].createElement("div", {
+        className: "".concat(baseClassName, "-noresults")
+      }, "No options found");
+    }
+  }, {
+    key: "handleDocumentClick",
+    value: function handleDocumentClick(event) {
+      if (this.mounted) {
+        if (!_reactDom["default"].findDOMNode(this).contains(event.target)) {
+          if (this.state.isOpen) {
+            this.setState({
+              isOpen: false
+            });
+          }
+        }
+      }
+    }
+  }, {
+    key: "isValueSelected",
+    value: function isValueSelected() {
+      return typeof this.state.selected === 'string' || this.state.selected.value !== '';
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames, _classNames2, _classNames3, _classNames4, _classNames5;
+
+      var _this$props2 = this.props,
+          baseClassName = _this$props2.baseClassName,
+          controlClassName = _this$props2.controlClassName,
+          placeholderClassName = _this$props2.placeholderClassName,
+          menuClassName = _this$props2.menuClassName,
+          arrowClassName = _this$props2.arrowClassName,
+          arrowClosed = _this$props2.arrowClosed,
+          arrowOpen = _this$props2.arrowOpen,
+          className = _this$props2.className;
+      var disabledClass = this.props.disabled ? 'Dropdown-disabled' : '';
+      var placeHolderValue = typeof this.state.selected === 'string' ? this.state.selected : this.state.selected.label;
+      var dropdownClass = (0, _classnames["default"])((_classNames = {}, _defineProperty(_classNames, "".concat(baseClassName, "-root"), true), _defineProperty(_classNames, className, !!className), _defineProperty(_classNames, 'is-open', this.state.isOpen), _classNames));
+      var controlClass = (0, _classnames["default"])((_classNames2 = {}, _defineProperty(_classNames2, "".concat(baseClassName, "-control"), true), _defineProperty(_classNames2, controlClassName, !!controlClassName), _defineProperty(_classNames2, disabledClass, !!disabledClass), _classNames2));
+      var placeholderClass = (0, _classnames["default"])((_classNames3 = {}, _defineProperty(_classNames3, "".concat(baseClassName, "-placeholder"), true), _defineProperty(_classNames3, placeholderClassName, !!placeholderClassName), _defineProperty(_classNames3, 'is-selected', this.isValueSelected()), _classNames3));
+      var menuClass = (0, _classnames["default"])((_classNames4 = {}, _defineProperty(_classNames4, "".concat(baseClassName, "-menu"), true), _defineProperty(_classNames4, menuClassName, !!menuClassName), _classNames4));
+      var arrowClass = (0, _classnames["default"])((_classNames5 = {}, _defineProperty(_classNames5, "".concat(baseClassName, "-arrow"), true), _defineProperty(_classNames5, arrowClassName, !!arrowClassName), _classNames5));
+
+      var value = _react["default"].createElement("div", {
+        className: placeholderClass
+      }, placeHolderValue);
+
+      var menu = this.state.isOpen ? _react["default"].createElement("div", {
+        className: menuClass,
+        "aria-expanded": "true"
+      }, this.buildMenu()) : null;
+      return _react["default"].createElement("div", {
+        className: dropdownClass
+      }, _react["default"].createElement("div", {
+        className: controlClass,
+        onMouseDown: this.handleMouseDown.bind(this),
+        onTouchEnd: this.handleMouseDown.bind(this),
+        "aria-haspopup": "listbox"
+      }, value, _react["default"].createElement("div", {
+        className: "".concat(baseClassName, "-arrow-wrapper")
+      }, arrowOpen && arrowClosed ? this.state.isOpen ? arrowOpen : arrowClosed : _react["default"].createElement("span", {
+        className: arrowClass
+      }))), menu);
+    }
+  }]);
+
+  return Dropdown;
+}(_react.Component);
+
+Dropdown.defaultProps = {
+  baseClassName: 'Dropdown'
+};
+var _default = Dropdown;
+exports["default"] = _default;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-dropdown/style.css":
+/*!***********************************************!*\
+  !*** ./node_modules/react-dropdown/style.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../css-loader/dist/cjs.js??ref--5-oneOf-5-1!../next/dist/compiled/postcss-loader??__nextjs_postcss!./style.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/react-dropdown/style.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+if (true) {
+  if (!content.locals) {
+    module.hot.accept(
+      /*! !../css-loader/dist/cjs.js??ref--5-oneOf-5-1!../next/dist/compiled/postcss-loader??__nextjs_postcss!./style.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/react-dropdown/style.css",
+      function () {
+        var newContent = __webpack_require__(/*! !../css-loader/dist/cjs.js??ref--5-oneOf-5-1!../next/dist/compiled/postcss-loader??__nextjs_postcss!./style.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/react-dropdown/style.css");
+
+        if (typeof newContent === 'string') {
+          newContent = [[module.i, newContent, '']];
+        }
+        
+        update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() { 
+    update();
+  });
+}
+
+/***/ }),
+
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -68447,6 +68934,299 @@ var index = (function () {
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var stylesInDom = {};
+
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
+    }
+
+    return memo;
+  };
+}();
+
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
+      }
+
+      memo[target] = styleTarget;
+    }
+
+    return memo[target];
+  };
+}();
+
+function listToStyles(list, options) {
+  var styles = [];
+  var newStyles = {};
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var css = item[1];
+    var media = item[2];
+    var sourceMap = item[3];
+    var part = {
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    };
+
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = {
+        id: id,
+        parts: [part]
+      });
+    } else {
+      newStyles[id].parts.push(part);
+    }
+  }
+
+  return styles;
+}
+
+function addStylesToDom(styles, options) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i];
+    var domStyle = stylesInDom[item.id];
+    var j = 0;
+
+    if (domStyle) {
+      domStyle.refs++;
+
+      for (; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j]);
+      }
+
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j], options));
+      }
+    } else {
+      var parts = [];
+
+      for (; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j], options));
+      }
+
+      stylesInDom[item.id] = {
+        id: item.id,
+        refs: 1,
+        parts: parts
+      };
+    }
+  }
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+
+  if (typeof options.attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : undefined;
+
+    if (nonce) {
+      options.attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(options.attributes).forEach(function (key) {
+    style.setAttribute(key, options.attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+    }
+
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
+    return false;
+  }
+
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
+
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
+  };
+}();
+
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.css; // For old IE
+
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
+    } else {
+      style.appendChild(cssNode);
+    }
+  }
+}
+
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
+
+  if (media) {
+    style.setAttribute('media', media);
+  }
+
+  if (sourceMap && btoa) {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
+  }
+
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+        return;
+      }
+
+      update(obj = newObj);
+    } else {
+      remove();
+    }
+  };
+}
+
+module.exports = function (list, options) {
+  options = options || {};
+  options.attributes = typeof options.attributes === 'object' ? options.attributes : {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
+  }
+
+  var styles = listToStyles(list, options);
+  addStylesToDom(styles, options);
+  return function update(newList) {
+    var mayRemove = [];
+
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i];
+      var domStyle = stylesInDom[item.id];
+
+      if (domStyle) {
+        domStyle.refs--;
+        mayRemove.push(domStyle);
+      }
+    }
+
+    if (newList) {
+      var newStyles = listToStyles(newList, options);
+      addStylesToDom(newStyles, options);
+    }
+
+    for (var _i = 0; _i < mayRemove.length; _i++) {
+      var _domStyle = mayRemove[_i];
+
+      if (_domStyle.refs === 0) {
+        for (var j = 0; j < _domStyle.parts.length; j++) {
+          _domStyle.parts[j]();
+        }
+
+        delete stylesInDom[_domStyle.id];
+      }
+    }
+  };
+};
+
+/***/ }),
+
 /***/ "./node_modules/tiny-warning/dist/tiny-warning.esm.js":
 /*!************************************************************!*\
   !*** ./node_modules/tiny-warning/dist/tiny-warning.esm.js ***!
@@ -68544,44 +69324,53 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/App.js":
-/*!**********************!*\
-  !*** ./pages/App.js ***!
-  \**********************/
+/***/ "./pages/_app.js":
+/*!***********************!*\
+  !*** ./pages/_app.js ***!
+  \***********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
-/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/index.js");
-/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/index.js");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
-/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "./node_modules/@material-ui/core/esm/CssBaseline/index.js");
-/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Container */ "./node_modules/@material-ui/core/esm/Container/index.js");
-/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Paper */ "./node_modules/@material-ui/core/esm/Paper/index.js");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/index.js");
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/index.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
+/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "./node_modules/@material-ui/core/esm/CssBaseline/index.js");
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Container */ "./node_modules/@material-ui/core/esm/Container/index.js");
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Paper */ "./node_modules/@material-ui/core/esm/Paper/index.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/index.js");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-dropdown */ "./node_modules/react-dropdown/dist/index.js");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-dropdown/style.css */ "./node_modules/react-dropdown/style.css");
+/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
 
 
 
 
 
-var _jsxFileName = "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\pages\\App.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, result); }; }
+var _jsxFileName = "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\pages\\_app.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+
 
 
 
@@ -68626,32 +69415,45 @@ var styles = function styles(theme) {
     },
     footer: {
       backgroundColor: theme.palette.background.paper,
-      marginTop: theme.spacing.unit * 2
+      marginTop: theme.spacing(2)
     },
     root: {
       backgroundColor: "#000000"
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2)
     }
   };
 };
 
-var darkTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__["createMuiTheme"])({
+var darkTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["createMuiTheme"])({
   palette: {
     type: "dark"
   }
 });
 
 var App = /*#__PURE__*/function (_React$Component) {
-  Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__["default"])(App, _React$Component);
+  Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(App, _React$Component);
 
   var _super = _createSuper(App);
 
   function App(props) {
     var _this;
 
-    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, App);
+    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, App);
 
     _this = _super.call(this, props);
     _this.state = {
+      selectCountry: 'Thailand',
+      selectCity: 'Overall',
+      countries: [],
+      globalData: [],
+      fastMode: true,
+      hasTimeline: true,
       dataTimeline: [],
       dataTimeline15: [],
       data_text: {
@@ -68665,121 +69467,726 @@ var App = /*#__PURE__*/function (_React$Component) {
         newDeaths: '',
         newRecovered: ''
       },
-      data_pie: [{}]
+      data_pie: [{}],
+      lastConfirmed: 0,
+      lastDeath: 0,
+      noConfirmedStreak: 0,
+      noDeathStreak: 0,
+      rateRecovery: 0,
+      rateDeath: 0,
+      showGraph: false
     };
+    _this.referenceDate = new Date(2020, 7, 20);
+    var CancelToken = axios__WEBPACK_IMPORTED_MODULE_17___default.a.CancelToken;
+    _this.cancelSource = CancelToken.source();
     return _this;
   }
 
-  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(App, [{
+  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.callAPI();
+      this.callAPIGlobalAll(this.referenceDate);
+      this.fetchData(this.referenceDate);
     }
   }, {
-    key: "callAPI",
-    value: function callAPI() {
-      var _this2 = this;
+    key: "fetchData",
+    value: function fetchData(refDate) {
+      if (this.state.selectCountry == 'Thailand') this.callAPIThailand();else if (this.state.fastMode) this.callAPIGlobal(this.state.selectCity, this.state.selectCountry, new Date(refDate.getTime()));else this.callAPIGlobalTimeline(this.state.selectCity, this.state.selectCountry);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.selectCountry != this.state.selectCountry || prevState.selectCity != this.state.selectCity || prevState.fastMode != this.state.fastMode) {
+        if (!prevState.fastMode && this.state.fastMode) this.clearAxiosCalls();
+        this.fetchData(this.referenceDate);
+      }
+    }
+  }, {
+    key: "clearAxiosCalls",
+    value: function clearAxiosCalls() {
+      this.cancelSource.cancel('Axios operations cleared');
+      var CancelToken = axios__WEBPACK_IMPORTED_MODULE_17___default.a.CancelToken;
+      this.cancelSource = CancelToken.source();
+    } //For ranking and map functionalities
+    //Only data from one day/file is processed
 
-      axios__WEBPACK_IMPORTED_MODULE_14___default.a.get('https://covid19.th-stat.com/api/open/timeline').then(function (response) {
-        console.log(response.data);
-        var data = response.data['Data'];
-        var lastData = data.slice(-1)[0];
-        var dataDateShorten = data.slice().map(function (d) {
-          return Object.assign({}, d, {
-            Date: d.Date.slice(0, 5)
-          });
-        });
+  }, {
+    key: "callAPIGlobalAll",
+    value: function callAPIGlobalAll(markDate) {
+      var countries, countriesN, data, sourceRef, sourcePrefix, formatChange, cityIndex, countryIndex, conIndex, deathIndex, recIndex, quoteLimit, lines, markDateStr, sourceDate, cancelToken, response, i, values, country, city, confirmed, hospitalized, deaths, recovered, citiesN;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobalAll$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              markDate = new Date(markDate.getTime());
+              countries = [];
+              countriesN = 0;
+              data = new Object();
+              sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+              sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+              formatChange = new Date(2020, 2, 22).getTime();
+              cityIndex = 0;
+              countryIndex = 1;
+              conIndex = 3;
+              deathIndex = 4;
+              recIndex = 5;
+              quoteLimit = 0; //Workaround for source's formatting inconsistencies
 
-        _this2.setState({
-          dataTimeline: dataDateShorten,
-          dataTimeline15: dataDateShorten.slice(1).slice(-15),
-          data_text: {
-            source: response.data['Source'],
-            updatedDate: lastData['Date'],
-            confirmed: lastData['Confirmed'],
-            hospitalized: lastData['Hospitalized'],
-            deaths: lastData['Deaths'],
-            recovered: lastData['Recovered'],
-            newConfirmed: lastData['NewConfirmed'],
-            newHospitalized: lastData['NewHospitalized'],
-            newDeaths: lastData['NewDeaths'],
-            newRecovered: lastData['NewRecovered']
-          },
-          data_pie: [{
-            name: 'hospitalized',
-            value: lastData['Hospitalized']
-          }, {
-            name: 'deaths',
-            value: lastData['Deaths']
-          }, {
-            name: 'recovered',
-            value: lastData['Recovered']
-          }]
+              if (cityIndex == 0 && markDate.getTime() >= formatChange) {
+                cityIndex = 2;
+                countryIndex = 3;
+                conIndex = 7;
+                deathIndex = 8;
+                recIndex = 9;
+                quoteLimit = 2;
+              }
+
+              lines = '';
+              markDateStr = markDate.toISOString();
+              sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear(); //console.log(sourceDate);
+
+              _context.prev = 17;
+              cancelToken = this.cancelSource.token;
+              _context.next = 21;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(sourcePrefix + sourceDate + '.csv', {
+                headers: {
+                  'Content-Type': 'text/csv'
+                },
+                cancelToken: cancelToken
+              }));
+
+            case 21:
+              response = _context.sent;
+              lines = response.data.split(/\r?\n/);
+              _context.next = 29;
+              break;
+
+            case 25:
+              _context.prev = 25;
+              _context.t0 = _context["catch"](17);
+              console.log(_context.t0);
+              return _context.abrupt("return", undefined);
+
+            case 29:
+              if (!(lines != '')) {
+                _context.next = 54;
+                break;
+              }
+
+              i = 1;
+
+            case 31:
+              if (!(i < lines.length)) {
+                _context.next = 53;
+                break;
+              }
+
+              if (!(lines[i] == '' || (lines[i].match(/"/g) || []).length > quoteLimit)) {
+                _context.next = 34;
+                break;
+              }
+
+              return _context.abrupt("continue", 50);
+
+            case 34:
+              values = lines[i].split(',');
+              country = values[countryIndex];
+              city = values[cityIndex];
+              confirmed = parseInt(values[conIndex]);
+              hospitalized = parseInt(values[10]);
+              deaths = parseInt(values[deathIndex]);
+              recovered = parseInt(values[recIndex]);
+
+              if (data[country] != undefined) {
+                confirmed += data[country]["Confirmed"];
+                hospitalized += data[country]["Hospitalized"];
+                deaths += data[country]["Deaths"];
+                recovered += data[country]["Recovered"];
+              } else {
+                data[country] = new Object();
+                data[country].Cities = [];
+                data[country].CitiesN = 0;
+                countries[countriesN] = country;
+                countriesN++;
+              }
+
+              citiesN = data[country].CitiesN;
+              data[country].Confirmed = confirmed;
+              data[country].Hospitalized = hospitalized;
+              data[country].Deaths = deaths;
+              data[country].Recovered = recovered;
+              data[country].RecoveryRate = recovered / confirmed * 100;
+              data[country].MortalityRate = deaths / confirmed * 100;
+
+              if (city != '') {
+                data[country].Cities[citiesN] = city;
+                data[country].CitiesN = citiesN + 1;
+              }
+
+            case 50:
+              i++;
+              _context.next = 31;
+              break;
+
+            case 53:
+              //console.log(data);
+              this.setState({
+                countries: countries,
+                globalData: data
+              }); //console.log(this.state.countries);
+
+            case 54:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this, [[17, 25]], Promise);
+    } //When foreign country is selected
+    //Provides retrospective data and graph functionalities
+    //Taxing, over 200 days/files must be processed
+    //Somehow sometimes fast, sometimes slow. Cause still unknown.
+
+  }, {
+    key: "callAPIGlobalTimeline",
+    value: function callAPIGlobalTimeline(city, country) {
+      var data, dataN, prevConfirmed, prevHospitalized, prevDeaths, prevRecovered, sourceRef, sourcePrefix, markDate, tomorrow, now, cityIndex, countryIndex, conIndex, deathIndex, recIndex, lastIndex, formatChange, lines, markDateStr, sourceDate, cancelToken, response, date, values, i, _i, confirmed, hospitalized, deaths, recovered;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobalTimeline$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (city == 'Overall') {
+                city = '';
+              }
+
+              data = [{}];
+              dataN = 0;
+              prevConfirmed = 0;
+              prevHospitalized = 0;
+              prevDeaths = 0;
+              prevRecovered = 0;
+              sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+              sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+              markDate = new Date(2020, 0, 23);
+              tomorrow = new Date();
+              tomorrow.setDate(tomorrow.getDate() + 1);
+              now = tomorrow.getTime();
+              cityIndex = 0;
+              countryIndex = 1;
+              conIndex = 3;
+              deathIndex = 4;
+              recIndex = 5;
+              lastIndex = 1;
+              formatChange = new Date(2020, 2, 22).getTime();
+
+            case 20:
+              if (!(markDate.getTime() < now)) {
+                _context2.next = 72;
+                break;
+              }
+
+              lines = '';
+              markDateStr = markDate.toISOString();
+              sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
+              console.log(sourceDate); //console.log(lastIndex);
+              //Workaround for source's formatting inconsistencies
+
+              if (cityIndex == 0 && markDate.getTime() >= formatChange) {
+                cityIndex = 2;
+                countryIndex = 3;
+                conIndex = 7;
+                deathIndex = 8;
+                recIndex = 9;
+              }
+
+              _context2.prev = 26;
+              cancelToken = this.cancelSource.token;
+              _context2.next = 30;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(sourcePrefix + sourceDate + '.csv', {
+                headers: {
+                  'Content-Type': 'text/csv'
+                },
+                cancelToken: cancelToken
+              }));
+
+            case 30:
+              response = _context2.sent;
+              lines = response.data.split(/\r?\n/);
+              _context2.next = 38;
+              break;
+
+            case 34:
+              _context2.prev = 34;
+              _context2.t0 = _context2["catch"](26);
+              console.log(_context2.t0);
+              return _context2.abrupt("return", undefined);
+
+            case 38:
+              markDate.setDate(markDate.getDate() + 1);
+
+              if (!(lines == '')) {
+                _context2.next = 41;
+                break;
+              }
+
+              return _context2.abrupt("continue", 20);
+
+            case 41:
+              console.log(lastIndex);
+              date = sourceDate.replace('-', '\/').replace('-', '\/');
+              values = undefined;
+              if (lines[lastIndex]) values = lines[lastIndex].split(',');else lastIndex = 1;
+
+              if (!(values == undefined || city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
+                _context2.next = 69;
+                break;
+              }
+
+              i = lastIndex + 1;
+
+            case 47:
+              if (!(i < lines.length)) {
+                _context2.next = 57;
+                break;
+              }
+
+              values = lines[i].split(',');
+
+              if (!(city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
+                _context2.next = 52;
+                break;
+              }
+
+              values = undefined;
+              return _context2.abrupt("continue", 54);
+
+            case 52:
+              lastIndex = i;
+              return _context2.abrupt("break", 57);
+
+            case 54:
+              i++;
+              _context2.next = 47;
+              break;
+
+            case 57:
+              if (!(values == undefined)) {
+                _context2.next = 69;
+                break;
+              }
+
+              _i = 1;
+
+            case 59:
+              if (!(_i < lastIndex)) {
+                _context2.next = 69;
+                break;
+              }
+
+              values = lines[_i].split(',');
+
+              if (!(city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
+                _context2.next = 64;
+                break;
+              }
+
+              values = undefined;
+              return _context2.abrupt("continue", 66);
+
+            case 64:
+              lastIndex = _i;
+              return _context2.abrupt("break", 69);
+
+            case 66:
+              _i++;
+              _context2.next = 59;
+              break;
+
+            case 69:
+              if (values != undefined) {
+                confirmed = parseInt(values[conIndex]);
+                hospitalized = parseInt(values[10]);
+                deaths = parseInt(values[deathIndex]);
+                recovered = parseInt(values[recIndex]);
+                data[dataN] = {
+                  Date: date,
+                  Confirmed: confirmed,
+                  Hospitalized: hospitalized,
+                  Deaths: deaths,
+                  Recovered: recovered,
+                  NewConfirmed: confirmed - prevConfirmed,
+                  NewHospitalized: hospitalized - prevHospitalized,
+                  NewDeaths: deaths - prevDeaths,
+                  NewRecovered: recovered - prevRecovered
+                };
+                prevConfirmed = confirmed;
+                prevHospitalized = hospitalized;
+                prevDeaths = deaths;
+                prevRecovered = recovered;
+                dataN++;
+              }
+
+              _context2.next = 20;
+              break;
+
+            case 72:
+              console.log(data);
+              this.processData(sourceRef, data);
+
+            case 74:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, null, this, [[26, 34]], Promise);
+    } //When foreign country is selected
+    //No streak data or timeline functionality
+    //Only data from two days/files is processed
+
+  }, {
+    key: "callAPIGlobal",
+    value: function callAPIGlobal(city, country, markDate) {
+      var process,
+          data,
+          thisData,
+          sourceRef,
+          sourcePrefix,
+          lines,
+          markDateStr,
+          sourceDate,
+          cancelToken,
+          response,
+          i,
+          values,
+          confirmed,
+          deaths,
+          recovered,
+          prevData,
+          _args3 = arguments;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobal$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              process = _args3.length > 3 && _args3[3] !== undefined ? _args3[3] : true;
+
+              if (city == 'Overall') {
+                city = '';
+              }
+
+              data = [{}];
+              data[0] = {
+                Date: '',
+                Confirmed: 0,
+                Hospitalized: 0,
+                Deaths: 0,
+                Recovered: 0,
+                RecoveryRate: 0,
+                MortalityRate: 0,
+                NewConfirmed: 0,
+                NewHospitalized: 0,
+                NewDeaths: 0,
+                NewRecovered: 0
+              };
+              thisData = data[0];
+              sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+              sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+              lines = '';
+
+            case 8:
+              if (!(lines == '')) {
+                _context3.next = 28;
+                break;
+              }
+
+              markDateStr = markDate.toISOString();
+              sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
+              markDate.setDate(markDate.getDate() - 1);
+              console.log(sourceDate);
+              _context3.prev = 13;
+              cancelToken = this.cancelSource.token;
+              _context3.next = 17;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(sourcePrefix + sourceDate + '.csv', {
+                headers: {
+                  'Content-Type': 'text/csv'
+                },
+                cancelToken: cancelToken
+              }));
+
+            case 17:
+              response = _context3.sent;
+              lines = response.data.split(/\r?\n/);
+              thisData.Date = sourceDate.replace('-', '\/').replace('-', '\/');
+              _context3.next = 26;
+              break;
+
+            case 22:
+              _context3.prev = 22;
+              _context3.t0 = _context3["catch"](13);
+              console.log(_context3.t0);
+              return _context3.abrupt("return", undefined);
+
+            case 26:
+              _context3.next = 8;
+              break;
+
+            case 28:
+              i = 1;
+
+            case 29:
+              if (!(i < lines.length)) {
+                _context3.next = 47;
+                break;
+              }
+
+              if (!((lines[i].match(/"/g) || []).length > 2)) {
+                _context3.next = 32;
+                break;
+              }
+
+              return _context3.abrupt("continue", 44);
+
+            case 32:
+              values = lines[i].split(',');
+
+              if (!(city != '' && city != values[2] || country != '' && country != values[3])) {
+                _context3.next = 35;
+                break;
+              }
+
+              return _context3.abrupt("continue", 44);
+
+            case 35:
+              confirmed = thisData["Confirmed"] + parseInt(values[7]);
+              deaths = thisData["Deaths"] + parseInt(values[8]);
+              recovered = thisData["Recovered"] + parseInt(values[9]);
+              thisData.Confirmed = confirmed;
+              thisData.Hospitalized = thisData["Hospitalized"] + parseInt(values[10]);
+              thisData.Deaths = deaths;
+              thisData.Recovered = recovered;
+              thisData.RecoveryRate = recovered / confirmed * 100;
+              thisData.MortalityRate = deaths / confirmed * 100;
+
+            case 44:
+              i++;
+              _context3.next = 29;
+              break;
+
+            case 47:
+              if (!process) {
+                _context3.next = 57;
+                break;
+              }
+
+              _context3.next = 50;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.callAPIGlobal(city, country, markDate, false));
+
+            case 50:
+              prevData = _context3.sent;
+              thisData.NewConfirmed = thisData.Confirmed - prevData.Confirmed;
+              thisData.NewHospitalized = thisData.Hospitalized - prevData.Hospitalized;
+              thisData.NewDeaths = thisData.Deaths - prevData.Deaths;
+              thisData.NewRecovered = thisData.Recovered - prevData.Recovered;
+              console.log(data);
+              this.processData(sourceRef, data, false);
+
+            case 57:
+              return _context3.abrupt("return", thisData);
+
+            case 58:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, null, this, [[13, 22]], Promise);
+    } //For when Thailand is selected
+    //Provides retrospective data and graph functionalities
+    //Local scoped source, data from over 200 days are stored within only one file
+
+  }, {
+    key: "callAPIThailand",
+    value: function callAPIThailand() {
+      var source, data, cancelToken, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIThailand$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              source = 'https://covid19.th-stat.com/api/open/timeline';
+              data = [];
+              _context4.prev = 2;
+              cancelToken = this.cancelSource.token;
+              _context4.next = 6;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(source, {
+                cancelToken: cancelToken
+              }));
+
+            case 6:
+              response = _context4.sent;
+              console.log(response);
+              data = response.data['Data'];
+              _context4.next = 15;
+              break;
+
+            case 11:
+              _context4.prev = 11;
+              _context4.t0 = _context4["catch"](2);
+              console.log(_context4.t0);
+              return _context4.abrupt("return", undefined);
+
+            case 15:
+              this.processData(source, data);
+
+            case 16:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, null, this, [[2, 11]], Promise);
+    }
+  }, {
+    key: "getLastDate",
+    value: function getLastDate(type, data) {
+      for (var i = data.length - 1; i >= 0; i--) {
+        if (data[i][type] != 0) return data[i]['Date'];
+      }
+    }
+  }, {
+    key: "getDateDiff",
+    value: function getDateDiff(date) {
+      var now = new Date().getTime();
+      return Math.floor((now - new Date(date).getTime()) / 86400000);
+    }
+  }, {
+    key: "processData",
+    value: function processData(source, data) {
+      var hasTimeline = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+      if (data.length <= 0) return;
+      var lastData = data.slice(-1)[0];
+      var dataReformatted = data.slice().map(function (d) {
+        return Object.assign({}, d, {
+          Date: d.Date.slice(3, 6) + d.Date.slice(0, 2)
         });
-      })["catch"](function (error) {
-        console.log(error);
+      });
+      var lastUpdated = lastData['Date'];
+      var lastConfirmedFormatted = 0;
+      var lastDeathFormatted = 0;
+      var noConfirmedStreak = 0;
+      var noDeathStreak = 0;
+
+      if (hasTimeline) {
+        var lastConfirmed = this.getLastDate('NewConfirmed', data);
+        var lastDeath = this.getLastDate('NewDeaths', data);
+        lastConfirmedFormatted = lastConfirmed.slice(3, 6) + lastConfirmed.slice(0, 3) + lastConfirmed.slice(6);
+        lastDeathFormatted = lastDeath.slice(3, 6) + lastDeath.slice(0, 3) + lastDeath.slice(6);
+        noConfirmedStreak = this.getDateDiff(lastConfirmed);
+        noDeathStreak = this.getDateDiff(lastDeath);
+      }
+
+      this.setState({
+        hasTimeline: hasTimeline,
+        dataTimeline: dataReformatted,
+        dataTimeline15: dataReformatted.slice(1).slice(-15),
+        data_text: {
+          source: source,
+          updatedDate: lastUpdated.slice(3, 6) + lastUpdated.slice(0, 3) + lastUpdated.slice(6),
+          confirmed: lastData['Confirmed'],
+          hospitalized: lastData['Hospitalized'],
+          deaths: lastData['Deaths'],
+          recovered: lastData['Recovered'],
+          newConfirmed: lastData['NewConfirmed'],
+          newHospitalized: lastData['NewHospitalized'],
+          newDeaths: lastData['NewDeaths'],
+          newRecovered: lastData['NewRecovered']
+        },
+        data_pie: [{
+          name: 'Hospitalized',
+          value: lastData['Hospitalized']
+        }, {
+          name: 'Deaths',
+          value: lastData['Deaths']
+        }, {
+          name: 'Recovered',
+          value: lastData['Recovered']
+        }],
+        lastConfirmed: lastConfirmedFormatted,
+        lastDeath: lastDeathFormatted,
+        noConfirmedStreak: noConfirmedStreak,
+        noDeathStreak: noDeathStreak,
+        rateRecovery: (100 * lastData['Recovered'] / lastData['Confirmed']).toFixed(2) + '%',
+        rateDeath: (100 * lastData['Deaths'] / lastData['Confirmed']).toFixed(2) + '%'
       });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var graphBlue = '#20A0E0';
       var graphYellow = '#FFC060';
       var graphRed = '#E04040';
       var graphGreen = '#80E080';
       var classes = this.props.classes;
       var _this$state = this.state,
+          selectCountry = _this$state.selectCountry,
+          selectCity = _this$state.selectCity,
           dataTimeline = _this$state.dataTimeline,
           dataTimeline15 = _this$state.dataTimeline15,
           data_text = _this$state.data_text,
           data_pie = _this$state.data_pie;
+      var selectedCountryData = this.state.globalData[selectCountry];
+      var cityChoice = ["Overall"];
+
+      if (selectedCountryData != undefined && selectedCountryData.CitiesN != 0) {
+        cityChoice = selectedCountryData.Cities.slice(0);
+        cityChoice.splice(0, 0, "Overall");
+      }
+
       return __jsx("div", {
         className: classes.root,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 133,
+          lineNumber: 558,
           columnNumber: 4
         }
-      }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_11__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 134,
+          lineNumber: 559,
           columnNumber: 5
         }
-      }), __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }), __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
         style: {
           background: '#BB0A1E'
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 135,
+          lineNumber: 560,
           columnNumber: 5
         }
-      }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 136,
+          lineNumber: 561,
           columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h4",
         className: classes.title,
         align: "center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 137,
+          lineNumber: 562,
           columnNumber: 7
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 138,
+          lineNumber: 563,
           columnNumber: 8
         }
       }, "Simple COVID-19 Dashboard")))), __jsx("div", {
@@ -68787,65 +70194,65 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142,
+          lineNumber: 568,
           columnNumber: 5
         }
-      }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_12__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143,
+          lineNumber: 569,
           columnNumber: 5
         }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         container: true,
         spacing: 2,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 144,
+          lineNumber: 570,
           columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
-        xs: 12,
+        xs: 5,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 145,
+          lineNumber: 571,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__["MuiThemeProvider"], {
+      }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["MuiThemeProvider"], {
         theme: darkTheme,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 146,
+          lineNumber: 572,
           columnNumber: 8
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        align: "right",
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        align: "left",
         color: "textPrimary",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147,
+          lineNumber: 573,
           columnNumber: 9
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148,
+          lineNumber: 574,
           columnNumber: 10
         }
-      }), "Last updated: ", data_text.updatedDate), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }), "Last updated: ", data_text.updatedDate), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "subtitle2",
-        align: "right",
+        align: "left",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151,
+          lineNumber: 577,
           columnNumber: 9
         }
       }, __jsx("a", {
@@ -68855,202 +70262,429 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 152,
+          lineNumber: 578,
           columnNumber: 10
         }
-      }, " ", data_text.source)))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, " ", data_text.source)))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: 1,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 588,
+          columnNumber: 7
+        }
+      }, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 589,
+          columnNumber: 8
+        }
+      }), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 590,
+          columnNumber: 8
+        }
+      }), __jsx("button", {
+        onClick: function onClick() {
+          return _this2.setState({
+            fastMode: !_this2.state.fastMode
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 591,
+          columnNumber: 8
+        }
+      }, this.state.fastMode ? "FAST MODE" : "FULL MODE")), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: 3,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 595,
+          columnNumber: 7
+        }
+      }, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 596,
+          columnNumber: 8
+        }
+      }), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 596,
+          columnNumber: 13
+        }
+      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        options: this.state.countries,
+        value: selectCountry,
+        onChange: function onChange(select) {
+          return _this2.setState({
+            selectCountry: select.value,
+            selectCity: 'Overall'
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 597,
+          columnNumber: 8
+        }
+      })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: 3,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 601,
+          columnNumber: 7
+        }
+      }, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 602,
+          columnNumber: 8
+        }
+      }), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 602,
+          columnNumber: 13
+        }
+      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        options: cityChoice,
+        value: selectCity,
+        onChange: function onChange(select) {
+          return _this2.setState({
+            selectCity: select.value
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 603,
+          columnNumber: 8
+        }
+      }))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        container: true,
+        spacing: 2,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 608,
+          columnNumber: 6
+        }
+      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 162,
+          lineNumber: 609,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 163,
+          lineNumber: 610,
           columnNumber: 8
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 164,
+          lineNumber: 611,
           columnNumber: 9
         }
-      }, "Confirmed"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, "Confirmed"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 165,
+          lineNumber: 612,
           columnNumber: 9
         }
-      }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 166,
+          lineNumber: 613,
           columnNumber: 9
         }
-      }, "(", data_text.newConfirmed.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, "(", data_text.newConfirmed.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 169,
+          lineNumber: 616,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 170,
+          lineNumber: 617,
           columnNumber: 8
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 171,
+          lineNumber: 618,
           columnNumber: 9
         }
-      }, "Hospitalized"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, "Hospitalized"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 172,
+          lineNumber: 619,
           columnNumber: 9
         }
-      }, data_text.hospitalized.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, data_text.hospitalized.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 173,
+          lineNumber: 620,
           columnNumber: 9
         }
-      }, "(", data_text.newHospitalized.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, "(", data_text.newHospitalized.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 176,
+          lineNumber: 623,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 177,
+          lineNumber: 624,
           columnNumber: 8
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 178,
+          lineNumber: 625,
           columnNumber: 9
         }
-      }, "Deaths"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, "Deaths"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 179,
+          lineNumber: 626,
           columnNumber: 9
         }
-      }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 180,
+          lineNumber: 627,
           columnNumber: 9
         }
-      }, "(", data_text.newDeaths.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, "(", data_text.newDeaths.toLocaleString(), ")"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 183,
+          lineNumber: 630,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 184,
+          lineNumber: 631,
           columnNumber: 8
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 185,
+          lineNumber: 632,
           columnNumber: 9
         }
-      }, "Recovered"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, "Recovered"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 186,
+          lineNumber: 633,
           columnNumber: 9
         }
-      }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 187,
+          lineNumber: 634,
           columnNumber: 9
         }
-      }, "(", data_text.newRecovered.toLocaleString(), ")"))),  true && //Whether or not to display graphs
-      __jsx(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, "(", data_text.newRecovered.toLocaleString(), ")"))), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: 6,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 639,
+          columnNumber: 8
+        }
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 640,
+          columnNumber: 9
+        }
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        variant: "h6",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 641,
+          columnNumber: 10
+        }
+      }, "Last confirmed: ", this.state.lastConfirmed, " (", this.state.noConfirmedStreak, " days ago)"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        variant: "h6",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 644,
+          columnNumber: 10
+        }
+      }, "Last death: ", this.state.lastDeath, " (", this.state.noDeathStreak, " days ago)")))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: this.state.hasTimeline ? 6 : 12,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 651,
+          columnNumber: 7
+        }
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 652,
+          columnNumber: 8
+        }
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        variant: "h6",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 653,
+          columnNumber: 9
+        }
+      }, "Recovery Rate: ", this.state.rateRecovery), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        variant: "h6",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 656,
+          columnNumber: 9
+        }
+      }, "Mortality Rate: ", this.state.rateDeath)))), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 666,
+          columnNumber: 6
+        }
+      }), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("button", {
+        onClick: function onClick() {
+          return _this2.setState({
+            showGraph: !_this2.state.showGraph
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 669,
+          columnNumber: 7
+        }
+      }, "Show/Hide Graph"), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 672,
+          columnNumber: 7
+        }
+      })), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 675,
+          columnNumber: 6
+        }
+      }), this.state.showGraph && //Whether or not to display graphs
+      __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        container: true,
+        spacing: 2,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 679,
+          columnNumber: 6
+        }
+      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 12,
         sm: 6,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 196,
-          columnNumber: 8
+          lineNumber: 681,
+          columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 197,
-          columnNumber: 9
+          lineNumber: 682,
+          columnNumber: 8
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["ResponsiveContainer"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
         width: "100%",
         height: 300,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 198,
-          columnNumber: 10
+          lineNumber: 683,
+          columnNumber: 9
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["BarChart"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["BarChart"], {
         width: 500,
         height: 300,
         data: dataTimeline15,
@@ -69063,108 +70697,108 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 199,
-          columnNumber: 11
+          lineNumber: 684,
+          columnNumber: 10
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["CartesianGrid"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
         strokeDasharray: "3 3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 205,
-          columnNumber: 12
+          lineNumber: 690,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["XAxis"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
         dataKey: "Date",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 206,
-          columnNumber: 12
+          lineNumber: 691,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["YAxis"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 207,
-          columnNumber: 12
+          lineNumber: 692,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Tooltip"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 208,
-          columnNumber: 12
+          lineNumber: 693,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Legend"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 209,
-          columnNumber: 12
+          lineNumber: 694,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Bar"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
         dataKey: "NewConfirmed",
         fill: graphBlue,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 210,
-          columnNumber: 12
+          lineNumber: 695,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Bar"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
         dataKey: "NewDeaths",
         fill: graphRed,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 211,
-          columnNumber: 12
+          lineNumber: 696,
+          columnNumber: 11
         }
-      }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 12,
         sm: 6,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 218,
-          columnNumber: 8
+          lineNumber: 703,
+          columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 219,
-          columnNumber: 9
+          lineNumber: 704,
+          columnNumber: 8
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["ResponsiveContainer"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
         width: "100%",
         height: 300,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 220,
-          columnNumber: 10
+          lineNumber: 705,
+          columnNumber: 9
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["PieChart"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["PieChart"], {
         width: 400,
         height: 400,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 221,
-          columnNumber: 11
+          lineNumber: 706,
+          columnNumber: 10
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Legend"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 222,
-          columnNumber: 12
+          lineNumber: 707,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Pie"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Pie"], {
         dataKey: "value",
         isAnimationActive: false,
         data: data_pie,
@@ -69173,67 +70807,67 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 223,
-          columnNumber: 12
+          lineNumber: 708,
+          columnNumber: 11
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Cell"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
         fill: graphYellow,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 224,
-          columnNumber: 13
+          lineNumber: 709,
+          columnNumber: 12
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Cell"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
         fill: graphRed,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 225,
-          columnNumber: 13
+          lineNumber: 710,
+          columnNumber: 12
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Cell"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
         fill: graphGreen,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 226,
-          columnNumber: 13
+          lineNumber: 711,
+          columnNumber: 12
         }
-      })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Tooltip"], {
+      })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 228,
-          columnNumber: 12
+          lineNumber: 713,
+          columnNumber: 11
         }
-      }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
         xs: 12,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 235,
-          columnNumber: 8
+          lineNumber: 720,
+          columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 236,
-          columnNumber: 9
+          lineNumber: 721,
+          columnNumber: 8
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["ResponsiveContainer"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
         width: "100%",
         height: 500,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 237,
-          columnNumber: 10
+          lineNumber: 722,
+          columnNumber: 9
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["LineChart"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["LineChart"], {
         data: dataTimeline,
         margin: {
           top: 5,
@@ -69244,120 +70878,124 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 238,
-          columnNumber: 11
+          lineNumber: 723,
+          columnNumber: 10
         }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["CartesianGrid"], {
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
         strokeDasharray: "3 3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 242,
-          columnNumber: 12
+          lineNumber: 727,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["XAxis"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
         dataKey: "Date",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 243,
-          columnNumber: 12
+          lineNumber: 728,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["YAxis"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 244,
-          columnNumber: 12
+          lineNumber: 729,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Tooltip"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 245,
-          columnNumber: 12
+          lineNumber: 730,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Legend"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 246,
-          columnNumber: 12
+          lineNumber: 731,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Line"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
         type: "monotone",
+        strokeWidth: 2,
         dataKey: "Confirmed",
         stroke: graphBlue,
         dot: false,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 247,
-          columnNumber: 12
+          lineNumber: 732,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Line"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
         type: "monotone",
+        strokeWidth: 2,
         dataKey: "Hospitalized",
         stroke: graphYellow,
         dot: false,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 248,
-          columnNumber: 12
+          lineNumber: 733,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Line"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
         type: "monotone",
+        strokeWidth: 2,
         dataKey: "Deaths",
         stroke: graphRed,
         dot: false,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 249,
-          columnNumber: 12
+          lineNumber: 734,
+          columnNumber: 11
         }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_15__["Line"], {
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
         type: "monotone",
+        strokeWidth: 2,
         dataKey: "Recovered",
         stroke: graphGreen,
         dot: false,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 250,
-          columnNumber: 12
+          lineNumber: 735,
+          columnNumber: 11
         }
       })))))))), __jsx("footer", {
         className: classes.footer,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 261,
+          lineNumber: 744,
           columnNumber: 5
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paperFoot,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 262,
+          lineNumber: 745,
           columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h6",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 263,
+          lineNumber: 746,
           columnNumber: 7
         }
-      }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         component: "p",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 266,
+          lineNumber: 749,
           columnNumber: 7
         }
       }, "By Thanjira S. and Woottipat H."))));
@@ -69365,9 +71003,9 @@ var App = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return App;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__["withStyles"])(styles)(App));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["withStyles"])(styles)(App));
 
 /***/ }),
 
@@ -69387,7 +71025,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./pages/App.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_app */ "./pages/_app.js");
 var _jsxFileName = "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\pages\\index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -69395,7 +71033,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 function Home() {
-  return __jsx(_App__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return __jsx(_app__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
