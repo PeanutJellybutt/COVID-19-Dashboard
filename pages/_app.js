@@ -97,6 +97,7 @@ class App extends React.Component {
 			rateRecovery: 0,
 			rateDeath: 0,
 			showGraph: false,
+			selectCategory: 'Hospitalized',
 		};
 		
 		this.referenceDate = new Date(2020,7,20);
@@ -461,7 +462,8 @@ class App extends React.Component {
 			return undefined;
 		}
 		
-		this.processData(source, data);
+		if (data.length > 0)
+			this.processData(source, data);
 	}
 	
 	getLastDate(type, data) {
@@ -534,6 +536,22 @@ class App extends React.Component {
 		});
 	}
 	
+	globalRankingText(category) {
+		//console.log(category);
+		if (category == 'Confirmed')
+			return "Confirmed Cases Count";
+		else if (category == 'Hospitalized')
+			return "Active Cases Count";
+		else if (category == 'Deaths')
+			return "Deceased Cases Count";
+		else if (category == 'Recovered')
+			return "Recovered Cases Count";
+		else if (category == 'RecoveryRate')
+			return "Recovery Rate";
+		else if (category == 'MortalityRate')
+			return "Mortality Rate";
+	}
+	
 	render() {
 		const cBlue = '#20A0E0';
 		const cOrange = '#F7B860';
@@ -551,6 +569,8 @@ class App extends React.Component {
 			cityChoice.splice(0,0,"Overall");
 		}
 		
+		const categoryChoice = ['Confirmed', 'Hospitalized', 'Deaths', 'Recovered', 'RecoveryRate', 'MortalityRate'];
+		
 		return (
 			<div className={classes.root}>
 				<CssBaseline/>
@@ -563,14 +583,18 @@ class App extends React.Component {
 				</AppBar>
 				<div className={classes.appBarSpacer}/>
 				<Container>
+				
 					<Grid container spacing={2}>
-						<Grid item xs={5}>
+
+						{/*-------------------------------- Source Info --------------------------------*/}
+				
+						<Grid item xs={4}>
 							<MuiThemeProvider theme={darkTheme}>
 								<Typography align="left" color="textPrimary">
 									<br/>
 									Last updated: {data_text.updatedDate}
 								</Typography>
-								<Typography variant="subtitle2" align="left">
+								<Typography variant="subtitle2" align="left" color="textPrimary">
 									<a
 									href={data_text.source}
 									target="_blank"
@@ -581,10 +605,20 @@ class App extends React.Component {
 								</Typography>
 							</MuiThemeProvider>
 						</Grid>
-						<Grid item xs={1}>
-							<br/>
-							<br/>
-							<button style={{ color: (fastMode ? cDRed : 'blue') }} onClick={() => this.setState({ fastMode: !fastMode })}>
+						
+						{/*-------------------------------- Fetch Control --------------------------------*/}
+						
+						<Grid item xs={2}>
+							<br/><br/>
+							<button
+								style={{
+									height: '32px',
+									width : '128px',
+									float: 'right',
+									color: (fastMode ? cDRed : 'blue')
+								}}
+								onClick={() => this.setState({ fastMode: !fastMode })}
+							>
 								<b>{fastMode ? "FAST MODE" : "FULL MODE"}</b>
 							</button>
 						</Grid>
@@ -600,38 +634,42 @@ class App extends React.Component {
 								onChange={(select) => this.setState({ selectCity:select.value })}
 							/>
 						</Grid>
-					</Grid>
-					<Grid container spacing={2}>
+					
+						{/*-------------------------------- Numbers --------------------------------*/}
+					
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography style={{ color: cBlue }}><b>Confirmed</b></Typography>
+								<Typography style={{ color: 'steelblue' }}><b>Confirmed</b></Typography>
 								<Typography style={{ color: cBlue }} variant="h3">{data_text.confirmed.toLocaleString()}</Typography>
-								<Typography style={{ color: cBlue }} variant="h5">+ {data_text.newConfirmed.toLocaleString()}</Typography>
+								<Typography style={{ color: 'steelblue' }} variant="h5">+ {data_text.newConfirmed.toLocaleString()}</Typography>
 							</Paper>
 						</Grid>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography style={{ color: cOrange }}><b>Hospitalized</b></Typography>
+								<Typography style={{ color: 'goldenrod' }}><b>Hospitalized</b></Typography>
 								<Typography style={{ color: cOrange }} variant="h3">{data_text.hospitalized.toLocaleString()}</Typography>
-								<Typography style={{ color: cOrange }} variant="h5">
+								<Typography style={{ color: 'goldenrod' }} variant="h5">
 									{(data_text.newHospitalized >= 0) ? '+' : '-'} {Math.abs(data_text.newHospitalized).toLocaleString()}
 								</Typography>
 							</Paper>
 						</Grid>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography style={{ color: cRed }}><b>Deaths</b></Typography>
+								<Typography style={{ color: 'fireBrick' }}><b>Deaths</b></Typography>
 								<Typography style={{ color: cRed }} variant="h3">{data_text.deaths.toLocaleString()}</Typography>
-								<Typography style={{ color: cRed }} variant="h5">+ {data_text.newDeaths.toLocaleString()}</Typography>
+								<Typography style={{ color: 'fireBrick' }} variant="h5">+ {data_text.newDeaths.toLocaleString()}</Typography>
 							</Paper>
 						</Grid>
 						<Grid item xs={6} sm={3}>
 							<Paper className={classes.paper}>
-								<Typography style={{ color: cGreen }}><b>Recovered</b></Typography>
+								<Typography style={{ color: 'green' }}><b>Recovered</b></Typography>
 								<Typography style={{ color: cGreen }} variant="h3">{data_text.recovered.toLocaleString()}</Typography>
-								<Typography style={{ color: cGreen }} variant="h5">+ {data_text.newRecovered.toLocaleString()}</Typography>
+								<Typography style={{ color: 'green' }} variant="h5">+ {data_text.newRecovered.toLocaleString()}</Typography>
 							</Paper>
 						</Grid>
+						
+						{/*-------------------------------- Streaks --------------------------------*/}
+							
 						{ this.state.hasTimeline && (
 							<>
 							<Grid item xs={6}>
@@ -646,6 +684,9 @@ class App extends React.Component {
 							</Grid>
 							</>
 						)}
+						
+						{/*-------------------------------- Rates --------------------------------*/}
+						
 						<Grid item xs={ this.state.hasTimeline ? 6 : 12}>
 							<Paper className={classes.paper}>
 								<Typography variant='h6' style={{ color: 'green' }}>
@@ -656,6 +697,7 @@ class App extends React.Component {
 								</Typography>
 							</Paper>
 						</Grid>
+						
 					</Grid>
 						
 					{/*-------------------------------- Graphs --------------------------------*/}
@@ -664,8 +706,16 @@ class App extends React.Component {
 					<br/>
 					{ this.state.hasTimeline && (
 						<>
-						<button onClick={() => this.setState({ showGraph: !this.state.showGraph })}>
-							Show/Hide Graph
+						<button
+							style={{
+								height: '32px',
+								width : '144px',
+								float: 'right',
+								color: (this.state.showGraph ? 'grey' : 'steelblue')
+							}}
+							onClick={() => this.setState({ showGraph: !this.state.showGraph })}
+						>
+							Show/Hide Graphs
 						</button>
 						<br/>
 						</>
@@ -738,7 +788,32 @@ class App extends React.Component {
 					</Grid>
 					</>
 					)}
+				
+					{/*-------------------------------- Graphs --------------------------------*/}
+				
+					<Grid container spacing={2} justify="space-between" alignItems="center">
+						<Grid item xs={6}>
+							<MuiThemeProvider theme={darkTheme}>
+								<Typography variant='h5' style={{ color: cRed }}>
+									<b>Global Ranking based on:</b>
+								</Typography>
+								<Typography variant='h5' style={{ color: cDRed }}>
+									{this.globalRankingText(this.state.selectCategory)}
+								</Typography>
+							</MuiThemeProvider>
+						</Grid>
+						<Grid item xs={2}>
+							<br/>
+							<Dropdown options={categoryChoice} value={'Hospitalized'}
+								onChange={(select) => this.setState({ selectCategory: select.value})}
+							/>
+						</Grid>
+					</Grid>
+				
 				</Container>
+				
+				{/*-------------------------------- Footer --------------------------------*/}
+				
 				<footer className={classes.footer}>
 					<Paper className={classes.paperFoot}>
 						<Typography variant="h6">
