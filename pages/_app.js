@@ -98,6 +98,8 @@ class App extends React.Component {
 			rateDeath: 0,
 			showGraph: false,
 			selectCategory: 'Hospitalized',
+			rankThailand: -1,
+			rankTopTen: [],
 		};
 		
 		this.referenceDate = new Date(2020,7,20);
@@ -127,6 +129,9 @@ class App extends React.Component {
 			this.clearAxiosCalls();
 			this.fetchData(this.referenceDate);
 		}
+		
+		if (prevState.selectCategory != this.state.selectCategory)
+			this.globalRanking(this.state.selectCategory);
 	}
 	
 	clearAxiosCalls() {
@@ -205,6 +210,7 @@ class App extends React.Component {
 				else
 				{
 					data[country] = new Object();
+					data[country].Country = country;
 					data[country].Cities = [];
 					data[country].CitiesN = 0;
 					countries[countriesN] = country;
@@ -216,8 +222,8 @@ class App extends React.Component {
 				data[country].Hospitalized = hospitalized;
 				data[country].Deaths = deaths;
 				data[country].Recovered = recovered;
-				data[country].RecoveryRate = (recovered/confirmed) * 100;
-				data[country].MortalityRate = (deaths/confirmed) * 100;
+				data[country].RecoveryRate = ((recovered/confirmed) * 100).toFixed(2);
+				data[country].MortalityRate = ((deaths/confirmed) * 100).toFixed(2);
 				if (city != '') {
 					data[country].Cities[citiesN] = city;
 					data[country].CitiesN = citiesN + 1;
@@ -231,6 +237,8 @@ class App extends React.Component {
 			});
 			//console.log(this.state.countries);
 		}
+		
+		this.globalRanking(this.state.selectCategory);
 	}
 	
 	//When foreign country is selected
@@ -536,8 +544,42 @@ class App extends React.Component {
 		});
 	}
 	
-	globalRankingText(category) {
-		//console.log(category);
+	countryCompare(category) {
+		return function innerSort(a,b) {
+			let valA = a[category];
+			let valB = b[category];
+			if (typeof valA == "string") {
+				valA = parseInt(valA);
+				valB = parseInt(valB);
+			}
+			
+			if (valA > valB)
+				return -1;
+			else if (valA < valB)
+				return 1;
+			else return 0;
+		};
+	}
+	
+	globalRankThailand(ranking) {
+		return ranking.findIndex(x => x.Country == "Thailand");
+	}
+	
+	globalRankTopTen(ranking) {
+		return ranking.slice(0,10);
+	}
+	
+	globalRanking(category) {
+		const countries = Object.values(this.state.globalData);
+		countries.sort(this.countryCompare(category));
+		console.log(countries);
+		this.setState({
+			rankThailand: this.globalRankThailand(countries),
+			rankTopTen: this.globalRankTopTen(countries),
+		});
+	}
+	
+	globalRankingHeading(category) {
 		if (category == 'Confirmed')
 			return "Confirmed Cases Count";
 		else if (category == 'Hospitalized')
@@ -560,7 +602,11 @@ class App extends React.Component {
 		const cDRed = '#BB0A1E';
 		
 		const { classes } = this.props;
-		const { selectCountry, selectCity, fastMode, dataTimeline, dataTimeline15, data_text, data_pie } = this.state;
+		const {
+			selectCountry, selectCity, fastMode, 
+			dataTimeline, dataTimeline15, data_text, data_pie,
+			selectCategory
+		} = this.state;
 		
 		const selectedCountryData = this.state.globalData[selectCountry];
 		let cityChoice = ["Overall"];
@@ -570,6 +616,10 @@ class App extends React.Component {
 		}
 		
 		const categoryChoice = ['Confirmed', 'Hospitalized', 'Deaths', 'Recovered', 'RecoveryRate', 'MortalityRate'];
+		let rankSuffix = " cases";
+		if ((selectCategory == 'RecoveryRate') || (selectCategory == 'MortalityRate')) {
+			rankSuffix = "%";
+		}
 		
 		return (
 			<div className={classes.root}>
@@ -786,21 +836,29 @@ class App extends React.Component {
 							</Paper>
 						</Grid>
 					</Grid>
+
+					<br/>
+					<button
+						style={{ height: '32px', width : '144px', float: 'right', color: 'grey' }}
+						onClick={() => this.setState({ showGraph: !this.state.showGraph })}
+					>
+						Hide Graphs
+					</button>
+					<br/><br/>
+					
 					</>
 					)}
 				
-					{/*-------------------------------- Graphs --------------------------------*/}
+					{/*-------------------------------- Rankings --------------------------------*/}
 				
 					<Grid container spacing={2} justify="space-between" alignItems="center">
 						<Grid item xs={6}>
-							<MuiThemeProvider theme={darkTheme}>
-								<Typography variant='h5' style={{ color: cRed }}>
-									<b>Global Ranking based on:</b>
-								</Typography>
-								<Typography variant='h5' style={{ color: cDRed }}>
-									{this.globalRankingText(this.state.selectCategory)}
-								</Typography>
-							</MuiThemeProvider>
+							<Typography variant='h5' style={{ color: cRed }}>
+								<b>Global Ranking based on:</b>
+							</Typography>
+							<Typography variant='h5' style={{ color: cDRed }}>
+								{this.globalRankingHeading(selectCategory)}
+							</Typography>
 						</Grid>
 						<Grid item xs={2}>
 							<br/>
@@ -809,6 +867,31 @@ class App extends React.Component {
 							/>
 						</Grid>
 					</Grid>
+				
+					{ (this.state.rankThailand >= 0) && (
+						<Grid container spacing={2} direction='column'>
+							<Grid item xs={3}>
+								<Paper className={classes.paper}>
+									<Typography align='center'>
+										<b>Rank {this.state.rankThailand}. Thailand - {this.state.globalData['Thailand'][selectCategory]}{rankSuffix}</b>
+										<br/>out of {this.state.countries.length} countries
+									</Typography>
+								</Paper>
+							</Grid>
+							<Grid item xs={3}>
+								<Paper className={classes.paper}>
+									<Typography variant='h6'>
+										<b>Top 10 Countries</b><br/>
+									</Typography>
+									<Typography>
+										{this.state.rankTopTen.map((c, i) => (
+										<><b>{i+1}.</b> {c.Country} - {c[selectCategory]}{rankSuffix}<br/></>
+										))}
+									</Typography>
+								</Paper>
+							</Grid>
+						</Grid>
+					)}
 				
 				</Container>
 				
