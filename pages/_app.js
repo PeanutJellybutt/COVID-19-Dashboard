@@ -15,6 +15,13 @@ import axios from 'axios';
 import { ResponsiveContainer, XAxis, YAxis, CartesianGrid, 
   Tooltip, Legend, LineChart, Line, BarChart, Bar, PieChart, 
   Pie, Cell, } from 'recharts';
+import '../public/jquery-jvectormap.css'
+
+import dynamic from 'next/dynamic'
+const VectorMap = dynamic(
+  () => import("react-jvectormap").then((m) => m.VectorMap),
+  { ssr: false, }
+);
   
 const styles = theme => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -65,6 +72,12 @@ const darkTheme = createMuiTheme({
   }
 });
 
+const cBlue = '#20A0E0';
+const cOrange = '#F7B860';
+const cRed = '#E04040';
+const cGreen = '#80D080';
+const cDRed = '#BB0A1E';
+
 class App extends React.Component {
 	
   constructor(props) {
@@ -98,14 +111,21 @@ class App extends React.Component {
 			rateDeath: 0,
 			showGraph: false,
 			selectCategory: 'Hospitalized',
-			rankThailand: -1,
+			rankSelect: -1,
 			rankTopTen: [],
+			mapGlobalData: null,
 		};
 		
-		this.referenceDate = new Date(2020,7,20);
+		this.referenceDate = new Date();
+		this.referenceDate.setDate(this.referenceDate.getDate()-1);
 		
 		const CancelToken = axios.CancelToken;
 		this.cancelSource = CancelToken.source();
+		
+		const { getCode, getName, getData } = require("country-list");
+		this.getCountryCode = getCode;
+		this.getCountryName = getName;
+		this.getCountryData = getData;
   }
   
   componentDidMount() {
@@ -189,7 +209,7 @@ class App extends React.Component {
 			return undefined;
 		}
 		
-		if (lines != '') {
+		if (lines != '') {		
 			for (let i=1; i<lines.length; i++) {
 				if (lines[i] == '' || ((lines[i].match(/"/g) || []).length > quoteLimit))
 					continue;
@@ -197,10 +217,10 @@ class App extends React.Component {
 				const values = lines[i].split(',');
 				const country = values[countryIndex];
 				const city = values[cityIndex];
-				let confirmed = parseInt(values[conIndex]);
-				let hospitalized = parseInt(values[10]);
-				let deaths = parseInt(values[deathIndex]);
-				let recovered = parseInt(values[recIndex]);
+				let confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+				let hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+				let deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+				let recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
 				if (data[country] != undefined) {
 					confirmed += data[country]["Confirmed"];
 					hospitalized += data[country]["Hospitalized"];
@@ -231,11 +251,13 @@ class App extends React.Component {
 			}
 			//console.log(data);
 			
+			const mapGlobalData = this.processMapGlobalData(countries, data);
+			
 			this.setState({
 				countries: countries,
 				globalData: data,
+				mapGlobalData: mapGlobalData,
 			});
-			//console.log(this.state.countries);
 		}
 		
 		this.globalRanking(this.state.selectCategory);
@@ -340,10 +362,10 @@ class App extends React.Component {
 			}
 			
 			if (values != undefined) {
-				const confirmed = parseInt(values[conIndex]);
-				const hospitalized = parseInt(values[10]);
-				const deaths = parseInt(values[deathIndex]);
-				const recovered = parseInt(values[recIndex]);
+				const confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+				const hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+				const deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+				const recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
 				
 				data[dataN] = {
 					Date: date,
@@ -401,7 +423,7 @@ class App extends React.Component {
 			const markDateStr = markDate.toISOString();
 			const sourceDate = markDateStr.slice(5,8) + markDateStr.slice(8,10) + '-' + markDate.getFullYear();
 			markDate.setDate(markDate.getDate()-1);
-			console.log(sourceDate);
+			//console.log(sourceDate);
 		
 			try {
 				const cancelToken = this.cancelSource.token;
@@ -425,11 +447,11 @@ class App extends React.Component {
 			if ((city != '' && city != values[2]) || (country != '' && country != values[3]))
 				continue;
 			
-			const confirmed = thisData["Confirmed"] + parseInt(values[7]);
-			const deaths = thisData["Deaths"] + parseInt(values[8]);
-			const recovered = thisData["Recovered"] + parseInt(values[9]);
+			const confirmed = thisData["Confirmed"] + (values[7] == '' ? 0 : parseInt(values[7]));
+			const deaths = thisData["Deaths"] + (values[8] == '' ? 0 : parseInt(values[8]));
+			const recovered = thisData["Recovered"] + (values[9] == '' ? 0 : parseInt(values[9]));
 			thisData.Confirmed = confirmed;
-			thisData.Hospitalized = thisData["Hospitalized"] + parseInt(values[10]);
+			thisData.Hospitalized = thisData["Hospitalized"] + (values[10] == '' ? 0 : parseInt(values[10]));
 			thisData.Deaths = deaths;
 			thisData.Recovered = recovered;
 			thisData.RecoveryRate = (recovered/confirmed) * 100;
@@ -443,7 +465,7 @@ class App extends React.Component {
 			thisData.NewDeaths = thisData.Deaths - prevData.Deaths;
 			thisData.NewRecovered = thisData.Recovered - prevData.Recovered;
 			
-			console.log(data);
+			//console.log(data);
 			this.processData(sourceRef, data, false);
 			
 		}
@@ -463,7 +485,6 @@ class App extends React.Component {
 			const response = await axios.get(source, {
 				cancelToken: cancelToken,
 			});
-			console.log(response);
 			data = response.data['Data'];
 		} catch(err) {
 			console.log(err);
@@ -561,8 +582,8 @@ class App extends React.Component {
 		};
 	}
 	
-	globalRankThailand(ranking) {
-		return ranking.findIndex(x => x.Country == "Thailand");
+	globalRankSelect(ranking, country) {
+		return ranking.findIndex(x => x.Country == country);
 	}
 	
 	globalRankTopTen(ranking) {
@@ -572,9 +593,9 @@ class App extends React.Component {
 	globalRanking(category) {
 		const countries = Object.values(this.state.globalData);
 		countries.sort(this.countryCompare(category));
-		console.log(countries);
+		//console.log(countries);
 		this.setState({
-			rankThailand: this.globalRankThailand(countries),
+			rankSelect: this.globalRankSelect(countries, this.state.selectCountry),
 			rankTopTen: this.globalRankTopTen(countries),
 		});
 	}
@@ -594,13 +615,205 @@ class App extends React.Component {
 			return "Mortality Rate";
 	}
 	
-	render() {
-		const cBlue = '#20A0E0';
-		const cOrange = '#F7B860';
-		const cRed = '#E04040';
-		const cGreen = '#80D080';
-		const cDRed = '#BB0A1E';
+	countryEncodeAssist(country, countriesName) {
+		if (!countriesName.includes(country)) {
+			if (country == "Bolivia")
+				country = "Bolivia, Plurinational State of";
+			else if (country == "Brunei")
+				country = "Brunei Darussalam";
+			else if (country == "Burma")
+				country = "Myanmar";
+			else if (country == "Congo (Brazzaville)")
+				country = "Congo";
+			else if (country == "Congo (Kinshasa)")
+				country = "Congo, Democratic Republic of the";
+			else if (country == "Cote d'Ivoire")
+				country = "Côte d'Ivoire";
+			else if (country == "Iran")
+				country = "Iran, Islamic Republic of";
+			else if (country == "Kosovo")
+				country = "Serbia";
+			else if (country == "Laos")
+				country = "Lao People's Democratic Republic";
+			else if (country == "Moldova")
+				country = "Moldova, Republic of";
+			else if (country == "Russia")
+				country = "Russian Federation";
+			else if (country == "Syria")
+				country = "Syrian Arab Republic";
+			else if (country == "Taiwan*")
+				country = "Taiwan, Province of China";
+			else if (country == "Tanzania")
+				country = "Tanzania, United Republic of";
+			else if (country == "US")
+				country = "United States of America";
+			else if (country == "United Kingdom")
+				country = "United Kingdom of Great Britain and Northern Ireland";
+			else if (country == "Venezuela")
+				country = "Venezuela, Bolivarian Republic of";
+			else if (country == "Vietnam")
+				country = "Viet Nam";
+			else if (country == "West Bank and Gaza")
+				country = "Palestine, State of";
+			else return undefined;
+		}
 		
+		const { getCode } = require('country-list');
+		return getCode(country);
+	}
+	
+	countryDecodeAssist(code) {
+		const { getName, getNames } = require('country-list');
+		const countriesName = getNames();
+		let country = getName(code);
+		
+		if (country == "Bolivia, Plurinational State of")
+			country = "Bolivia";
+		else if (country == "Brunei Darussalam")
+			country = "Brunei";
+		else if (country == "Myanmar")
+			country = "Burma";
+		else if (country == "Congo")
+			country = "Congo (Brazzaville)";
+		else if (country == "Congo, Democratic Republic of the")
+			country = "Congo (Kinshasa)";
+		else if (country == "Côte d'Ivoire")
+			country = "Cote d'Ivoire";
+		else if (country == "Iran, Islamic Republic of")
+			country = "Iran";
+		else if (country == "Serbia")
+			country = "Kosovo";
+		else if (country == "Lao People's Democratic Republic")
+			country = "Laos";
+		else if (country == "Moldova, Republic of")
+			country = "Moldova";
+		else if (country == "Russian Federation")
+			country = "Russia";
+		else if (country == "Syrian Arab Republic")
+			country = "Syria";
+		else if (country == "Taiwan")
+			country = "Taiwan*";
+		else if (country == "Tanzania, United Republic of")
+			country = "Tanzania";
+		else if (country == "United States of America")
+			country = "US";
+		else if (country == "United Kingdom of Great Britain and Northern Ireland")
+			country = "United Kingdom";
+		else if (country == "Venezuela, Bolivarian Republic of")
+			country = "Venezuela";
+		else if (country == "Viet Nam")
+			country = "Vietnam";
+		else if (country == "Palestine, State of")
+			country = "West Bank and Gaza";
+
+		return country;
+	}
+	
+	processMapGlobalData(countries, globalData) {
+		const { getCode, getNames } = require('country-list');
+		const countriesName = getNames();
+		const mapGlobalData = {
+			Confirmed: {},
+			Hospitalized: {},
+			Deaths: {},
+			Recovered: {},
+			RecoveryRate: {},
+			MortalityRate: {},
+		};
+
+		for (let i=0; i<countries.length; i++) {
+			const country = countries[i];
+			const data = globalData[country];
+			
+			const code = this.countryEncodeAssist(country,countriesName);
+			if (code == undefined)
+				continue;
+			
+			mapGlobalData['Confirmed'][code] = data['Confirmed'];
+			mapGlobalData['Hospitalized'][code] = data['Hospitalized'];
+			mapGlobalData['Deaths'][code] = data['Deaths'];
+			mapGlobalData['Recovered'][code] = data['Recovered'];
+			mapGlobalData['RecoveryRate'][code] = parseFloat(data['RecoveryRate']);
+			mapGlobalData['MortalityRate'][code] = parseFloat(data['MortalityRate']);
+		}
+		//console.log(mapGlobalData);
+		return mapGlobalData;
+	}
+	
+	renderMap(category) {
+		const handleClick = (e, code) => {
+			const country = this.countryDecodeAssist(code);
+			if (this.state.countries.includes(country))
+				this.setState({ selectCountry: country, selectCity: 'Overall'});
+		};
+		
+		const data = this.state.mapGlobalData;
+		const mapData = data[category];
+		//console.log(mapData);
+		
+		let minColor = "#FFFFFF";
+		let maxColor = cRed;
+		if (category == "Recovered" || category == "RecoveryRate")
+			maxColor = cBlue;
+		
+		let normFunction = "polynomial";
+		if (category == "RecoveryRate" || category == "MortalityRate")
+			normFunction = "linear";
+		
+		return (
+			<div>
+				<VectorMap
+					map={"world_mill"}
+					backgroundColor="#000000"//"transparent" //change it to ocean blue: #0077be
+					zoomOnScroll={false}
+					containerStyle={{
+						width: "100%",
+						height: "520px"
+					}}
+					onRegionClick={handleClick}
+					containerClassName="map"
+					regionStyle={{
+						initial: {
+							fill: "#C0C0C0",
+							"fill-opacity": 1,
+							stroke: "white",
+							"stroke-width": 0.2,
+							"stroke-opacity": 1
+						},
+						hover: {
+							"fill-opacity": 0.75,
+							cursor: "pointer"
+						},
+						selected: {},
+						selectedHover: {}
+					}}
+					regionsSelectable={false}
+					series={{
+						regions: [
+							{
+								values: mapData, //this is your data
+								scale: [minColor, maxColor], //your color game's here
+								normalizeFunction: normFunction
+							}
+						]
+					}}
+					onRegionTipShow={(event, label, code) => {
+						label.html(
+							'<b><i>'+label.html()+'</i></b></br>'+
+							'Confirmed: '+data['Confirmed'][code]+'</br>'+
+							'Hospitalized: '+data['Hospitalized'][code]+'</br>'+
+							'Deaths: '+data['Deaths'][code]+'</br>'+
+							'Recovered: '+data['Recovered'][code]+'</br>'+
+							'Recovery rate: '+data['RecoveryRate'][code]+'%'+'</br>'+
+							'Mortality rate: '+data['MortalityRate'][code]+'%'
+						);
+					}}
+				/>
+			</div>
+		);
+	}
+	
+	render() {
 		const { classes } = this.props;
 		const {
 			selectCountry, selectCity, fastMode, 
@@ -848,50 +1061,66 @@ class App extends React.Component {
 					
 					</>
 					)}
-				
-					{/*-------------------------------- Rankings --------------------------------*/}
-				
-					<Grid container spacing={2} justify="space-between" alignItems="center">
-						<Grid item xs={6}>
-							<Typography variant='h5' style={{ color: cRed }}>
-								<b>Global Ranking based on:</b>
-							</Typography>
-							<Typography variant='h5' style={{ color: cDRed }}>
-								{this.globalRankingHeading(selectCategory)}
-							</Typography>
+					
+						{/*-------------------------------- Rankings --------------------------------*/}
+										
+							<Grid container spacing={2} justify="space-between" alignItems="center">
+								<Grid item xs={6}>
+									<Typography variant='h5' style={{ color: cRed }}>
+										<b>Global Ranking based on:</b>
+									</Typography>
+									<Typography variant='h5' style={{ color: cDRed }}>
+										{this.globalRankingHeading(selectCategory)}
+									</Typography>
+								</Grid>
+								<Grid item xs={2}>
+									<br/>
+									<Dropdown options={categoryChoice} value={'Hospitalized'}
+										onChange={(select) => this.setState({ selectCategory: select.value})}
+									/>
+								</Grid>
+							</Grid>
+							
+					<Grid container spacing={2}>
+					
+						<Grid item xs={3}>
+							{ (this.state.rankSelect >= 0) && (
+								<Grid container spacing={2} direction='column'>
+									<Grid item xs={12}>
+										<Paper className={classes.paper}>
+											<Typography align='center'>
+												<b>Rank {this.state.rankSelect}. {selectCountry} - {this.state.globalData[selectCountry][selectCategory]}{rankSuffix}</b>
+												<br/>out of {this.state.countries.length} countries
+											</Typography>
+										</Paper>
+									</Grid>
+									<Grid item xs={12}>
+										<Paper className={classes.paper}>
+											<Typography variant='h6'>
+												<b>Top 10 Countries</b><br/>
+											</Typography>
+											<Typography>
+												{this.state.rankTopTen.map((c, i) => (
+												<><b>{i+1}.</b> {c.Country} - {c[selectCategory]}{rankSuffix}<br/></>
+												))}
+											</Typography>
+										</Paper>
+									</Grid>
+								</Grid>
+							)}
 						</Grid>
-						<Grid item xs={2}>
-							<br/>
-							<Dropdown options={categoryChoice} value={'Hospitalized'}
-								onChange={(select) => this.setState({ selectCategory: select.value})}
-							/>
+						
+						{/*-------------------------------- Map --------------------------------*/}
+						
+						<Grid item xs={9}>
+							{ (this.state.mapGlobalData != null) && (
+								<>
+								{this.renderMap(selectCategory)}
+								</>
+							)}
 						</Grid>
+						
 					</Grid>
-				
-					{ (this.state.rankThailand >= 0) && (
-						<Grid container spacing={2} direction='column'>
-							<Grid item xs={3}>
-								<Paper className={classes.paper}>
-									<Typography align='center'>
-										<b>Rank {this.state.rankThailand}. Thailand - {this.state.globalData['Thailand'][selectCategory]}{rankSuffix}</b>
-										<br/>out of {this.state.countries.length} countries
-									</Typography>
-								</Paper>
-							</Grid>
-							<Grid item xs={3}>
-								<Paper className={classes.paper}>
-									<Typography variant='h6'>
-										<b>Top 10 Countries</b><br/>
-									</Typography>
-									<Typography>
-										{this.state.rankTopTen.map((c, i) => (
-										<><b>{i+1}.</b> {c.Country} - {c[selectCategory]}{rankSuffix}<br/></>
-										))}
-									</Typography>
-								</Paper>
-							</Grid>
-						</Grid>
-					)}
 				
 				</Container>
 				

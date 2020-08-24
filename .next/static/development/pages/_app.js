@@ -11370,6 +11370,85 @@ $export($export.P + $export.F * ($fails(function () {
 
 /***/ }),
 
+/***/ "./node_modules/country-list/country-list.js":
+/*!***************************************************!*\
+  !*** ./node_modules/country-list/country-list.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var data = __webpack_require__(/*! ./data.json */ "./node_modules/country-list/data.json")
+
+/** Precompute name and code lookups. */
+var nameMap = {}
+var codeMap = {}
+data.forEach(mapCodeAndName)
+
+function mapCodeAndName (country) {
+  nameMap[country.name.toLowerCase()] = country.code
+  codeMap[country.code.toLowerCase()] = country.name
+}
+
+exports.overwrite = function overwrite (countries) {
+  if (!countries || !countries.length) return
+  countries.forEach(function (country) {
+    var foundIndex = data.findIndex(function (item) {
+      return item.code === country.code
+    })
+    data[foundIndex] = country
+    mapCodeAndName(country)
+  })
+}
+
+exports.getCode = function getCode (name) {
+  return nameMap[name.toLowerCase()]
+}
+
+exports.getName = function getName (code) {
+  return codeMap[code.toLowerCase()]
+}
+
+exports.getNames = function getNames () {
+  return data.map(function (country) {
+    return country.name
+  })
+}
+
+exports.getCodes = function getCodes () {
+  return data.map(function (country) {
+    return country.code
+  })
+}
+
+exports.getCodeList = function getCodeList () {
+  return codeMap
+}
+
+exports.getNameList = function getNameList () {
+  return nameMap
+}
+
+exports.getData = function getData () {
+  return data
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/country-list/data.json":
+/*!*********************************************!*\
+  !*** ./node_modules/country-list/data.json ***!
+  \*********************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("[{\"code\":\"AD\",\"name\":\"Andorra\"},{\"code\":\"AE\",\"name\":\"United Arab Emirates\"},{\"code\":\"AF\",\"name\":\"Afghanistan\"},{\"code\":\"AG\",\"name\":\"Antigua and Barbuda\"},{\"code\":\"AI\",\"name\":\"Anguilla\"},{\"code\":\"AL\",\"name\":\"Albania\"},{\"code\":\"AM\",\"name\":\"Armenia\"},{\"code\":\"AO\",\"name\":\"Angola\"},{\"code\":\"AQ\",\"name\":\"Antarctica\"},{\"code\":\"AR\",\"name\":\"Argentina\"},{\"code\":\"AS\",\"name\":\"American Samoa\"},{\"code\":\"AT\",\"name\":\"Austria\"},{\"code\":\"AU\",\"name\":\"Australia\"},{\"code\":\"AW\",\"name\":\"Aruba\"},{\"code\":\"AX\",\"name\":\"Åland Islands\"},{\"code\":\"AZ\",\"name\":\"Azerbaijan\"},{\"code\":\"BA\",\"name\":\"Bosnia and Herzegovina\"},{\"code\":\"BB\",\"name\":\"Barbados\"},{\"code\":\"BD\",\"name\":\"Bangladesh\"},{\"code\":\"BE\",\"name\":\"Belgium\"},{\"code\":\"BF\",\"name\":\"Burkina Faso\"},{\"code\":\"BG\",\"name\":\"Bulgaria\"},{\"code\":\"BH\",\"name\":\"Bahrain\"},{\"code\":\"BI\",\"name\":\"Burundi\"},{\"code\":\"BJ\",\"name\":\"Benin\"},{\"code\":\"BL\",\"name\":\"Saint Barthélemy\"},{\"code\":\"BM\",\"name\":\"Bermuda\"},{\"code\":\"BN\",\"name\":\"Brunei Darussalam\"},{\"code\":\"BO\",\"name\":\"Bolivia, Plurinational State of\"},{\"code\":\"BQ\",\"name\":\"Bonaire, Sint Eustatius and Saba\"},{\"code\":\"BR\",\"name\":\"Brazil\"},{\"code\":\"BS\",\"name\":\"Bahamas\"},{\"code\":\"BT\",\"name\":\"Bhutan\"},{\"code\":\"BV\",\"name\":\"Bouvet Island\"},{\"code\":\"BW\",\"name\":\"Botswana\"},{\"code\":\"BY\",\"name\":\"Belarus\"},{\"code\":\"BZ\",\"name\":\"Belize\"},{\"code\":\"CA\",\"name\":\"Canada\"},{\"code\":\"CC\",\"name\":\"Cocos (Keeling) Islands\"},{\"code\":\"CD\",\"name\":\"Congo, Democratic Republic of the\"},{\"code\":\"CF\",\"name\":\"Central African Republic\"},{\"code\":\"CG\",\"name\":\"Congo\"},{\"code\":\"CH\",\"name\":\"Switzerland\"},{\"code\":\"CI\",\"name\":\"Côte d'Ivoire\"},{\"code\":\"CK\",\"name\":\"Cook Islands\"},{\"code\":\"CL\",\"name\":\"Chile\"},{\"code\":\"CM\",\"name\":\"Cameroon\"},{\"code\":\"CN\",\"name\":\"China\"},{\"code\":\"CO\",\"name\":\"Colombia\"},{\"code\":\"CR\",\"name\":\"Costa Rica\"},{\"code\":\"CU\",\"name\":\"Cuba\"},{\"code\":\"CV\",\"name\":\"Cabo Verde\"},{\"code\":\"CW\",\"name\":\"Curaçao\"},{\"code\":\"CX\",\"name\":\"Christmas Island\"},{\"code\":\"CY\",\"name\":\"Cyprus\"},{\"code\":\"CZ\",\"name\":\"Czechia\"},{\"code\":\"DE\",\"name\":\"Germany\"},{\"code\":\"DJ\",\"name\":\"Djibouti\"},{\"code\":\"DK\",\"name\":\"Denmark\"},{\"code\":\"DM\",\"name\":\"Dominica\"},{\"code\":\"DO\",\"name\":\"Dominican Republic\"},{\"code\":\"DZ\",\"name\":\"Algeria\"},{\"code\":\"EC\",\"name\":\"Ecuador\"},{\"code\":\"EE\",\"name\":\"Estonia\"},{\"code\":\"EG\",\"name\":\"Egypt\"},{\"code\":\"EH\",\"name\":\"Western Sahara\"},{\"code\":\"ER\",\"name\":\"Eritrea\"},{\"code\":\"ES\",\"name\":\"Spain\"},{\"code\":\"ET\",\"name\":\"Ethiopia\"},{\"code\":\"FI\",\"name\":\"Finland\"},{\"code\":\"FJ\",\"name\":\"Fiji\"},{\"code\":\"FK\",\"name\":\"Falkland Islands (Malvinas)\"},{\"code\":\"FM\",\"name\":\"Micronesia, Federated States of\"},{\"code\":\"FO\",\"name\":\"Faroe Islands\"},{\"code\":\"FR\",\"name\":\"France\"},{\"code\":\"GA\",\"name\":\"Gabon\"},{\"code\":\"GB\",\"name\":\"United Kingdom of Great Britain and Northern Ireland\"},{\"code\":\"GD\",\"name\":\"Grenada\"},{\"code\":\"GE\",\"name\":\"Georgia\"},{\"code\":\"GF\",\"name\":\"French Guiana\"},{\"code\":\"GG\",\"name\":\"Guernsey\"},{\"code\":\"GH\",\"name\":\"Ghana\"},{\"code\":\"GI\",\"name\":\"Gibraltar\"},{\"code\":\"GL\",\"name\":\"Greenland\"},{\"code\":\"GM\",\"name\":\"Gambia\"},{\"code\":\"GN\",\"name\":\"Guinea\"},{\"code\":\"GP\",\"name\":\"Guadeloupe\"},{\"code\":\"GQ\",\"name\":\"Equatorial Guinea\"},{\"code\":\"GR\",\"name\":\"Greece\"},{\"code\":\"GS\",\"name\":\"South Georgia and the South Sandwich Islands\"},{\"code\":\"GT\",\"name\":\"Guatemala\"},{\"code\":\"GU\",\"name\":\"Guam\"},{\"code\":\"GW\",\"name\":\"Guinea-Bissau\"},{\"code\":\"GY\",\"name\":\"Guyana\"},{\"code\":\"HK\",\"name\":\"Hong Kong\"},{\"code\":\"HM\",\"name\":\"Heard Island and McDonald Islands\"},{\"code\":\"HN\",\"name\":\"Honduras\"},{\"code\":\"HR\",\"name\":\"Croatia\"},{\"code\":\"HT\",\"name\":\"Haiti\"},{\"code\":\"HU\",\"name\":\"Hungary\"},{\"code\":\"ID\",\"name\":\"Indonesia\"},{\"code\":\"IE\",\"name\":\"Ireland\"},{\"code\":\"IL\",\"name\":\"Israel\"},{\"code\":\"IM\",\"name\":\"Isle of Man\"},{\"code\":\"IN\",\"name\":\"India\"},{\"code\":\"IO\",\"name\":\"British Indian Ocean Territory\"},{\"code\":\"IQ\",\"name\":\"Iraq\"},{\"code\":\"IR\",\"name\":\"Iran, Islamic Republic of\"},{\"code\":\"IS\",\"name\":\"Iceland\"},{\"code\":\"IT\",\"name\":\"Italy\"},{\"code\":\"JE\",\"name\":\"Jersey\"},{\"code\":\"JM\",\"name\":\"Jamaica\"},{\"code\":\"JO\",\"name\":\"Jordan\"},{\"code\":\"JP\",\"name\":\"Japan\"},{\"code\":\"KE\",\"name\":\"Kenya\"},{\"code\":\"KG\",\"name\":\"Kyrgyzstan\"},{\"code\":\"KH\",\"name\":\"Cambodia\"},{\"code\":\"KI\",\"name\":\"Kiribati\"},{\"code\":\"KM\",\"name\":\"Comoros\"},{\"code\":\"KN\",\"name\":\"Saint Kitts and Nevis\"},{\"code\":\"KP\",\"name\":\"Korea, Democratic People's Republic of\"},{\"code\":\"KR\",\"name\":\"Korea, Republic of\"},{\"code\":\"KW\",\"name\":\"Kuwait\"},{\"code\":\"KY\",\"name\":\"Cayman Islands\"},{\"code\":\"KZ\",\"name\":\"Kazakhstan\"},{\"code\":\"LA\",\"name\":\"Lao People's Democratic Republic\"},{\"code\":\"LB\",\"name\":\"Lebanon\"},{\"code\":\"LC\",\"name\":\"Saint Lucia\"},{\"code\":\"LI\",\"name\":\"Liechtenstein\"},{\"code\":\"LK\",\"name\":\"Sri Lanka\"},{\"code\":\"LR\",\"name\":\"Liberia\"},{\"code\":\"LS\",\"name\":\"Lesotho\"},{\"code\":\"LT\",\"name\":\"Lithuania\"},{\"code\":\"LU\",\"name\":\"Luxembourg\"},{\"code\":\"LV\",\"name\":\"Latvia\"},{\"code\":\"LY\",\"name\":\"Libya\"},{\"code\":\"MA\",\"name\":\"Morocco\"},{\"code\":\"MC\",\"name\":\"Monaco\"},{\"code\":\"MD\",\"name\":\"Moldova, Republic of\"},{\"code\":\"ME\",\"name\":\"Montenegro\"},{\"code\":\"MF\",\"name\":\"Saint Martin, (French part)\"},{\"code\":\"MG\",\"name\":\"Madagascar\"},{\"code\":\"MH\",\"name\":\"Marshall Islands\"},{\"code\":\"MK\",\"name\":\"North Macedonia\"},{\"code\":\"ML\",\"name\":\"Mali\"},{\"code\":\"MM\",\"name\":\"Myanmar\"},{\"code\":\"MN\",\"name\":\"Mongolia\"},{\"code\":\"MO\",\"name\":\"Macao\"},{\"code\":\"MP\",\"name\":\"Northern Mariana Islands\"},{\"code\":\"MQ\",\"name\":\"Martinique\"},{\"code\":\"MR\",\"name\":\"Mauritania\"},{\"code\":\"MS\",\"name\":\"Montserrat\"},{\"code\":\"MT\",\"name\":\"Malta\"},{\"code\":\"MU\",\"name\":\"Mauritius\"},{\"code\":\"MV\",\"name\":\"Maldives\"},{\"code\":\"MW\",\"name\":\"Malawi\"},{\"code\":\"MX\",\"name\":\"Mexico\"},{\"code\":\"MY\",\"name\":\"Malaysia\"},{\"code\":\"MZ\",\"name\":\"Mozambique\"},{\"code\":\"NA\",\"name\":\"Namibia\"},{\"code\":\"NC\",\"name\":\"New Caledonia\"},{\"code\":\"NE\",\"name\":\"Niger\"},{\"code\":\"NF\",\"name\":\"Norfolk Island\"},{\"code\":\"NG\",\"name\":\"Nigeria\"},{\"code\":\"NI\",\"name\":\"Nicaragua\"},{\"code\":\"NL\",\"name\":\"Netherlands\"},{\"code\":\"NO\",\"name\":\"Norway\"},{\"code\":\"NP\",\"name\":\"Nepal\"},{\"code\":\"NR\",\"name\":\"Nauru\"},{\"code\":\"NU\",\"name\":\"Niue\"},{\"code\":\"NZ\",\"name\":\"New Zealand\"},{\"code\":\"OM\",\"name\":\"Oman\"},{\"code\":\"PA\",\"name\":\"Panama\"},{\"code\":\"PE\",\"name\":\"Peru\"},{\"code\":\"PF\",\"name\":\"French Polynesia\"},{\"code\":\"PG\",\"name\":\"Papua New Guinea\"},{\"code\":\"PH\",\"name\":\"Philippines\"},{\"code\":\"PK\",\"name\":\"Pakistan\"},{\"code\":\"PL\",\"name\":\"Poland\"},{\"code\":\"PM\",\"name\":\"Saint Pierre and Miquelon\"},{\"code\":\"PN\",\"name\":\"Pitcairn\"},{\"code\":\"PR\",\"name\":\"Puerto Rico\"},{\"code\":\"PS\",\"name\":\"Palestine, State of\"},{\"code\":\"PT\",\"name\":\"Portugal\"},{\"code\":\"PW\",\"name\":\"Palau\"},{\"code\":\"PY\",\"name\":\"Paraguay\"},{\"code\":\"QA\",\"name\":\"Qatar\"},{\"code\":\"RE\",\"name\":\"Réunion\"},{\"code\":\"RO\",\"name\":\"Romania\"},{\"code\":\"RS\",\"name\":\"Serbia\"},{\"code\":\"RU\",\"name\":\"Russian Federation\"},{\"code\":\"RW\",\"name\":\"Rwanda\"},{\"code\":\"SA\",\"name\":\"Saudi Arabia\"},{\"code\":\"SB\",\"name\":\"Solomon Islands\"},{\"code\":\"SC\",\"name\":\"Seychelles\"},{\"code\":\"SD\",\"name\":\"Sudan\"},{\"code\":\"SE\",\"name\":\"Sweden\"},{\"code\":\"SG\",\"name\":\"Singapore\"},{\"code\":\"SH\",\"name\":\"Saint Helena, Ascension and Tristan da Cunha\"},{\"code\":\"SI\",\"name\":\"Slovenia\"},{\"code\":\"SJ\",\"name\":\"Svalbard and Jan Mayen\"},{\"code\":\"SK\",\"name\":\"Slovakia\"},{\"code\":\"SL\",\"name\":\"Sierra Leone\"},{\"code\":\"SM\",\"name\":\"San Marino\"},{\"code\":\"SN\",\"name\":\"Senegal\"},{\"code\":\"SO\",\"name\":\"Somalia\"},{\"code\":\"SR\",\"name\":\"Suriname\"},{\"code\":\"SS\",\"name\":\"South Sudan\"},{\"code\":\"ST\",\"name\":\"Sao Tome and Principe\"},{\"code\":\"SV\",\"name\":\"El Salvador\"},{\"code\":\"SX\",\"name\":\"Sint Maarten, (Dutch part)\"},{\"code\":\"SY\",\"name\":\"Syrian Arab Republic\"},{\"code\":\"SZ\",\"name\":\"Eswatini\"},{\"code\":\"TC\",\"name\":\"Turks and Caicos Islands\"},{\"code\":\"TD\",\"name\":\"Chad\"},{\"code\":\"TF\",\"name\":\"French Southern Territories\"},{\"code\":\"TG\",\"name\":\"Togo\"},{\"code\":\"TH\",\"name\":\"Thailand\"},{\"code\":\"TJ\",\"name\":\"Tajikistan\"},{\"code\":\"TK\",\"name\":\"Tokelau\"},{\"code\":\"TL\",\"name\":\"Timor-Leste\"},{\"code\":\"TM\",\"name\":\"Turkmenistan\"},{\"code\":\"TN\",\"name\":\"Tunisia\"},{\"code\":\"TO\",\"name\":\"Tonga\"},{\"code\":\"TR\",\"name\":\"Turkey\"},{\"code\":\"TT\",\"name\":\"Trinidad and Tobago\"},{\"code\":\"TV\",\"name\":\"Tuvalu\"},{\"code\":\"TW\",\"name\":\"Taiwan, Province of China\"},{\"code\":\"TZ\",\"name\":\"Tanzania, United Republic of\"},{\"code\":\"UA\",\"name\":\"Ukraine\"},{\"code\":\"UG\",\"name\":\"Uganda\"},{\"code\":\"UM\",\"name\":\"United States Minor Outlying Islands\"},{\"code\":\"US\",\"name\":\"United States of America\"},{\"code\":\"UY\",\"name\":\"Uruguay\"},{\"code\":\"UZ\",\"name\":\"Uzbekistan\"},{\"code\":\"VA\",\"name\":\"Holy See\"},{\"code\":\"VC\",\"name\":\"Saint Vincent and the Grenadines\"},{\"code\":\"VE\",\"name\":\"Venezuela, Bolivarian Republic of\"},{\"code\":\"VG\",\"name\":\"Virgin Islands, British\"},{\"code\":\"VI\",\"name\":\"Virgin Islands, U.S.\"},{\"code\":\"VN\",\"name\":\"Viet Nam\"},{\"code\":\"VU\",\"name\":\"Vanuatu\"},{\"code\":\"WF\",\"name\":\"Wallis and Futuna\"},{\"code\":\"WS\",\"name\":\"Samoa\"},{\"code\":\"YE\",\"name\":\"Yemen\"},{\"code\":\"YT\",\"name\":\"Mayotte\"},{\"code\":\"ZA\",\"name\":\"South Africa\"},{\"code\":\"ZM\",\"name\":\"Zambia\"},{\"code\":\"ZW\",\"name\":\"Zimbabwe\"}]");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/react-dropdown/style.css":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/react-dropdown/style.css ***!
@@ -11379,7 +11458,21 @@ $export($export.P + $export.F * ($fails(function () {
 
 exports = module.exports = __webpack_require__(/*! ../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, ".Dropdown-root {\r\n  position: relative;\r\n}\r\n\r\n.Dropdown-control {\r\n  position: relative;\r\n  overflow: hidden;\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  border-radius: 2px;\r\n  box-sizing: border-box;\r\n  color: #333;\r\n  cursor: default;\r\n  outline: none;\r\n  padding: 8px 52px 8px 10px;\r\n  transition: all 200ms ease;\r\n}\r\n\r\n.Dropdown-control:hover {\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n}\r\n\r\n.Dropdown-arrow {\r\n  border-color: #999 transparent transparent;\r\n  border-style: solid;\r\n  border-width: 5px 5px 0;\r\n  content: ' ';\r\n  display: block;\r\n  height: 0;\r\n  margin-top: -ceil(2.5);\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  width: 0\r\n}\r\n\r\n.is-open .Dropdown-arrow {\r\n  border-color: transparent transparent #999;\r\n  border-width: 0 5px 5px;\r\n}\r\n\r\n.Dropdown-menu {\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n  box-sizing: border-box;\r\n  margin-top: -1px;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  position: absolute;\r\n  top: 100%;\r\n  width: 100%;\r\n  z-index: 1000;\r\n  -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\r\n  padding: 8px 10px;\r\n  color: rgba(51, 51, 51, 1);\r\n  font-weight: bold;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.Dropdown-option {\r\n  box-sizing: border-box;\r\n  color: rgba(51, 51, 51, 0.8);\r\n  cursor: pointer;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n\r\n.Dropdown-option:last-child {\r\n  border-bottom-right-radius: 2px;\r\n   border-bottom-left-radius: 2px;\r\n}\r\n\r\n.Dropdown-option:hover {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-option.is-selected {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-noresults {\r\n  box-sizing: border-box;\r\n  color: #ccc;\r\n  cursor: default;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n", "",{"version":3,"sources":["C:/Users/Herabat/react-js/covid-19-dashboard/node_modules/react-dropdown/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;AAC5B;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,0CAA0C;EAC1C,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,SAAS;EACT,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,SAAS;EACT;AACF;;AAEA;EACE,0CAA0C;EAC1C,uBAAuB;AACzB;;AAEA;EACE,uBAAuB;EACvB,sBAAsB;EACtB,uCAAuC;EACvC,sBAAsB;EACtB,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,iCAAiC;AACnC;;AAEA;EACE,iBAAiB;EACjB,0BAA0B;EAC1B,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,+BAA+B;GAC9B,8BAA8B;AACjC;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB","file":"style.css","sourcesContent":[".Dropdown-root {\r\n  position: relative;\r\n}\r\n\r\n.Dropdown-control {\r\n  position: relative;\r\n  overflow: hidden;\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  border-radius: 2px;\r\n  box-sizing: border-box;\r\n  color: #333;\r\n  cursor: default;\r\n  outline: none;\r\n  padding: 8px 52px 8px 10px;\r\n  transition: all 200ms ease;\r\n}\r\n\r\n.Dropdown-control:hover {\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n}\r\n\r\n.Dropdown-arrow {\r\n  border-color: #999 transparent transparent;\r\n  border-style: solid;\r\n  border-width: 5px 5px 0;\r\n  content: ' ';\r\n  display: block;\r\n  height: 0;\r\n  margin-top: -ceil(2.5);\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  width: 0\r\n}\r\n\r\n.is-open .Dropdown-arrow {\r\n  border-color: transparent transparent #999;\r\n  border-width: 0 5px 5px;\r\n}\r\n\r\n.Dropdown-menu {\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\r\n  box-sizing: border-box;\r\n  margin-top: -1px;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  position: absolute;\r\n  top: 100%;\r\n  width: 100%;\r\n  z-index: 1000;\r\n  -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\r\n  padding: 8px 10px;\r\n  color: rgba(51, 51, 51, 1);\r\n  font-weight: bold;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.Dropdown-option {\r\n  box-sizing: border-box;\r\n  color: rgba(51, 51, 51, 0.8);\r\n  cursor: pointer;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n\r\n.Dropdown-option:last-child {\r\n  border-bottom-right-radius: 2px;\r\n   border-bottom-left-radius: 2px;\r\n}\r\n\r\n.Dropdown-option:hover {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-option.is-selected {\r\n  background-color: #f2f9fc;\r\n  color: #333;\r\n}\r\n\r\n.Dropdown-noresults {\r\n  box-sizing: border-box;\r\n  color: #ccc;\r\n  cursor: default;\r\n  display: block;\r\n  padding: 8px 10px;\r\n}\r\n"]}]);
+exports.push([module.i, ".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n", "",{"version":3,"sources":["C:/Users/Vava/Desktop/covid-19-dashboard/node_modules/react-dropdown/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;AAC5B;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,0CAA0C;EAC1C,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,SAAS;EACT,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,SAAS;EACT;AACF;;AAEA;EACE,0CAA0C;EAC1C,uBAAuB;AACzB;;AAEA;EACE,uBAAuB;EACvB,sBAAsB;EACtB,uCAAuC;EACvC,sBAAsB;EACtB,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,iCAAiC;AACnC;;AAEA;EACE,iBAAiB;EACjB,0BAA0B;EAC1B,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,+BAA+B;GAC9B,8BAA8B;AACjC;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB","file":"style.css","sourcesContent":[".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n"]}]);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./public/jquery-jvectormap.css":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./public/jquery-jvectormap.css ***!
+  \*****************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
+// Module
+exports.push([module.i, "svg {\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    overflow: hidden;\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-tip {\r\n    position: absolute;\r\n    display: none;\r\n    border: solid 1px #CDCDCD;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    color: white;\r\n    font-family: sans-serif, Verdana;\r\n    font-size: smaller;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {\r\n    position: absolute;\r\n    left: 10px;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    padding: 3px;\r\n    color: white;\r\n    cursor: pointer;\r\n    line-height: 10px;\r\n    text-align: center;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout {\r\n    width: 10px;\r\n    height: 10px;\r\n}\r\n\r\n.jvectormap-zoomin {\r\n    top: 10px;\r\n}\r\n\r\n.jvectormap-zoomout {\r\n    top: 30px;\r\n}\r\n\r\n.jvectormap-goback {\r\n    bottom: 10px;\r\n    z-index: 1000;\r\n    padding: 6px;\r\n}\r\n\r\n.jvectormap-spinner {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: center no-repeat url(data:image/gif;base64,R0lGODlhIAAgAPMAAP///wAAAMbGxoSEhLa2tpqamjY2NlZWVtjY2OTk5Ly8vB4eHgQEBAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ/V/nmOM82XiHRLYKhKP1oZmADdEAAAh+QQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY/CZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB+A4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6+Ho7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq+B6QDtuetcaBPnW6+O7wDHpIiK9SaVK5GgV543tzjgGcghAgAh+QQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK++G+w48edZPK+M6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE+G+cD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm+FNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk+aV+oJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0/VNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc+XiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq+E71SRQeyqUToLA7VxF0JDyIQh/MVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30/iI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE/jiuL04RGEBgwWhShRgQExHBAAh+QQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR+ipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq+E71SRQeyqUToLA7VxF0JDyIQh/MVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq+E71SRQeyqUToLA7VxF0JDyIQh/MVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY+Yip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd+MFCN6HAAIKgNggY0KtEBAAh+QQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1+vsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d+jYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg+ygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0+bm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h+Kr0SJ8MFihpNbx+4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX+BP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA==);\r\n}\r\n\r\n.jvectormap-legend-title {\r\n    font-weight: bold;\r\n    font-size: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt {\r\n    position: absolute;\r\n}\r\n\r\n.jvectormap-legend-cnt-h {\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend-cnt-v {\r\n    top: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend {\r\n    background: black;\r\n    color: white;\r\n    border-radius: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend {\r\n    float: left;\r\n    margin: 0 10px 10px 0;\r\n    padding: 3px 3px 1px 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend .jvectormap-legend-tick {\r\n    float: left;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend {\r\n    margin: 10px 10px 0 0;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick {\r\n    width: 40px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {\r\n    height: 15px;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-sample {\r\n    height: 20px;\r\n    width: 20px;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.jvectormap-legend-tick-text {\r\n    font-size: 12px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-text {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    line-height: 20px;\r\n    padding-left: 3px;\r\n}", "",{"version":3,"sources":["C:/Users/Vava/Desktop/covid-19-dashboard/public/jquery-jvectormap.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,yBAAyB;IACzB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,gCAAgC;IAChC,kBAAkB;IAClB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,YAAY;IACZ,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,uBAAuB;AAC3B;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,OAAO;IACP,MAAM;IACN,QAAQ;IACR,SAAS;IACT,gvIAAgvI;AACpvI;;AAEA;IACI,iBAAiB;IACjB,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,SAAS;IACT,QAAQ;AACZ;;AAEA;IACI,MAAM;IACN,QAAQ;AACZ;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,qBAAqB;IACrB,wBAAwB;AAC5B;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,qBAAqB;IACrB,YAAY;AAChB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,qBAAqB;IACrB,sBAAsB;AAC1B;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,qBAAqB;IACrB,sBAAsB;IACtB,iBAAiB;IACjB,iBAAiB;AACrB","file":"jquery-jvectormap.css","sourcesContent":["svg {\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    overflow: hidden;\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-tip {\r\n    position: absolute;\r\n    display: none;\r\n    border: solid 1px #CDCDCD;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    color: white;\r\n    font-family: sans-serif, Verdana;\r\n    font-size: smaller;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {\r\n    position: absolute;\r\n    left: 10px;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    padding: 3px;\r\n    color: white;\r\n    cursor: pointer;\r\n    line-height: 10px;\r\n    text-align: center;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout {\r\n    width: 10px;\r\n    height: 10px;\r\n}\r\n\r\n.jvectormap-zoomin {\r\n    top: 10px;\r\n}\r\n\r\n.jvectormap-zoomout {\r\n    top: 30px;\r\n}\r\n\r\n.jvectormap-goback {\r\n    bottom: 10px;\r\n    z-index: 1000;\r\n    padding: 6px;\r\n}\r\n\r\n.jvectormap-spinner {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: center no-repeat url(data:image/gif;base64,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);\r\n}\r\n\r\n.jvectormap-legend-title {\r\n    font-weight: bold;\r\n    font-size: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt {\r\n    position: absolute;\r\n}\r\n\r\n.jvectormap-legend-cnt-h {\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend-cnt-v {\r\n    top: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend {\r\n    background: black;\r\n    color: white;\r\n    border-radius: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend {\r\n    float: left;\r\n    margin: 0 10px 10px 0;\r\n    padding: 3px 3px 1px 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend .jvectormap-legend-tick {\r\n    float: left;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend {\r\n    margin: 10px 10px 0 0;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick {\r\n    width: 40px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {\r\n    height: 15px;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-sample {\r\n    height: 20px;\r\n    width: 20px;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.jvectormap-legend-tick-text {\r\n    font-size: 12px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-text {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    line-height: 20px;\r\n    padding-left: 3px;\r\n}"]}]);
 
 
 /***/ }),
@@ -24244,6 +24337,72 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*! decimal.js-light v2.5.0 https://github.com
   } else {}
 })(this);
 
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/class/addClass.js":
+/*!****************************************************!*\
+  !*** ./node_modules/dom-helpers/class/addClass.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = addClass;
+
+var _hasClass = _interopRequireDefault(__webpack_require__(/*! ./hasClass */ "./node_modules/dom-helpers/class/hasClass.js"));
+
+function addClass(element, className) {
+  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/class/hasClass.js":
+/*!****************************************************!*\
+  !*** ./node_modules/dom-helpers/class/hasClass.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = hasClass;
+
+function hasClass(element, className) {
+  if (element.classList) return !!className && element.classList.contains(className);else return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/class/removeClass.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/dom-helpers/class/removeClass.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function replaceClassName(origClass, classToRemove) {
+  return origClass.replace(new RegExp('(^|\\s)' + classToRemove + '(?:\\s|$)', 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
+}
+
+module.exports = function removeClass(element, className) {
+  if (element.classList) element.classList.remove(className);else if (typeof element.className === 'string') element.className = replaceClassName(element.className, className);else element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
+};
 
 /***/ }),
 
@@ -38897,6 +39056,577 @@ function withRouter(ComposedComponent) {
 
 /***/ }),
 
+/***/ "./node_modules/next/dist/next-server/lib/dynamic.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/next/dist/next-server/lib/dynamic.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var loadable_1 = __importDefault(__webpack_require__(/*! ./loadable */ "./node_modules/next/dist/next-server/lib/loadable.js"));
+
+var isServerSide = false;
+
+function noSSR(LoadableInitializer, loadableOptions) {
+  // Removing webpack and modules means react-loadable won't try preloading
+  delete loadableOptions.webpack;
+  delete loadableOptions.modules; // This check is neccesary to prevent react-loadable from initializing on the server
+
+  if (!isServerSide) {
+    return LoadableInitializer(loadableOptions);
+  }
+
+  var Loading = loadableOptions.loading; // This will only be rendered on the server side
+
+  return function () {
+    return react_1["default"].createElement(Loading, {
+      error: null,
+      isLoading: true,
+      pastDelay: false,
+      timedOut: false
+    });
+  };
+}
+
+exports.noSSR = noSSR; // function dynamic<P = {}, O extends DynamicOptions>(options: O):
+
+function dynamic(dynamicOptions, options) {
+  var loadableFn = loadable_1["default"];
+  var loadableOptions = {
+    // A loading component is not required, so we default it
+    loading: function loading(_ref) {
+      var error = _ref.error,
+          isLoading = _ref.isLoading,
+          pastDelay = _ref.pastDelay;
+      if (!pastDelay) return null;
+
+      if (true) {
+        if (isLoading) {
+          return null;
+        }
+
+        if (error) {
+          return react_1["default"].createElement("p", null, error.message, react_1["default"].createElement("br", null), error.stack);
+        }
+      }
+
+      return null;
+    }
+  }; // Support for direct import(), eg: dynamic(import('../hello-world'))
+  // Note that this is only kept for the edge case where someone is passing in a promise as first argument
+  // The react-loadable babel plugin will turn dynamic(import('../hello-world')) into dynamic(() => import('../hello-world'))
+  // To make sure we don't execute the import without rendering first
+
+  if (dynamicOptions instanceof Promise) {
+    loadableOptions.loader = function () {
+      return dynamicOptions;
+    }; // Support for having import as a function, eg: dynamic(() => import('../hello-world'))
+
+  } else if (typeof dynamicOptions === 'function') {
+    loadableOptions.loader = dynamicOptions; // Support for having first argument being options, eg: dynamic({loader: import('../hello-world')})
+  } else if (typeof dynamicOptions === 'object') {
+    loadableOptions = Object.assign(Object.assign({}, loadableOptions), dynamicOptions);
+  } // Support for passing options, eg: dynamic(import('../hello-world'), {loading: () => <p>Loading something</p>})
+
+
+  loadableOptions = Object.assign(Object.assign({}, loadableOptions), options);
+
+  if (typeof dynamicOptions === 'object' && !(dynamicOptions instanceof Promise)) {
+    // show deprecation warning for `modules` key in development
+    if (true) {
+      if (dynamicOptions.modules) {
+        console.warn('The modules option for next/dynamic has been deprecated. See here for more info https://err.sh/zeit/next.js/next-dynamic-modules');
+      }
+    } // Support for `render` when using a mapping, eg: `dynamic({ modules: () => {return {HelloWorld: import('../hello-world')}, render(props, loaded) {} } })
+
+
+    if (dynamicOptions.render) {
+      loadableOptions.render = function (loaded, props) {
+        return dynamicOptions.render(props, loaded);
+      };
+    } // Support for `modules` when using a mapping, eg: `dynamic({ modules: () => {return {HelloWorld: import('../hello-world')}, render(props, loaded) {} } })
+
+
+    if (dynamicOptions.modules) {
+      loadableFn = loadable_1["default"].Map;
+      var loadModules = {};
+      var modules = dynamicOptions.modules();
+      Object.keys(modules).forEach(function (key) {
+        var value = modules[key];
+
+        if (typeof value.then === 'function') {
+          loadModules[key] = function () {
+            return value.then(function (mod) {
+              return mod["default"] || mod;
+            });
+          };
+
+          return;
+        }
+
+        loadModules[key] = value;
+      });
+      loadableOptions.loader = loadModules;
+    }
+  } // coming from build/babel/plugins/react-loadable-plugin.js
+
+
+  if (loadableOptions.loadableGenerated) {
+    loadableOptions = Object.assign(Object.assign({}, loadableOptions), loadableOptions.loadableGenerated);
+    delete loadableOptions.loadableGenerated;
+  } // support for disabling server side rendering, eg: dynamic(import('../hello-world'), {ssr: false})
+
+
+  if (typeof loadableOptions.ssr === 'boolean') {
+    if (!loadableOptions.ssr) {
+      delete loadableOptions.ssr;
+      return noSSR(loadableFn, loadableOptions);
+    }
+
+    delete loadableOptions.ssr;
+  }
+
+  return loadableFn(loadableOptions);
+}
+
+exports["default"] = dynamic;
+
+/***/ }),
+
+/***/ "./node_modules/next/dist/next-server/lib/loadable-context.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/next/dist/next-server/lib/loadable-context.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+exports.LoadableContext = React.createContext(null);
+
+if (true) {
+  exports.LoadableContext.displayName = 'LoadableContext';
+}
+
+/***/ }),
+
+/***/ "./node_modules/next/dist/next-server/lib/loadable.js":
+/*!************************************************************!*\
+  !*** ./node_modules/next/dist/next-server/lib/loadable.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+@copyright (c) 2017-present James Kyle <me@thejameskyle.com>
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+ The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+*/
+// https://github.com/jamiebuilds/react-loadable/blob/v5.5.0/src/index.js
+// Modified to be compatible with webpack 4 / Next.js
+
+var _classCallCheck = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/next/node_modules/@babel/runtime/helpers/classCallCheck.js");
+
+var _createClass = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/next/node_modules/@babel/runtime/helpers/createClass.js");
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var use_subscription_1 = __webpack_require__(/*! use-subscription */ "./node_modules/use-subscription/index.js");
+
+var loadable_context_1 = __webpack_require__(/*! ./loadable-context */ "./node_modules/next/dist/next-server/lib/loadable-context.js");
+
+var ALL_INITIALIZERS = [];
+var READY_INITIALIZERS = [];
+var initialized = false;
+
+function load(loader) {
+  var promise = loader();
+  var state = {
+    loading: true,
+    loaded: null,
+    error: null
+  };
+  state.promise = promise.then(function (loaded) {
+    state.loading = false;
+    state.loaded = loaded;
+    return loaded;
+  })["catch"](function (err) {
+    state.loading = false;
+    state.error = err;
+    throw err;
+  });
+  return state;
+}
+
+function loadMap(obj) {
+  var state = {
+    loading: false,
+    loaded: {},
+    error: null
+  };
+  var promises = [];
+
+  try {
+    Object.keys(obj).forEach(function (key) {
+      var result = load(obj[key]);
+
+      if (!result.loading) {
+        state.loaded[key] = result.loaded;
+        state.error = result.error;
+      } else {
+        state.loading = true;
+      }
+
+      promises.push(result.promise);
+      result.promise.then(function (res) {
+        state.loaded[key] = res;
+      })["catch"](function (err) {
+        state.error = err;
+      });
+    });
+  } catch (err) {
+    state.error = err;
+  }
+
+  state.promise = Promise.all(promises).then(function (res) {
+    state.loading = false;
+    return res;
+  })["catch"](function (err) {
+    state.loading = false;
+    throw err;
+  });
+  return state;
+}
+
+function resolve(obj) {
+  return obj && obj.__esModule ? obj["default"] : obj;
+}
+
+function render(loaded, props) {
+  return react_1["default"].createElement(resolve(loaded), props);
+}
+
+function createLoadableComponent(loadFn, options) {
+  var opts = Object.assign({
+    loader: null,
+    loading: null,
+    delay: 200,
+    timeout: null,
+    render: render,
+    webpack: null,
+    modules: null
+  }, options);
+  var subscription = null;
+
+  function init() {
+    if (!subscription) {
+      var sub = new LoadableSubscription(loadFn, opts);
+      subscription = {
+        getCurrentValue: sub.getCurrentValue.bind(sub),
+        subscribe: sub.subscribe.bind(sub),
+        retry: sub.retry.bind(sub),
+        promise: sub.promise.bind(sub)
+      };
+    }
+
+    return subscription.promise();
+  } // Server only
+
+
+  if (false) {} // Client only
+
+
+  if (!initialized && true && typeof opts.webpack === 'function') {
+    var moduleIds = opts.webpack();
+    READY_INITIALIZERS.push(function (ids) {
+      var _iterator = _createForOfIteratorHelper(moduleIds),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var moduleId = _step.value;
+
+          if (ids.indexOf(moduleId) !== -1) {
+            return init();
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    });
+  }
+
+  var LoadableComponent = function LoadableComponent(props, ref) {
+    init();
+    var context = react_1["default"].useContext(loadable_context_1.LoadableContext);
+    var state = use_subscription_1.useSubscription(subscription);
+    react_1["default"].useImperativeHandle(ref, function () {
+      return {
+        retry: subscription.retry
+      };
+    }, []);
+
+    if (context && Array.isArray(opts.modules)) {
+      opts.modules.forEach(function (moduleName) {
+        context(moduleName);
+      });
+    }
+
+    return react_1["default"].useMemo(function () {
+      if (state.loading || state.error) {
+        return react_1["default"].createElement(opts.loading, {
+          isLoading: state.loading,
+          pastDelay: state.pastDelay,
+          timedOut: state.timedOut,
+          error: state.error,
+          retry: subscription.retry
+        });
+      } else if (state.loaded) {
+        return opts.render(state.loaded, props);
+      } else {
+        return null;
+      }
+    }, [props, state]);
+  };
+
+  LoadableComponent.preload = function () {
+    return init();
+  };
+
+  LoadableComponent.displayName = 'LoadableComponent';
+  return react_1["default"].forwardRef(LoadableComponent);
+}
+
+var LoadableSubscription = /*#__PURE__*/function () {
+  function LoadableSubscription(loadFn, opts) {
+    _classCallCheck(this, LoadableSubscription);
+
+    this._loadFn = loadFn;
+    this._opts = opts;
+    this._callbacks = new Set();
+    this._delay = null;
+    this._timeout = null;
+    this.retry();
+  }
+
+  _createClass(LoadableSubscription, [{
+    key: "promise",
+    value: function promise() {
+      return this._res.promise;
+    }
+  }, {
+    key: "retry",
+    value: function retry() {
+      var _this = this;
+
+      this._clearTimeouts();
+
+      this._res = this._loadFn(this._opts.loader);
+      this._state = {
+        pastDelay: false,
+        timedOut: false
+      };
+      var res = this._res,
+          opts = this._opts;
+
+      if (res.loading) {
+        if (typeof opts.delay === 'number') {
+          if (opts.delay === 0) {
+            this._state.pastDelay = true;
+          } else {
+            this._delay = setTimeout(function () {
+              _this._update({
+                pastDelay: true
+              });
+            }, opts.delay);
+          }
+        }
+
+        if (typeof opts.timeout === 'number') {
+          this._timeout = setTimeout(function () {
+            _this._update({
+              timedOut: true
+            });
+          }, opts.timeout);
+        }
+      }
+
+      this._res.promise.then(function () {
+        _this._update({});
+
+        _this._clearTimeouts();
+      }) // eslint-disable-next-line handle-callback-err
+      ["catch"](function (err) {
+        _this._update({});
+
+        _this._clearTimeouts();
+      });
+
+      this._update({});
+    }
+  }, {
+    key: "_update",
+    value: function _update(partial) {
+      this._state = Object.assign(Object.assign(Object.assign({}, this._state), {
+        error: this._res.error,
+        loaded: this._res.loaded,
+        loading: this._res.loading
+      }), partial);
+
+      this._callbacks.forEach(function (callback) {
+        return callback();
+      });
+    }
+  }, {
+    key: "_clearTimeouts",
+    value: function _clearTimeouts() {
+      clearTimeout(this._delay);
+      clearTimeout(this._timeout);
+    }
+  }, {
+    key: "getCurrentValue",
+    value: function getCurrentValue() {
+      return this._state;
+    }
+  }, {
+    key: "subscribe",
+    value: function subscribe(callback) {
+      var _this2 = this;
+
+      this._callbacks.add(callback);
+
+      return function () {
+        _this2._callbacks["delete"](callback);
+      };
+    }
+  }]);
+
+  return LoadableSubscription;
+}();
+
+function Loadable(opts) {
+  return createLoadableComponent(load, opts);
+}
+
+function LoadableMap(opts) {
+  if (typeof opts.render !== 'function') {
+    throw new Error('LoadableMap requires a `render(loaded, props)` function');
+  }
+
+  return createLoadableComponent(loadMap, opts);
+}
+
+Loadable.Map = LoadableMap;
+
+function flushInitializers(initializers, ids) {
+  var promises = [];
+
+  while (initializers.length) {
+    var init = initializers.pop();
+    promises.push(init(ids));
+  }
+
+  return Promise.all(promises).then(function () {
+    if (initializers.length) {
+      return flushInitializers(initializers, ids);
+    }
+  });
+}
+
+Loadable.preloadAll = function () {
+  return new Promise(function (resolve, reject) {
+    flushInitializers(ALL_INITIALIZERS).then(resolve, reject);
+  });
+};
+
+Loadable.preloadReady = function () {
+  var ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  return new Promise(function (resolve) {
+    var res = function res() {
+      initialized = true;
+      return resolve();
+    }; // We always will resolve, errors should be handled within loading UIs.
+
+
+    flushInitializers(READY_INITIALIZERS, ids).then(res, res);
+  });
+};
+
+if (true) {
+  window.__NEXT_PRELOADREADY = Loadable.preloadReady;
+}
+
+exports["default"] = Loadable;
+
+/***/ }),
+
 /***/ "./node_modules/next/dist/next-server/lib/mitt.js":
 /*!********************************************************!*\
   !*** ./node_modules/next/dist/next-server/lib/mitt.js ***!
@@ -44150,72 +44880,6 @@ var warn = function warn(condition, format, a, b, c, d, e, f) {
 
 /***/ }),
 
-/***/ "./node_modules/react-smooth/node_modules/dom-helpers/class/addClass.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/react-smooth/node_modules/dom-helpers/class/addClass.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-exports.__esModule = true;
-exports.default = addClass;
-
-var _hasClass = _interopRequireDefault(__webpack_require__(/*! ./hasClass */ "./node_modules/react-smooth/node_modules/dom-helpers/class/hasClass.js"));
-
-function addClass(element, className) {
-  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
-}
-
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./node_modules/react-smooth/node_modules/dom-helpers/class/hasClass.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/react-smooth/node_modules/dom-helpers/class/hasClass.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = hasClass;
-
-function hasClass(element, className) {
-  if (element.classList) return !!className && element.classList.contains(className);else return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
-}
-
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./node_modules/react-smooth/node_modules/dom-helpers/class/removeClass.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/react-smooth/node_modules/dom-helpers/class/removeClass.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function replaceClassName(origClass, classToRemove) {
-  return origClass.replace(new RegExp('(^|\\s)' + classToRemove + '(?:\\s|$)', 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
-}
-
-module.exports = function removeClass(element, className) {
-  if (element.classList) element.classList.remove(className);else if (typeof element.className === 'string') element.className = replaceClassName(element.className, className);else element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
-};
-
-/***/ }),
-
 /***/ "./node_modules/react-smooth/node_modules/react-transition-group/CSSTransition.js":
 /*!****************************************************************************************!*\
   !*** ./node_modules/react-smooth/node_modules/react-transition-group/CSSTransition.js ***!
@@ -44231,9 +44895,9 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
 
-var _addClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/addClass */ "./node_modules/react-smooth/node_modules/dom-helpers/class/addClass.js"));
+var _addClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/addClass */ "./node_modules/dom-helpers/class/addClass.js"));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/removeClass */ "./node_modules/react-smooth/node_modules/dom-helpers/class/removeClass.js"));
+var _removeClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/removeClass */ "./node_modules/dom-helpers/class/removeClass.js"));
 
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
@@ -68133,6 +68797,252 @@ function warning(condition, message) {
 
 /***/ }),
 
+/***/ "./node_modules/use-subscription/cjs/use-subscription.development.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/use-subscription/cjs/use-subscription.development.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/** @license React v1.1.1
+ * use-subscription.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+//
+// In order to avoid removing and re-adding subscriptions each time this hook is called,
+// the parameters passed to this hook should be memoized in some way–
+// either by wrapping the entire params object with useMemo()
+// or by wrapping the individual callbacks with useCallback().
+
+function useSubscription(_ref) {
+  var getCurrentValue = _ref.getCurrentValue,
+      subscribe = _ref.subscribe;
+
+  // Read the current value from our subscription.
+  // When this value changes, we'll schedule an update with React.
+  // It's important to also store the hook params so that we can check for staleness.
+  // (See the comment in checkForUpdates() below for more info.)
+  var _useState = react.useState(function () {
+    return {
+      getCurrentValue: getCurrentValue,
+      subscribe: subscribe,
+      value: getCurrentValue()
+    };
+  }),
+      state = _useState[0],
+      setState = _useState[1];
+
+  var valueToReturn = state.value; // If parameters have changed since our last render, schedule an update with its current value.
+
+  if (state.getCurrentValue !== getCurrentValue || state.subscribe !== subscribe) {
+    // If the subscription has been updated, we'll schedule another update with React.
+    // React will process this update immediately, so the old subscription value won't be committed.
+    // It is still nice to avoid returning a mismatched value though, so let's override the return value.
+    valueToReturn = getCurrentValue();
+    setState({
+      getCurrentValue: getCurrentValue,
+      subscribe: subscribe,
+      value: valueToReturn
+    });
+  } // Display the current value for this hook in React DevTools.
+
+
+  react.useDebugValue(valueToReturn); // It is important not to subscribe while rendering because this can lead to memory leaks.
+  // (Learn more at reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects)
+  // Instead, we wait until the commit phase to attach our handler.
+  //
+  // We intentionally use a passive effect (useEffect) rather than a synchronous one (useLayoutEffect)
+  // so that we don't stretch the commit phase.
+  // This also has an added benefit when multiple components are subscribed to the same source:
+  // It allows each of the event handlers to safely schedule work without potentially removing an another handler.
+  // (Learn more at https://codesandbox.io/s/k0yvr5970o)
+
+  react.useEffect(function () {
+    var didUnsubscribe = false;
+
+    var checkForUpdates = function () {
+      // It's possible that this callback will be invoked even after being unsubscribed,
+      // if it's removed as a result of a subscription event/update.
+      // In this case, React will log a DEV warning about an update from an unmounted component.
+      // We can avoid triggering that warning with this check.
+      if (didUnsubscribe) {
+        return;
+      } // We use a state updater function to avoid scheduling work for a stale source.
+      // However it's important to eagerly read the currently value,
+      // so that all scheduled work shares the same value (in the event of multiple subscriptions).
+      // This avoids visual "tearing" when a mutation happens during a (concurrent) render.
+
+
+      var value = getCurrentValue();
+      setState(function (prevState) {
+        // Ignore values from stale sources!
+        // Since we subscribe an unsubscribe in a passive effect,
+        // it's possible that this callback will be invoked for a stale (previous) subscription.
+        // This check avoids scheduling an update for that stale subscription.
+        if (prevState.getCurrentValue !== getCurrentValue || prevState.subscribe !== subscribe) {
+          return prevState;
+        } // Some subscriptions will auto-invoke the handler, even if the value hasn't changed.
+        // If the value hasn't changed, no update is needed.
+        // Return state as-is so React can bail out and avoid an unnecessary render.
+
+
+        if (prevState.value === value) {
+          return prevState;
+        }
+
+        return objectAssign({}, prevState, {
+          value: value
+        });
+      });
+    };
+
+    var unsubscribe = subscribe(checkForUpdates); // Because we're subscribing in a passive effect,
+    // it's possible that an update has occurred between render and our effect handler.
+    // Check for this and schedule an update if work has occurred.
+
+    checkForUpdates();
+    return function () {
+      didUnsubscribe = true;
+      unsubscribe();
+    };
+  }, [getCurrentValue, subscribe]); // Return the current value for our caller to use while rendering.
+
+  return valueToReturn;
+}
+
+exports.useSubscription = useSubscription;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/use-subscription/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/use-subscription/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/use-subscription.development.js */ "./node_modules/use-subscription/cjs/use-subscription.development.js");
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -68230,13 +69140,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_17__);
 /* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
+/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../public/jquery-jvectormap.css */ "./public/jquery-jvectormap.css");
+/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next/dist/next-server/lib/dynamic.js");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_20__);
 
 
 
 
 
 
-var _jsxFileName = "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\pages\\_app.js";
+var _jsxFileName = "C:\\Users\\Vava\\Desktop\\covid-19-dashboard\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
@@ -68257,6 +69171,21 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
+
+
+var VectorMap = next_dynamic__WEBPACK_IMPORTED_MODULE_20___default()(function () {
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! react-jvectormap */ "./node_modules/react-jvectormap/build/index.js", 7)).then(function (m) {
+    return m.VectorMap;
+  });
+}, {
+  ssr: false,
+  loadableGenerated: {
+    webpack: function webpack() {
+      return [/*require.resolve*/(/*! react-jvectormap */ "./node_modules/react-jvectormap/build/index.js")];
+    },
+    modules: ["react-jvectormap"]
+  }
+});
 
 var styles = function styles(theme) {
   return {
@@ -68308,6 +69237,11 @@ var darkTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["cr
     type: "dark"
   }
 });
+var cBlue = '#20A0E0';
+var cOrange = '#F7B860';
+var cRed = '#E04040';
+var cGreen = '#80D080';
+var cDRed = '#BB0A1E';
 
 var App = /*#__PURE__*/function (_React$Component) {
   Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(App, _React$Component);
@@ -68349,12 +69283,25 @@ var App = /*#__PURE__*/function (_React$Component) {
       rateDeath: 0,
       showGraph: false,
       selectCategory: 'Hospitalized',
-      rankThailand: -1,
-      rankTopTen: []
+      rankSelect: -1,
+      rankTopTen: [],
+      mapGlobalData: null
     };
-    _this.referenceDate = new Date(2020, 7, 20);
+    _this.referenceDate = new Date();
+
+    _this.referenceDate.setDate(_this.referenceDate.getDate() - 1);
+
     var CancelToken = axios__WEBPACK_IMPORTED_MODULE_17___default.a.CancelToken;
     _this.cancelSource = CancelToken.source();
+
+    var _require = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
+        getCode = _require.getCode,
+        getName = _require.getName,
+        getData = _require.getData;
+
+    _this.getCountryCode = getCode;
+    _this.getCountryName = getName;
+    _this.getCountryData = getData;
     return _this;
   }
 
@@ -68391,7 +69338,7 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "callAPIGlobalAll",
     value: function callAPIGlobalAll(markDate) {
-      var countries, countriesN, data, sourceRef, sourcePrefix, formatChange, cityIndex, countryIndex, conIndex, deathIndex, recIndex, quoteLimit, lines, markDateStr, sourceDate, cancelToken, response, i, values, country, city, confirmed, hospitalized, deaths, recovered, citiesN;
+      var countries, countriesN, data, sourceRef, sourcePrefix, formatChange, cityIndex, countryIndex, conIndex, deathIndex, recIndex, quoteLimit, lines, markDateStr, sourceDate, cancelToken, response, i, values, country, city, confirmed, hospitalized, deaths, recovered, citiesN, mapGlobalData;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobalAll$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -68447,7 +69394,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 
             case 29:
               if (!(lines != '')) {
-                _context.next = 54;
+                _context.next = 55;
                 break;
               }
 
@@ -68470,10 +69417,10 @@ var App = /*#__PURE__*/function (_React$Component) {
               values = lines[i].split(',');
               country = values[countryIndex];
               city = values[cityIndex];
-              confirmed = parseInt(values[conIndex]);
-              hospitalized = parseInt(values[10]);
-              deaths = parseInt(values[deathIndex]);
-              recovered = parseInt(values[recIndex]);
+              confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+              hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+              deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+              recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
 
               if (data[country] != undefined) {
                 confirmed += data[country]["Confirmed"];
@@ -68509,15 +69456,17 @@ var App = /*#__PURE__*/function (_React$Component) {
 
             case 53:
               //console.log(data);
+              mapGlobalData = this.processMapGlobalData(countries, data);
               this.setState({
                 countries: countries,
-                globalData: data
-              }); //console.log(this.state.countries);
-
-            case 54:
-              this.globalRanking(this.state.selectCategory);
+                globalData: data,
+                mapGlobalData: mapGlobalData
+              });
 
             case 55:
+              this.globalRanking(this.state.selectCategory);
+
+            case 56:
             case "end":
               return _context.stop();
           }
@@ -68686,10 +69635,10 @@ var App = /*#__PURE__*/function (_React$Component) {
 
             case 69:
               if (values != undefined) {
-                confirmed = parseInt(values[conIndex]);
-                hospitalized = parseInt(values[10]);
-                deaths = parseInt(values[deathIndex]);
-                recovered = parseInt(values[recIndex]);
+                confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+                hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+                deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+                recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
                 data[dataN] = {
                   Date: date,
                   Confirmed: confirmed,
@@ -68776,17 +69725,17 @@ var App = /*#__PURE__*/function (_React$Component) {
 
             case 8:
               if (!(lines == '')) {
-                _context3.next = 28;
+                _context3.next = 27;
                 break;
               }
 
               markDateStr = markDate.toISOString();
               sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
-              markDate.setDate(markDate.getDate() - 1);
-              console.log(sourceDate);
-              _context3.prev = 13;
+              markDate.setDate(markDate.getDate() - 1); //console.log(sourceDate);
+
+              _context3.prev = 12;
               cancelToken = this.cancelSource.token;
-              _context3.next = 17;
+              _context3.next = 16;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(sourcePrefix + sourceDate + '.csv', {
                 headers: {
                   'Content-Type': 'text/csv'
@@ -68794,92 +69743,92 @@ var App = /*#__PURE__*/function (_React$Component) {
                 cancelToken: cancelToken
               }));
 
-            case 17:
+            case 16:
               response = _context3.sent;
               lines = response.data.split(/\r?\n/);
               thisData.Date = sourceDate.replace('-', '\/').replace('-', '\/');
-              _context3.next = 26;
+              _context3.next = 25;
               break;
 
-            case 22:
-              _context3.prev = 22;
-              _context3.t0 = _context3["catch"](13);
+            case 21:
+              _context3.prev = 21;
+              _context3.t0 = _context3["catch"](12);
               console.log(_context3.t0);
               return _context3.abrupt("return", undefined);
 
-            case 26:
+            case 25:
               _context3.next = 8;
               break;
 
-            case 28:
+            case 27:
               i = 1;
 
-            case 29:
+            case 28:
               if (!(i < lines.length)) {
-                _context3.next = 47;
+                _context3.next = 46;
                 break;
               }
 
               if (!((lines[i].match(/"/g) || []).length > 2)) {
-                _context3.next = 32;
+                _context3.next = 31;
                 break;
               }
 
-              return _context3.abrupt("continue", 44);
+              return _context3.abrupt("continue", 43);
 
-            case 32:
+            case 31:
               values = lines[i].split(',');
 
               if (!(city != '' && city != values[2] || country != '' && country != values[3])) {
-                _context3.next = 35;
+                _context3.next = 34;
                 break;
               }
 
-              return _context3.abrupt("continue", 44);
+              return _context3.abrupt("continue", 43);
 
-            case 35:
-              confirmed = thisData["Confirmed"] + parseInt(values[7]);
-              deaths = thisData["Deaths"] + parseInt(values[8]);
-              recovered = thisData["Recovered"] + parseInt(values[9]);
+            case 34:
+              confirmed = thisData["Confirmed"] + (values[7] == '' ? 0 : parseInt(values[7]));
+              deaths = thisData["Deaths"] + (values[8] == '' ? 0 : parseInt(values[8]));
+              recovered = thisData["Recovered"] + (values[9] == '' ? 0 : parseInt(values[9]));
               thisData.Confirmed = confirmed;
-              thisData.Hospitalized = thisData["Hospitalized"] + parseInt(values[10]);
+              thisData.Hospitalized = thisData["Hospitalized"] + (values[10] == '' ? 0 : parseInt(values[10]));
               thisData.Deaths = deaths;
               thisData.Recovered = recovered;
               thisData.RecoveryRate = recovered / confirmed * 100;
               thisData.MortalityRate = deaths / confirmed * 100;
 
-            case 44:
+            case 43:
               i++;
-              _context3.next = 29;
+              _context3.next = 28;
               break;
 
-            case 47:
+            case 46:
               if (!process) {
-                _context3.next = 57;
+                _context3.next = 55;
                 break;
               }
 
-              _context3.next = 50;
+              _context3.next = 49;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.callAPIGlobal(city, country, markDate, false));
 
-            case 50:
+            case 49:
               prevData = _context3.sent;
               thisData.NewConfirmed = thisData.Confirmed - prevData.Confirmed;
               thisData.NewHospitalized = thisData.Hospitalized - prevData.Hospitalized;
               thisData.NewDeaths = thisData.Deaths - prevData.Deaths;
-              thisData.NewRecovered = thisData.Recovered - prevData.Recovered;
-              console.log(data);
+              thisData.NewRecovered = thisData.Recovered - prevData.Recovered; //console.log(data);
+
               this.processData(sourceRef, data, false);
 
-            case 57:
+            case 55:
               return _context3.abrupt("return", thisData);
 
-            case 58:
+            case 56:
             case "end":
               return _context3.stop();
           }
         }
-      }, null, this, [[13, 22]], Promise);
+      }, null, this, [[12, 21]], Promise);
     } //For when Thailand is selected
     //Provides retrospective data and graph functionalities
     //Local scoped source, data from over 200 days are stored within only one file
@@ -68903,26 +69852,25 @@ var App = /*#__PURE__*/function (_React$Component) {
 
             case 6:
               response = _context4.sent;
-              console.log(response);
               data = response.data['Data'];
-              _context4.next = 15;
+              _context4.next = 14;
               break;
 
-            case 11:
-              _context4.prev = 11;
+            case 10:
+              _context4.prev = 10;
               _context4.t0 = _context4["catch"](2);
               console.log(_context4.t0);
               return _context4.abrupt("return", undefined);
 
-            case 15:
+            case 14:
               if (data.length > 0) this.processData(source, data);
 
-            case 16:
+            case 15:
             case "end":
               return _context4.stop();
           }
         }
-      }, null, this, [[2, 11]], Promise);
+      }, null, this, [[2, 10]], Promise);
     }
   }, {
     key: "getLastDate",
@@ -69013,10 +69961,10 @@ var App = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "globalRankThailand",
-    value: function globalRankThailand(ranking) {
+    key: "globalRankSelect",
+    value: function globalRankSelect(ranking, country) {
       return ranking.findIndex(function (x) {
-        return x.Country == "Thailand";
+        return x.Country == country;
       });
     }
   }, {
@@ -69028,10 +69976,10 @@ var App = /*#__PURE__*/function (_React$Component) {
     key: "globalRanking",
     value: function globalRanking(category) {
       var countries = Object.values(this.state.globalData);
-      countries.sort(this.countryCompare(category));
-      console.log(countries);
+      countries.sort(this.countryCompare(category)); //console.log(countries);
+
       this.setState({
-        rankThailand: this.globalRankThailand(countries),
+        rankSelect: this.globalRankSelect(countries, this.state.selectCountry),
         rankTopTen: this.globalRankTopTen(countries)
       });
     }
@@ -69041,15 +69989,143 @@ var App = /*#__PURE__*/function (_React$Component) {
       if (category == 'Confirmed') return "Confirmed Cases Count";else if (category == 'Hospitalized') return "Active Cases Count";else if (category == 'Deaths') return "Deceased Cases Count";else if (category == 'Recovered') return "Recovered Cases Count";else if (category == 'RecoveryRate') return "Recovery Rate";else if (category == 'MortalityRate') return "Mortality Rate";
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "countryEncodeAssist",
+    value: function countryEncodeAssist(country, countriesName) {
+      if (!countriesName.includes(country)) {
+        if (country == "Bolivia") country = "Bolivia, Plurinational State of";else if (country == "Brunei") country = "Brunei Darussalam";else if (country == "Burma") country = "Myanmar";else if (country == "Congo (Brazzaville)") country = "Congo";else if (country == "Congo (Kinshasa)") country = "Congo, Democratic Republic of the";else if (country == "Cote d'Ivoire") country = "Côte d'Ivoire";else if (country == "Iran") country = "Iran, Islamic Republic of";else if (country == "Kosovo") country = "Serbia";else if (country == "Laos") country = "Lao People's Democratic Republic";else if (country == "Moldova") country = "Moldova, Republic of";else if (country == "Russia") country = "Russian Federation";else if (country == "Syria") country = "Syrian Arab Republic";else if (country == "Taiwan*") country = "Taiwan, Province of China";else if (country == "Tanzania") country = "Tanzania, United Republic of";else if (country == "US") country = "United States of America";else if (country == "United Kingdom") country = "United Kingdom of Great Britain and Northern Ireland";else if (country == "Venezuela") country = "Venezuela, Bolivarian Republic of";else if (country == "Vietnam") country = "Viet Nam";else if (country == "West Bank and Gaza") country = "Palestine, State of";else return undefined;
+      }
+
+      var _require2 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
+          getCode = _require2.getCode;
+
+      return getCode(country);
+    }
+  }, {
+    key: "countryDecodeAssist",
+    value: function countryDecodeAssist(code) {
+      var _require3 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
+          getName = _require3.getName,
+          getNames = _require3.getNames;
+
+      var countriesName = getNames();
+      var country = getName(code);
+      if (country == "Bolivia, Plurinational State of") country = "Bolivia";else if (country == "Brunei Darussalam") country = "Brunei";else if (country == "Myanmar") country = "Burma";else if (country == "Congo") country = "Congo (Brazzaville)";else if (country == "Congo, Democratic Republic of the") country = "Congo (Kinshasa)";else if (country == "Côte d'Ivoire") country = "Cote d'Ivoire";else if (country == "Iran, Islamic Republic of") country = "Iran";else if (country == "Serbia") country = "Kosovo";else if (country == "Lao People's Democratic Republic") country = "Laos";else if (country == "Moldova, Republic of") country = "Moldova";else if (country == "Russian Federation") country = "Russia";else if (country == "Syrian Arab Republic") country = "Syria";else if (country == "Taiwan") country = "Taiwan*";else if (country == "Tanzania, United Republic of") country = "Tanzania";else if (country == "United States of America") country = "US";else if (country == "United Kingdom of Great Britain and Northern Ireland") country = "United Kingdom";else if (country == "Venezuela, Bolivarian Republic of") country = "Venezuela";else if (country == "Viet Nam") country = "Vietnam";else if (country == "Palestine, State of") country = "West Bank and Gaza";
+      return country;
+    }
+  }, {
+    key: "processMapGlobalData",
+    value: function processMapGlobalData(countries, globalData) {
+      var _require4 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
+          getCode = _require4.getCode,
+          getNames = _require4.getNames;
+
+      var countriesName = getNames();
+      var mapGlobalData = {
+        Confirmed: {},
+        Hospitalized: {},
+        Deaths: {},
+        Recovered: {},
+        RecoveryRate: {},
+        MortalityRate: {}
+      };
+
+      for (var i = 0; i < countries.length; i++) {
+        var country = countries[i];
+        var data = globalData[country];
+        var code = this.countryEncodeAssist(country, countriesName);
+        if (code == undefined) continue;
+        mapGlobalData['Confirmed'][code] = data['Confirmed'];
+        mapGlobalData['Hospitalized'][code] = data['Hospitalized'];
+        mapGlobalData['Deaths'][code] = data['Deaths'];
+        mapGlobalData['Recovered'][code] = data['Recovered'];
+        mapGlobalData['RecoveryRate'][code] = parseFloat(data['RecoveryRate']);
+        mapGlobalData['MortalityRate'][code] = parseFloat(data['MortalityRate']);
+      } //console.log(mapGlobalData);
+
+
+      return mapGlobalData;
+    }
+  }, {
+    key: "renderMap",
+    value: function renderMap(category) {
       var _this2 = this;
 
-      var cBlue = '#20A0E0';
-      var cOrange = '#F7B860';
-      var cRed = '#E04040';
-      var cGreen = '#80D080';
-      var cDRed = '#BB0A1E';
+      var handleClick = function handleClick(e, code) {
+        var country = _this2.countryDecodeAssist(code);
+
+        if (_this2.state.countries.includes(country)) _this2.setState({
+          selectCountry: country,
+          selectCity: 'Overall'
+        });
+      };
+
+      var data = this.state.mapGlobalData;
+      var mapData = data[category]; //console.log(mapData);
+
+      var minColor = "#FFFFFF";
+      var maxColor = cRed;
+      if (category == "Recovered" || category == "RecoveryRate") maxColor = cBlue;
+      var normFunction = "polynomial";
+      if (category == "RecoveryRate" || category == "MortalityRate") normFunction = "linear";
+      return __jsx("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 764,
+          columnNumber: 4
+        }
+      }, __jsx(VectorMap, {
+        map: "world_mill",
+        backgroundColor: "#000000" //"transparent" //change it to ocean blue: #0077be
+        ,
+        zoomOnScroll: false,
+        containerStyle: {
+          width: "100%",
+          height: "520px"
+        },
+        onRegionClick: handleClick,
+        containerClassName: "map",
+        regionStyle: {
+          initial: {
+            fill: "#C0C0C0",
+            "fill-opacity": 1,
+            stroke: "white",
+            "stroke-width": 0.2,
+            "stroke-opacity": 1
+          },
+          hover: {
+            "fill-opacity": 0.75,
+            cursor: "pointer"
+          },
+          selected: {},
+          selectedHover: {}
+        },
+        regionsSelectable: false,
+        series: {
+          regions: [{
+            values: mapData,
+            //this is your data
+            scale: [minColor, maxColor],
+            //your color game's here
+            normalizeFunction: normFunction
+          }]
+        },
+        onRegionTipShow: function onRegionTipShow(event, label, code) {
+          label.html('<b><i>' + label.html() + '</i></b></br>' + 'Confirmed: ' + data['Confirmed'][code] + '</br>' + 'Hospitalized: ' + data['Hospitalized'][code] + '</br>' + 'Deaths: ' + data['Deaths'][code] + '</br>' + 'Recovered: ' + data['Recovered'][code] + '</br>' + 'Recovery rate: ' + data['RecoveryRate'][code] + '%' + '</br>' + 'Mortality rate: ' + data['MortalityRate'][code] + '%');
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 765,
+          columnNumber: 5
+        }
+      }));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
       var classes = this.props.classes;
       var _this$state = this.state,
           selectCountry = _this$state.selectCountry,
@@ -69080,14 +70156,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 625,
+          lineNumber: 838,
           columnNumber: 4
         }
       }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_11__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 626,
+          lineNumber: 839,
           columnNumber: 5
         }
       }), __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -69097,14 +70173,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 627,
+          lineNumber: 840,
           columnNumber: 5
         }
       }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 628,
+          lineNumber: 841,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69114,14 +70190,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 629,
+          lineNumber: 842,
           columnNumber: 7
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 630,
+          lineNumber: 843,
           columnNumber: 8
         }
       }, "Simple COVID-19 Dashboard")))), __jsx("div", {
@@ -69129,14 +70205,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 634,
+          lineNumber: 847,
           columnNumber: 5
         }
       }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_12__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 635,
+          lineNumber: 848,
           columnNumber: 5
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69145,7 +70221,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 637,
+          lineNumber: 850,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69154,7 +70230,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 641,
+          lineNumber: 854,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["MuiThemeProvider"], {
@@ -69162,7 +70238,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 642,
+          lineNumber: 855,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69171,14 +70247,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 643,
+          lineNumber: 856,
           columnNumber: 9
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 644,
+          lineNumber: 857,
           columnNumber: 10
         }
       }), "Last updated: ", data_text.updatedDate), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69188,7 +70264,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 647,
+          lineNumber: 860,
           columnNumber: 9
         }
       }, __jsx("a", {
@@ -69198,7 +70274,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 648,
+          lineNumber: 861,
           columnNumber: 10
         }
       }, " ", data_text.source)))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69207,21 +70283,21 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 661,
+          lineNumber: 874,
           columnNumber: 7
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 662,
+          lineNumber: 875,
           columnNumber: 8
         }
       }), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 662,
+          lineNumber: 875,
           columnNumber: 13
         }
       }), __jsx("button", {
@@ -69232,21 +70308,21 @@ var App = /*#__PURE__*/function (_React$Component) {
           color: fastMode ? cDRed : 'blue'
         },
         onClick: function onClick() {
-          return _this2.setState({
+          return _this3.setState({
             fastMode: !fastMode
           });
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 663,
+          lineNumber: 876,
           columnNumber: 8
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 672,
+          lineNumber: 885,
           columnNumber: 9
         }
       }, fastMode ? "FAST MODE" : "FULL MODE"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69255,28 +70331,28 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 675,
+          lineNumber: 888,
           columnNumber: 7
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 676,
+          lineNumber: 889,
           columnNumber: 8
         }
       }), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 676,
+          lineNumber: 889,
           columnNumber: 13
         }
       }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
         options: this.state.countries,
         value: selectCountry,
         onChange: function onChange(select) {
-          return _this2.setState({
+          return _this3.setState({
             selectCountry: select.value,
             selectCity: 'Overall'
           });
@@ -69284,7 +70360,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 677,
+          lineNumber: 890,
           columnNumber: 8
         }
       })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69293,35 +70369,35 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 681,
+          lineNumber: 894,
           columnNumber: 7
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 682,
+          lineNumber: 895,
           columnNumber: 8
         }
       }), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 682,
+          lineNumber: 895,
           columnNumber: 13
         }
       }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
         options: cityChoice,
         value: selectCity,
         onChange: function onChange(select) {
-          return _this2.setState({
+          return _this3.setState({
             selectCity: select.value
           });
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 683,
+          lineNumber: 896,
           columnNumber: 8
         }
       })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69331,7 +70407,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 690,
+          lineNumber: 903,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69339,7 +70415,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 691,
+          lineNumber: 904,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69349,14 +70425,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 692,
+          lineNumber: 905,
           columnNumber: 9
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 692,
+          lineNumber: 905,
           columnNumber: 52
         }
       }, "Confirmed")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69367,7 +70443,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 693,
+          lineNumber: 906,
           columnNumber: 9
         }
       }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69378,7 +70454,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 694,
+          lineNumber: 907,
           columnNumber: 9
         }
       }, "+ ", data_text.newConfirmed.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69388,7 +70464,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 697,
+          lineNumber: 910,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69396,7 +70472,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 698,
+          lineNumber: 911,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69406,14 +70482,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 699,
+          lineNumber: 912,
           columnNumber: 9
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 699,
+          lineNumber: 912,
           columnNumber: 52
         }
       }, "Hospitalized")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69424,7 +70500,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 700,
+          lineNumber: 913,
           columnNumber: 9
         }
       }, data_text.hospitalized.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69435,7 +70511,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 701,
+          lineNumber: 914,
           columnNumber: 9
         }
       }, data_text.newHospitalized >= 0 ? '+' : '-', " ", Math.abs(data_text.newHospitalized).toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69445,7 +70521,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 706,
+          lineNumber: 919,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69453,7 +70529,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 707,
+          lineNumber: 920,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69463,14 +70539,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 708,
+          lineNumber: 921,
           columnNumber: 9
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 708,
+          lineNumber: 921,
           columnNumber: 52
         }
       }, "Deaths")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69481,7 +70557,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 709,
+          lineNumber: 922,
           columnNumber: 9
         }
       }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69492,7 +70568,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 710,
+          lineNumber: 923,
           columnNumber: 9
         }
       }, "+ ", data_text.newDeaths.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69502,7 +70578,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 713,
+          lineNumber: 926,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69510,7 +70586,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 714,
+          lineNumber: 927,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69520,14 +70596,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 715,
+          lineNumber: 928,
           columnNumber: 9
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 715,
+          lineNumber: 928,
           columnNumber: 48
         }
       }, "Recovered")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69538,7 +70614,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 716,
+          lineNumber: 929,
           columnNumber: 9
         }
       }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69549,7 +70625,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 717,
+          lineNumber: 930,
           columnNumber: 9
         }
       }, "+ ", data_text.newRecovered.toLocaleString()))), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69558,7 +70634,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 725,
+          lineNumber: 938,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69566,7 +70642,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 726,
+          lineNumber: 939,
           columnNumber: 9
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69574,7 +70650,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 727,
+          lineNumber: 940,
           columnNumber: 10
         }
       }, "Last confirmed: ", this.state.lastConfirmed, " (", this.state.noConfirmedStreak, " days ago)"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69582,7 +70658,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 730,
+          lineNumber: 943,
           columnNumber: 10
         }
       }, "Last death: ", this.state.lastDeath, " (", this.state.noDeathStreak, " days ago)")))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69591,7 +70667,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 740,
+          lineNumber: 953,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69599,7 +70675,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 741,
+          lineNumber: 954,
           columnNumber: 8
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69610,7 +70686,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 742,
+          lineNumber: 955,
           columnNumber: 9
         }
       }, "Recovery Rate: ", this.state.rateRecovery), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -69621,14 +70697,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 745,
+          lineNumber: 958,
           columnNumber: 9
         }
       }, "Mortality Rate: ", this.state.rateDeath)))), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 756,
+          lineNumber: 969,
           columnNumber: 6
         }
       }), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("button", {
@@ -69639,28 +70715,28 @@ var App = /*#__PURE__*/function (_React$Component) {
           color: this.state.showGraph ? 'grey' : 'steelblue'
         },
         onClick: function onClick() {
-          return _this2.setState({
-            showGraph: !_this2.state.showGraph
+          return _this3.setState({
+            showGraph: !_this3.state.showGraph
           });
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 759,
+          lineNumber: 972,
           columnNumber: 7
         }
       }, "Show/Hide Graphs"), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 770,
+          lineNumber: 983,
           columnNumber: 7
         }
       })), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 773,
+          lineNumber: 986,
           columnNumber: 6
         }
       }), this.state.showGraph && //Whether or not to display graphs
@@ -69670,7 +70746,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 777,
+          lineNumber: 990,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69680,7 +70756,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 779,
+          lineNumber: 992,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69688,7 +70764,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 780,
+          lineNumber: 993,
           columnNumber: 8
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
@@ -69697,7 +70773,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 781,
+          lineNumber: 994,
           columnNumber: 9
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["BarChart"], {
@@ -69713,7 +70789,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 782,
+          lineNumber: 995,
           columnNumber: 10
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
@@ -69721,7 +70797,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 788,
+          lineNumber: 1001,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
@@ -69729,28 +70805,28 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 789,
+          lineNumber: 1002,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 790,
+          lineNumber: 1003,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 791,
+          lineNumber: 1004,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 792,
+          lineNumber: 1005,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
@@ -69759,7 +70835,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 793,
+          lineNumber: 1006,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
@@ -69768,7 +70844,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 794,
+          lineNumber: 1007,
           columnNumber: 11
         }
       }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69778,7 +70854,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 801,
+          lineNumber: 1014,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69786,7 +70862,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 802,
+          lineNumber: 1015,
           columnNumber: 8
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
@@ -69795,7 +70871,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 803,
+          lineNumber: 1016,
           columnNumber: 9
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["PieChart"], {
@@ -69804,14 +70880,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 804,
+          lineNumber: 1017,
           columnNumber: 10
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 805,
+          lineNumber: 1018,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Pie"], {
@@ -69823,7 +70899,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 806,
+          lineNumber: 1019,
           columnNumber: 11
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
@@ -69831,7 +70907,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 807,
+          lineNumber: 1020,
           columnNumber: 12
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
@@ -69839,7 +70915,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 808,
+          lineNumber: 1021,
           columnNumber: 12
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
@@ -69847,14 +70923,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 809,
+          lineNumber: 1022,
           columnNumber: 12
         }
       })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 811,
+          lineNumber: 1024,
           columnNumber: 11
         }
       }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -69863,7 +70939,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 818,
+          lineNumber: 1031,
           columnNumber: 7
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -69871,7 +70947,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 819,
+          lineNumber: 1032,
           columnNumber: 8
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
@@ -69880,7 +70956,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 820,
+          lineNumber: 1033,
           columnNumber: 9
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["LineChart"], {
@@ -69894,7 +70970,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 821,
+          lineNumber: 1034,
           columnNumber: 10
         }
       }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
@@ -69902,7 +70978,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 825,
+          lineNumber: 1038,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
@@ -69910,28 +70986,28 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 826,
+          lineNumber: 1039,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 827,
+          lineNumber: 1040,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 828,
+          lineNumber: 1041,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 829,
+          lineNumber: 1042,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
@@ -69943,7 +71019,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 830,
+          lineNumber: 1043,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
@@ -69955,7 +71031,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 831,
+          lineNumber: 1044,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
@@ -69967,7 +71043,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 832,
+          lineNumber: 1045,
           columnNumber: 11
         }
       }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
@@ -69979,14 +71055,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 833,
+          lineNumber: 1046,
           columnNumber: 11
         }
       })))))), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 840,
+          lineNumber: 1053,
           columnNumber: 6
         }
       }), __jsx("button", {
@@ -69997,28 +71073,28 @@ var App = /*#__PURE__*/function (_React$Component) {
           color: 'grey'
         },
         onClick: function onClick() {
-          return _this2.setState({
-            showGraph: !_this2.state.showGraph
+          return _this3.setState({
+            showGraph: !_this3.state.showGraph
           });
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 841,
+          lineNumber: 1054,
           columnNumber: 6
         }
       }, "Hide Graphs"), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 847,
+          lineNumber: 1060,
           columnNumber: 6
         }
       }), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 847,
+          lineNumber: 1060,
           columnNumber: 11
         }
       })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
@@ -70029,8 +71105,8 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 854,
-          columnNumber: 6
+          lineNumber: 1067,
+          columnNumber: 8
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
@@ -70038,8 +71114,8 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 855,
-          columnNumber: 7
+          lineNumber: 1068,
+          columnNumber: 9
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h5",
@@ -70049,15 +71125,15 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 856,
-          columnNumber: 8
+          lineNumber: 1069,
+          columnNumber: 10
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 857,
-          columnNumber: 9
+          lineNumber: 1070,
+          columnNumber: 11
         }
       }, "Global Ranking based on:")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h5",
@@ -70067,8 +71143,8 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 859,
-          columnNumber: 8
+          lineNumber: 1072,
+          columnNumber: 10
         }
       }, this.globalRankingHeading(selectCategory))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
@@ -70076,39 +71152,38 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 863,
-          columnNumber: 7
+          lineNumber: 1076,
+          columnNumber: 9
         }
       }, __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 864,
-          columnNumber: 8
+          lineNumber: 1077,
+          columnNumber: 10
         }
       }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
         options: categoryChoice,
         value: 'Hospitalized',
         onChange: function onChange(select) {
-          return _this2.setState({
+          return _this3.setState({
             selectCategory: select.value
           });
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 865,
-          columnNumber: 8
+          lineNumber: 1078,
+          columnNumber: 10
         }
-      }))), this.state.rankThailand >= 0 && __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         container: true,
         spacing: 2,
-        direction: "column",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 872,
-          columnNumber: 7
+          lineNumber: 1084,
+          columnNumber: 6
         }
       }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
@@ -70116,107 +71191,135 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 873,
-          columnNumber: 8
+          lineNumber: 1086,
+          columnNumber: 7
+        }
+      }, this.state.rankSelect >= 0 && __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        container: true,
+        spacing: 2,
+        direction: "column",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 1088,
+          columnNumber: 9
+        }
+      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: 12,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 1089,
+          columnNumber: 10
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 874,
-          columnNumber: 9
+          lineNumber: 1090,
+          columnNumber: 11
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         align: "center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 875,
-          columnNumber: 10
+          lineNumber: 1091,
+          columnNumber: 12
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 876,
-          columnNumber: 11
+          lineNumber: 1092,
+          columnNumber: 13
         }
-      }, "Rank ", this.state.rankThailand, ". Thailand - ", this.state.globalData['Thailand'][selectCategory], rankSuffix), __jsx("br", {
+      }, "Rank ", this.state.rankSelect, ". ", selectCountry, " - ", this.state.globalData[selectCountry][selectCategory], rankSuffix), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 877,
-          columnNumber: 11
+          lineNumber: 1093,
+          columnNumber: 13
         }
       }), "out of ", this.state.countries.length, " countries"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
         item: true,
-        xs: 3,
+        xs: 12,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 881,
-          columnNumber: 8
+          lineNumber: 1097,
+          columnNumber: 10
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
         className: classes.paper,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 882,
-          columnNumber: 9
+          lineNumber: 1098,
+          columnNumber: 11
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         variant: "h6",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 883,
-          columnNumber: 10
+          lineNumber: 1099,
+          columnNumber: 12
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 884,
-          columnNumber: 11
+          lineNumber: 1100,
+          columnNumber: 13
         }
       }, "Top 10 Countries"), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 884,
-          columnNumber: 34
+          lineNumber: 1100,
+          columnNumber: 36
         }
       })), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 886,
-          columnNumber: 10
+          lineNumber: 1102,
+          columnNumber: 12
         }
       }, this.state.rankTopTen.map(function (c, i) {
         return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("b", {
-          __self: _this2,
+          __self: _this3,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 888,
-            columnNumber: 13
+            lineNumber: 1104,
+            columnNumber: 15
           }
         }, i + 1, "."), " ", c.Country, " - ", c[selectCategory], rankSuffix, __jsx("br", {
-          __self: _this2,
+          __self: _this3,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 888,
-            columnNumber: 72
+            lineNumber: 1104,
+            columnNumber: 74
           }
         }));
-      })))))), __jsx("footer", {
+      })))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        item: true,
+        xs: 9,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 1115,
+          columnNumber: 7
+        }
+      }, this.state.mapGlobalData != null && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, this.renderMap(selectCategory))))), __jsx("footer", {
         className: classes.footer,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 900,
+          lineNumber: 1129,
           columnNumber: 5
         }
       }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -70224,7 +71327,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 901,
+          lineNumber: 1130,
           columnNumber: 6
         }
       }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -70232,14 +71335,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 902,
+          lineNumber: 1131,
           columnNumber: 7
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 903,
+          lineNumber: 1132,
           columnNumber: 8
         }
       }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -70247,7 +71350,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 905,
+          lineNumber: 1134,
           columnNumber: 7
         }
       }, "By Thanjira S. and Woottipat H."))));
@@ -70261,6 +71364,67 @@ var App = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./public/jquery-jvectormap.css":
+/*!**************************************!*\
+  !*** ./public/jquery-jvectormap.css ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./jquery-jvectormap.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./public/jquery-jvectormap.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+if (true) {
+  if (!content.locals) {
+    module.hot.accept(
+      /*! !../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./jquery-jvectormap.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./public/jquery-jvectormap.css",
+      function () {
+        var newContent = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./jquery-jvectormap.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./public/jquery-jvectormap.css");
+
+        if (typeof newContent === 'string') {
+          newContent = [[module.i, newContent, '']];
+        }
+        
+        update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() { 
+    update();
+  });
+}
+
+/***/ }),
+
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js ./node_modules/next/dist/client/router.js ***!
@@ -70269,7 +71433,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! next-client-pages-loader?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./");
-module.exports = __webpack_require__(/*! C:\Users\Herabat\react-js\covid-19-dashboard\node_modules\next\dist\client\router.js */"./node_modules/next/dist/client/router.js");
+module.exports = __webpack_require__(/*! C:\Users\Vava\Desktop\covid-19-dashboard\node_modules\next\dist\client\router.js */"./node_modules/next/dist/client/router.js");
 
 
 /***/ }),

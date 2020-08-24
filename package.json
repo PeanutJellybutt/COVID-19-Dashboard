@@ -10,10 +10,13 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
+    "country-list": "^2.2.0",
+    "material-ui": "^0.20.2",
     "next": "9.3.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-dropdown": "^1.8.0",
+    "react-jvectormap": "0.0.16",
     "recharts": "^1.8.5"
   }
 }
