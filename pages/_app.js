@@ -42,14 +42,6 @@ const styles = theme => ({
     justifyContent: 'center',
 		backgroundColor: "#FFFEFE",
   },
-	paperFoot: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-		backgroundColor: "#777070",
-  },
   footer: {
     backgroundColor: theme.palette.background.paper,
     marginTop: theme.spacing(2),
@@ -83,6 +75,7 @@ class App extends React.Component {
   constructor(props) {
 		super(props);
 		this.state = {
+			hasData: false,
 			selectCountry: 'Thailand',
 			selectCity: 'Overall',
 			countries: [],
@@ -536,6 +529,7 @@ class App extends React.Component {
 		}
 		
 		this.setState({
+			hasData: true,
 			hasTimeline: hasTimeline,
 			dataTimeline: dataReformatted,
 			dataTimeline15: dataReformatted.slice(1).slice(-15),
@@ -774,7 +768,7 @@ class App extends React.Component {
 					containerClassName="map"
 					regionStyle={{
 						initial: {
-							fill: "#C0C0C0",
+							fill: "#A0A0A0",
 							"fill-opacity": 1,
 							stroke: "white",
 							"stroke-width": 0.2,
@@ -816,10 +810,13 @@ class App extends React.Component {
 	render() {
 		const { classes } = this.props;
 		const {
-			selectCountry, selectCity, fastMode, 
+			hasData, selectCountry, selectCity, fastMode, 
 			dataTimeline, dataTimeline15, data_text, data_pie,
 			selectCategory
 		} = this.state;
+		
+		if (!hasData)
+			return (<h>ERROR: Cannot fetch data</h>);
 		
 		const selectedCountryData = this.state.globalData[selectCountry];
 		let cityChoice = ["Overall"];
@@ -840,7 +837,7 @@ class App extends React.Component {
 				<AppBar style={{background: cDRed}}>
 					<Toolbar>
 						<Typography variant="h4" className={classes.title} align="center">
-							<b>Simple COVID-19 Dashboard</b>
+							<b>COVID-19 Dashboard</b>
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -1127,9 +1124,9 @@ class App extends React.Component {
 				{/*-------------------------------- Footer --------------------------------*/}
 				
 				<footer className={classes.footer}>
-					<Paper className={classes.paperFoot}>
+					<Paper className={classes.paper} style={{background: "#8F8080"}}>
 						<Typography variant="h6">
-							<b>Simple Covid-19 Dashboard for Tencent Thailand's Internship Project</b>
+							<b>COVID-19 Dashboard for Tencent Thailand's Internship Project</b>
 						</Typography>
 						<Typography component="p">
 							By Thanjira S. and Woottipat H.
