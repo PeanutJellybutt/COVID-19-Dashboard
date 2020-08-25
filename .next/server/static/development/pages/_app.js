@@ -106,81 +106,583 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/react-dropdown/style.css":
-/*!***********************************************!*\
-  !*** ./node_modules/react-dropdown/style.css ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./pages/_app.js":
-/*!***********************!*\
-  !*** ./pages/_app.js ***!
-  \***********************/
-/*! exports provided: default */
+/***/ "./components/dataFetch.js":
+/*!*********************************!*\
+  !*** ./components/dataFetch.js ***!
+  \*********************************/
+/*! exports provided: fetchData, callAPIGlobalAll, callAPIGlobalTimeline, callAPIGlobal, callAPIThailand, clearAxiosCalls, getLastDate, getDateDiff, processData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/AppBar */ "@material-ui/core/AppBar");
-/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "@material-ui/core/Toolbar");
-/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "@material-ui/core/CssBaseline");
-/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Container */ "@material-ui/core/Container");
-/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Paper */ "@material-ui/core/Paper");
-/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Grid */ "@material-ui/core/Grid");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-dropdown */ "react-dropdown");
-/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-dropdown/style.css */ "./node_modules/react-dropdown/style.css");
-/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! recharts */ "recharts");
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(recharts__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../public/jquery-jvectormap.css */ "./public/jquery-jvectormap.css");
-/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_14__);
-var _jsxFileName = "C:\\Users\\Vava\\Desktop\\covid-19-dashboard\\pages\\_app.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchData", function() { return fetchData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIGlobalAll", function() { return callAPIGlobalAll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIGlobalTimeline", function() { return callAPIGlobalTimeline; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIGlobal", function() { return callAPIGlobal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIThailand", function() { return callAPIThailand; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearAxiosCalls", function() { return clearAxiosCalls; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLastDate", function() { return getLastDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDateDiff", function() { return getDateDiff; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processData", function() { return processData; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
+function fetchData(refDate) {
+  if (this.state.selectCountry == 'Thailand') this.callAPIThailand();else if (this.state.fastMode) this.callAPIGlobal(this.state.selectCity, this.state.selectCountry, new Date(refDate.getTime()));else this.callAPIGlobalTimeline(this.state.selectCity, this.state.selectCountry);
+} //For ranking and map functionalities
+//Only data from one day/file is processed
 
+async function callAPIGlobalAll(markDate) {
+  markDate = new Date(markDate.getTime());
+  let countries = [];
+  let countriesN = 0;
+  let data = new Object();
+  const sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+  const sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+  const formatChange = new Date(2020, 2, 22).getTime();
+  let cityIndex = 0;
+  let countryIndex = 1;
+  let conIndex = 3;
+  let deathIndex = 4;
+  let recIndex = 5;
+  let quoteLimit = 0; //Workaround for source's formatting inconsistencies
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-const VectorMap = next_dynamic__WEBPACK_IMPORTED_MODULE_14___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! react-jvectormap */ "react-jvectormap", 7)).then(m => m.VectorMap), {
-  ssr: false,
-  loadableGenerated: {
-    webpack: () => [/*require.resolve*/(/*! react-jvectormap */ "react-jvectormap")],
-    modules: ["react-jvectormap"]
+  if (cityIndex == 0 && markDate.getTime() >= formatChange) {
+    cityIndex = 2;
+    countryIndex = 3;
+    conIndex = 7;
+    deathIndex = 8;
+    recIndex = 9;
+    quoteLimit = 2;
   }
-});
+
+  let lines = '';
+  const markDateStr = markDate.toISOString();
+  const sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear(); //console.log(sourceDate);
+
+  try {
+    const cancelToken = this.cancelSource.token;
+    const response = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(sourcePrefix + sourceDate + '.csv', {
+      headers: {
+        'Content-Type': 'text/csv'
+      },
+      cancelToken: cancelToken
+    });
+    lines = response.data.split(/\r?\n/);
+  } catch (err) {
+    console.log(err);
+    return undefined;
+  }
+
+  if (lines != '') {
+    for (let i = 1; i < lines.length; i++) {
+      if (lines[i] == '' || (lines[i].match(/"/g) || []).length > quoteLimit) continue;
+      const values = lines[i].split(',');
+      const country = values[countryIndex];
+      const city = values[cityIndex];
+      let confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+      let hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+      let deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+      let recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
+
+      if (data[country] != undefined) {
+        confirmed += data[country]["Confirmed"];
+        hospitalized += data[country]["Hospitalized"];
+        deaths += data[country]["Deaths"];
+        recovered += data[country]["Recovered"];
+      } else {
+        data[country] = new Object();
+        data[country].Country = country;
+        data[country].Cities = [];
+        data[country].CitiesN = 0;
+        countries[countriesN] = country;
+        countriesN++;
+      }
+
+      const citiesN = data[country].CitiesN;
+      data[country].Confirmed = confirmed;
+      data[country].Hospitalized = hospitalized;
+      data[country].Deaths = deaths;
+      data[country].Recovered = recovered;
+      data[country].RecoveryRate = (recovered / confirmed * 100).toFixed(2);
+      data[country].MortalityRate = (deaths / confirmed * 100).toFixed(2);
+
+      if (city != '') {
+        data[country].Cities[citiesN] = city;
+        data[country].CitiesN = citiesN + 1;
+      }
+    } //console.log(data);
+
+
+    const mapGlobalData = this.processMapGlobalData(countries, data);
+    this.setState({
+      countries: countries,
+      globalData: data,
+      mapGlobalData: mapGlobalData
+    });
+  }
+
+  this.globalRanking(this.state.selectCategory);
+} //When foreign country is selected
+//Provides retrospective data and graph functionalities
+//Taxing, over 200 days/files must be processed
+//Somehow sometimes fast, sometimes slow. Cause still unknown.
+
+async function callAPIGlobalTimeline(city, country) {
+  if (city == 'Overall') {
+    city = '';
+  }
+
+  let data = [{}];
+  let dataN = 0;
+  let prevConfirmed = 0;
+  let prevHospitalized = 0;
+  let prevDeaths = 0;
+  let prevRecovered = 0;
+  const sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+  const sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+  let markDate = new Date(2020, 0, 23);
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const now = tomorrow.getTime();
+  let cityIndex = 0;
+  let countryIndex = 1;
+  let conIndex = 3;
+  let deathIndex = 4;
+  let recIndex = 5;
+  let lastIndex = 1;
+  const formatChange = new Date(2020, 2, 22).getTime();
+
+  while (markDate.getTime() < now) {
+    let lines = '';
+    const markDateStr = markDate.toISOString();
+    const sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
+    console.log(sourceDate); //console.log(lastIndex);
+    //Workaround for source's formatting inconsistencies
+
+    if (cityIndex == 0 && markDate.getTime() >= formatChange) {
+      cityIndex = 2;
+      countryIndex = 3;
+      conIndex = 7;
+      deathIndex = 8;
+      recIndex = 9;
+    }
+
+    try {
+      const cancelToken = this.cancelSource.token;
+      const response = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(sourcePrefix + sourceDate + '.csv', {
+        headers: {
+          'Content-Type': 'text/csv'
+        },
+        cancelToken: cancelToken
+      });
+      lines = response.data.split(/\r?\n/);
+    } catch (err) {
+      console.log(err);
+      return undefined;
+    }
+
+    markDate.setDate(markDate.getDate() + 1);
+    if (lines == '') continue;
+    console.log(lastIndex);
+    const date = sourceDate.replace('-', '\/').replace('-', '\/');
+    let values = undefined;
+    if (lines[lastIndex]) values = lines[lastIndex].split(',');else lastIndex = 1;
+
+    if (values == undefined || city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex]) {
+      for (let i = lastIndex + 1; i < lines.length; i++) {
+        values = lines[i].split(',');
+
+        if (city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex]) {
+          values = undefined;
+          continue;
+        }
+
+        lastIndex = i;
+        break;
+      }
+
+      if (values == undefined) {
+        for (let i = 1; i < lastIndex; i++) {
+          values = lines[i].split(',');
+
+          if (city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex]) {
+            values = undefined;
+            continue;
+          }
+
+          lastIndex = i;
+          break;
+        }
+      }
+    }
+
+    if (values != undefined) {
+      const confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+      const hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+      const deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+      const recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
+      data[dataN] = {
+        Date: date,
+        Confirmed: confirmed,
+        Hospitalized: hospitalized,
+        Deaths: deaths,
+        Recovered: recovered,
+        NewConfirmed: confirmed - prevConfirmed,
+        NewHospitalized: hospitalized - prevHospitalized,
+        NewDeaths: deaths - prevDeaths,
+        NewRecovered: recovered - prevRecovered
+      };
+      prevConfirmed = confirmed;
+      prevHospitalized = hospitalized;
+      prevDeaths = deaths;
+      prevRecovered = recovered;
+      dataN++;
+    }
+  }
+
+  console.log(data);
+  this.processData(sourceRef, data);
+} //When foreign country is selected
+//No streak data or timeline functionality
+//Only data from two days/files is processed
+
+async function callAPIGlobal(city, country, markDate, process = true) {
+  if (city == 'Overall') {
+    city = '';
+  }
+
+  let data = [{}];
+  data[0] = {
+    Date: '',
+    Confirmed: 0,
+    Hospitalized: 0,
+    Deaths: 0,
+    Recovered: 0,
+    RecoveryRate: 0,
+    MortalityRate: 0,
+    NewConfirmed: 0,
+    NewHospitalized: 0,
+    NewDeaths: 0,
+    NewRecovered: 0
+  };
+  const thisData = data[0];
+  const sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+  const sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+  let lines = '';
+
+  while (lines == '') {
+    const markDateStr = markDate.toISOString();
+    const sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
+    markDate.setDate(markDate.getDate() - 1); //console.log(sourceDate);
+
+    try {
+      const cancelToken = this.cancelSource.token;
+      const response = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(sourcePrefix + sourceDate + '.csv', {
+        headers: {
+          'Content-Type': 'text/csv'
+        },
+        cancelToken: cancelToken
+      });
+      lines = response.data.split(/\r?\n/);
+      thisData.Date = sourceDate.replace('-', '\/').replace('-', '\/');
+    } catch (err) {
+      console.log(err);
+      return undefined;
+    }
+  }
+
+  for (let i = 1; i < lines.length; i++) {
+    if ((lines[i].match(/"/g) || []).length > 2) continue;
+    const values = lines[i].split(',');
+    if (city != '' && city != values[2] || country != '' && country != values[3]) continue;
+    const confirmed = thisData["Confirmed"] + (values[7] == '' ? 0 : parseInt(values[7]));
+    const deaths = thisData["Deaths"] + (values[8] == '' ? 0 : parseInt(values[8]));
+    const recovered = thisData["Recovered"] + (values[9] == '' ? 0 : parseInt(values[9]));
+    thisData.Confirmed = confirmed;
+    thisData.Hospitalized = thisData["Hospitalized"] + (values[10] == '' ? 0 : parseInt(values[10]));
+    thisData.Deaths = deaths;
+    thisData.Recovered = recovered;
+    thisData.RecoveryRate = recovered / confirmed * 100;
+    thisData.MortalityRate = deaths / confirmed * 100;
+  }
+
+  if (process) {
+    const prevData = await this.callAPIGlobal(city, country, markDate, false);
+    thisData.NewConfirmed = thisData.Confirmed - prevData.Confirmed;
+    thisData.NewHospitalized = thisData.Hospitalized - prevData.Hospitalized;
+    thisData.NewDeaths = thisData.Deaths - prevData.Deaths;
+    thisData.NewRecovered = thisData.Recovered - prevData.Recovered; //console.log(data);
+
+    this.processData(sourceRef, data, false);
+  }
+
+  return thisData;
+} //For when Thailand is selected
+//Provides retrospective data and graph functionalities
+//Local scoped source, data from over 200 days are stored within only one file
+
+async function callAPIThailand() {
+  const source = 'https://covid19.th-stat.com/api/open/timeline';
+  let data = [];
+
+  try {
+    const cancelToken = this.cancelSource.token;
+    const response = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(source, {
+      cancelToken: cancelToken
+    });
+    data = response.data['Data'];
+  } catch (err) {
+    console.log(err);
+    return undefined;
+  }
+
+  if (data != undefined) {
+    //console.log(data);
+    this.processData(source, data);
+  }
+}
+function clearAxiosCalls() {
+  this.cancelSource.cancel('Axios operations cleared');
+  const CancelToken = axios__WEBPACK_IMPORTED_MODULE_0___default.a.CancelToken;
+  this.cancelSource = CancelToken.source();
+}
+function getLastDate(type, data) {
+  for (let i = data.length - 1; i >= 0; i--) {
+    if (data[i][type] != 0) return data[i]['Date'];
+  }
+}
+function getDateDiff(date) {
+  let now = new Date().getTime();
+  return Math.floor((now - new Date(date).getTime()) / 86400000);
+}
+function processData(source, data, hasTimeline = true) {
+  if (data.length <= 0) return;
+  const lastData = data.slice(-1)[0];
+  const dataReformatted = data.slice().map(d => {
+    return Object.assign({}, d, {
+      Date: d.Date.slice(3, 6) + d.Date.slice(0, 2)
+    });
+  });
+  const lastUpdated = lastData['Date'];
+  let lastConfirmedFormatted = 0;
+  let lastDeathFormatted = 0;
+  let noConfirmedStreak = 0;
+  let noDeathStreak = 0;
+
+  if (hasTimeline) {
+    const lastConfirmed = this.getLastDate('NewConfirmed', data);
+    const lastDeath = this.getLastDate('NewDeaths', data);
+    lastConfirmedFormatted = lastConfirmed.slice(3, 6) + lastConfirmed.slice(0, 3) + lastConfirmed.slice(6);
+    lastDeathFormatted = lastDeath.slice(3, 6) + lastDeath.slice(0, 3) + lastDeath.slice(6);
+    noConfirmedStreak = this.getDateDiff(lastConfirmed);
+    noDeathStreak = this.getDateDiff(lastDeath);
+  }
+
+  this.setState({
+    hasData: true,
+    hasTimeline: hasTimeline,
+    dataTimeline: dataReformatted,
+    dataTimeline15: dataReformatted.slice(1).slice(-15),
+    data_text: {
+      source: source,
+      updatedDate: lastUpdated.slice(3, 6) + lastUpdated.slice(0, 3) + lastUpdated.slice(6),
+      confirmed: lastData['Confirmed'],
+      hospitalized: lastData['Hospitalized'],
+      deaths: lastData['Deaths'],
+      recovered: lastData['Recovered'],
+      newConfirmed: lastData['NewConfirmed'],
+      newHospitalized: lastData['NewHospitalized'],
+      newDeaths: lastData['NewDeaths'],
+      newRecovered: lastData['NewRecovered']
+    },
+    data_pie: [{
+      name: 'Hospitalized',
+      value: lastData['Hospitalized']
+    }, {
+      name: 'Deaths',
+      value: lastData['Deaths']
+    }, {
+      name: 'Recovered',
+      value: lastData['Recovered']
+    }],
+    lastConfirmed: lastConfirmedFormatted,
+    lastDeath: lastDeathFormatted,
+    noConfirmedStreak: noConfirmedStreak,
+    noDeathStreak: noDeathStreak,
+    rateRecovery: (100 * lastData['Recovered'] / lastData['Confirmed']).toFixed(2) + '%',
+    rateDeath: (100 * lastData['Deaths'] / lastData['Confirmed']).toFixed(2) + '%'
+  });
+}
+
+/***/ }),
+
+/***/ "./components/dataMap.js":
+/*!*******************************!*\
+  !*** ./components/dataMap.js ***!
+  \*******************************/
+/*! exports provided: countryEncodeAssist, countryDecodeAssist, processMapGlobalData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countryEncodeAssist", function() { return countryEncodeAssist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countryDecodeAssist", function() { return countryDecodeAssist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processMapGlobalData", function() { return processMapGlobalData; });
+function countryEncodeAssist(country, countriesName) {
+  if (!countriesName.includes(country)) {
+    if (country == "Bolivia") country = "Bolivia, Plurinational State of";else if (country == "Brunei") country = "Brunei Darussalam";else if (country == "Burma") country = "Myanmar";else if (country == "Congo (Brazzaville)") country = "Congo";else if (country == "Congo (Kinshasa)") country = "Congo, Democratic Republic of the";else if (country == "Cote d'Ivoire") country = "Côte d'Ivoire";else if (country == "Iran") country = "Iran, Islamic Republic of";else if (country == "Kosovo") country = "Serbia";else if (country == "Laos") country = "Lao People's Democratic Republic";else if (country == "Moldova") country = "Moldova, Republic of";else if (country == "Russia") country = "Russian Federation";else if (country == "Syria") country = "Syrian Arab Republic";else if (country == "Taiwan*") country = "Taiwan, Province of China";else if (country == "Tanzania") country = "Tanzania, United Republic of";else if (country == "US") country = "United States of America";else if (country == "United Kingdom") country = "United Kingdom of Great Britain and Northern Ireland";else if (country == "Venezuela") country = "Venezuela, Bolivarian Republic of";else if (country == "Vietnam") country = "Viet Nam";else if (country == "West Bank and Gaza") country = "Palestine, State of";else return undefined;
+  }
+
+  const {
+    getCode
+  } = __webpack_require__(/*! country-list */ "country-list");
+
+  return getCode(country);
+}
+function countryDecodeAssist(code) {
+  const {
+    getName,
+    getNames
+  } = __webpack_require__(/*! country-list */ "country-list");
+
+  const countriesName = getNames();
+  let country = getName(code);
+  if (country == "Bolivia, Plurinational State of") country = "Bolivia";else if (country == "Brunei Darussalam") country = "Brunei";else if (country == "Myanmar") country = "Burma";else if (country == "Congo") country = "Congo (Brazzaville)";else if (country == "Congo, Democratic Republic of the") country = "Congo (Kinshasa)";else if (country == "Côte d'Ivoire") country = "Cote d'Ivoire";else if (country == "Iran, Islamic Republic of") country = "Iran";else if (country == "Serbia") country = "Kosovo";else if (country == "Lao People's Democratic Republic") country = "Laos";else if (country == "Moldova, Republic of") country = "Moldova";else if (country == "Russian Federation") country = "Russia";else if (country == "Syrian Arab Republic") country = "Syria";else if (country == "Taiwan") country = "Taiwan*";else if (country == "Tanzania, United Republic of") country = "Tanzania";else if (country == "United States of America") country = "US";else if (country == "United Kingdom of Great Britain and Northern Ireland") country = "United Kingdom";else if (country == "Venezuela, Bolivarian Republic of") country = "Venezuela";else if (country == "Viet Nam") country = "Vietnam";else if (country == "Palestine, State of") country = "West Bank and Gaza";
+  return country;
+}
+function processMapGlobalData(countries, globalData) {
+  const {
+    getCode,
+    getNames
+  } = __webpack_require__(/*! country-list */ "country-list");
+
+  const countriesName = getNames();
+  const mapGlobalData = {
+    Confirmed: {},
+    Hospitalized: {},
+    Deaths: {},
+    Recovered: {},
+    RecoveryRate: {},
+    MortalityRate: {}
+  };
+
+  for (let i = 0; i < countries.length; i++) {
+    const country = countries[i];
+    const data = globalData[country];
+    const code = this.countryEncodeAssist(country, countriesName);
+    if (code == undefined) continue;
+    mapGlobalData['Confirmed'][code] = data['Confirmed'];
+    mapGlobalData['Hospitalized'][code] = data['Hospitalized'];
+    mapGlobalData['Deaths'][code] = data['Deaths'];
+    mapGlobalData['Recovered'][code] = data['Recovered'];
+    mapGlobalData['RecoveryRate'][code] = parseFloat(data['RecoveryRate']);
+    mapGlobalData['MortalityRate'][code] = parseFloat(data['MortalityRate']);
+  } //console.log(mapGlobalData);
+
+
+  return mapGlobalData;
+}
+
+/***/ }),
+
+/***/ "./components/dataRank.js":
+/*!********************************!*\
+  !*** ./components/dataRank.js ***!
+  \********************************/
+/*! exports provided: countryCompare, globalRankSelect, globalRankTopTen, globalRanking, globalRankingHeading */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countryCompare", function() { return countryCompare; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRankSelect", function() { return globalRankSelect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRankTopTen", function() { return globalRankTopTen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRanking", function() { return globalRanking; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRankingHeading", function() { return globalRankingHeading; });
+function countryCompare(category) {
+  return function innerSort(a, b) {
+    let valA = a[category];
+    let valB = b[category];
+
+    if (typeof valA == "string") {
+      valA = parseInt(valA);
+      valB = parseInt(valB);
+    }
+
+    if (valA > valB) return -1;else if (valA < valB) return 1;else return 0;
+  };
+}
+function globalRankSelect(ranking, country) {
+  return ranking.findIndex(x => x.Country == country) + 1;
+}
+function globalRankTopTen(ranking) {
+  return ranking.slice(0, 10);
+}
+function globalRanking(category) {
+  const countries = Object.values(this.state.globalData);
+  countries.sort(this.countryCompare(category)); //console.log(countries);
+
+  this.setState({
+    rankSelect: this.globalRankSelect(countries, this.state.selectCountry),
+    rankTopTen: this.globalRankTopTen(countries)
+  });
+}
+function globalRankingHeading(category) {
+  if (category == 'Confirmed') return "Confirmed Cases Count";else if (category == 'Hospitalized') return "Active Cases Count";else if (category == 'Deaths') return "Deceased Cases Count";else if (category == 'Recovered') return "Recovered Cases Count";else if (category == 'RecoveryRate') return "Recovery Rate";else if (category == 'MortalityRate') return "Mortality Rate";
+}
+
+/***/ }),
+
+/***/ "./components/muiComponents.js":
+/*!*************************************!*\
+  !*** ./components/muiComponents.js ***!
+  \*************************************/
+/*! exports provided: withStyles, createMuiTheme, MuiThemeProvider, AppBar, Toolbar, Typography, CssBaseline, Container, Paper, Grid, styles, darkTheme */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "darkTheme", function() { return darkTheme; });
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withStyles", function() { return _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["withStyles"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createMuiTheme", function() { return _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["createMuiTheme"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MuiThemeProvider", function() { return _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["MuiThemeProvider"]; });
+
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/AppBar */ "@material-ui/core/AppBar");
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "AppBar", function() { return _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_1___default.a; });
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "@material-ui/core/Toolbar");
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Toolbar", function() { return _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2___default.a; });
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Typography", function() { return _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default.a; });
+/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "@material-ui/core/CssBaseline");
+/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "CssBaseline", function() { return _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4___default.a; });
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Container */ "@material-ui/core/Container");
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Container", function() { return _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_5___default.a; });
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Paper */ "@material-ui/core/Paper");
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Paper", function() { return _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_6___default.a; });
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Grid */ "@material-ui/core/Grid");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Grid", function() { return _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a; });
+
+
+
+
+
+
+
+
+
 
 const styles = theme => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -201,14 +703,6 @@ const styles = theme => ({
     justifyContent: 'center',
     backgroundColor: "#FFFEFE"
   },
-  paperFoot: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: "#777070"
-  },
   footer: {
     backgroundColor: theme.palette.background.paper,
     marginTop: theme.spacing(2)
@@ -224,12 +718,80 @@ const styles = theme => ({
     marginTop: theme.spacing(2)
   }
 });
-
-const darkTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["createMuiTheme"])({
+const darkTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["createMuiTheme"])({
   palette: {
     type: "dark"
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/react-dropdown/style.css":
+/*!***********************************************!*\
+  !*** ./node_modules/react-dropdown/style.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./pages/_app.js":
+/*!***********************!*\
+  !*** ./pages/_app.js ***!
+  \***********************/
+/*! exports provided: VectorMap, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VectorMap", function() { return VectorMap; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/muiComponents.js */ "./components/muiComponents.js");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dropdown */ "react-dropdown");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dropdown/style.css */ "./node_modules/react-dropdown/style.css");
+/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! recharts */ "recharts");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(recharts__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/dataFetch.js */ "./components/dataFetch.js");
+/* harmony import */ var _components_dataRank_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/dataRank.js */ "./components/dataRank.js");
+/* harmony import */ var _components_dataMap_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/dataMap.js */ "./components/dataMap.js");
+/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../public/jquery-jvectormap.css */ "./public/jquery-jvectormap.css");
+/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_10__);
+var _jsxFileName = "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\pages\\_app.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+ //MUI
+
+ //DROPDOWN
+
+
+ //RECHARTS
+
+ //AXIOS DATA
+
+
+ //RANKING
+
+ //JVECTORMAP
+
+
+
+
+const VectorMap = next_dynamic__WEBPACK_IMPORTED_MODULE_10___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! react-jvectormap */ "react-jvectormap", 7)).then(m => m.VectorMap), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! react-jvectormap */ "react-jvectormap")],
+    modules: ["react-jvectormap"]
+  }
+}); //----------------------------------------------------------------
+
 const cBlue = '#20A0E0';
 const cOrange = '#F7B860';
 const cRed = '#E04040';
@@ -240,6 +802,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     this.state = {
+      hasData: false,
       selectCountry: 'Thailand',
       selectCity: 'Overall',
       countries: [],
@@ -274,7 +837,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     };
     this.referenceDate = new Date();
     this.referenceDate.setDate(this.referenceDate.getDate() - 1);
-    const CancelToken = axios__WEBPACK_IMPORTED_MODULE_11___default.a.CancelToken;
+    const CancelToken = axios__WEBPACK_IMPORTED_MODULE_5___default.a.CancelToken;
     this.cancelSource = CancelToken.source();
 
     const {
@@ -285,16 +848,32 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
     this.getCountryCode = getCode;
     this.getCountryName = getName;
-    this.getCountryData = getData;
+    this.getCountryData = getData; //Binding dataFetch functions
+
+    this.fetchData = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["fetchData"].bind(this);
+    this.callAPIGlobalAll = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["callAPIGlobalAll"].bind(this);
+    this.callAPIGlobalTimeline = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["callAPIGlobalTimeline"].bind(this);
+    this.callAPIGlobal = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["callAPIGlobal"].bind(this);
+    this.callAPIThailand = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["callAPIThailand"].bind(this);
+    this.clearAxiosCalls = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["clearAxiosCalls"].bind(this);
+    this.getLastDate = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["getLastDate"].bind(this);
+    this.getDateDiff = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["getDateDiff"].bind(this);
+    this.processData = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_6__["processData"].bind(this); //Binding dataRank functions
+
+    this.countryCompare = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_7__["countryCompare"].bind(this);
+    this.globalRankSelect = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_7__["globalRankSelect"].bind(this);
+    this.globalRankTopTen = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_7__["globalRankTopTen"].bind(this);
+    this.globalRanking = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_7__["globalRanking"].bind(this);
+    this.globalRankingHeading = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_7__["globalRankingHeading"].bind(this); //Binding dataRank functions
+
+    this.countryEncodeAssist = _components_dataMap_js__WEBPACK_IMPORTED_MODULE_8__["countryEncodeAssist"].bind(this);
+    this.countryDecodeAssist = _components_dataMap_js__WEBPACK_IMPORTED_MODULE_8__["countryDecodeAssist"].bind(this);
+    this.processMapGlobalData = _components_dataMap_js__WEBPACK_IMPORTED_MODULE_8__["processMapGlobalData"].bind(this);
   }
 
   componentDidMount() {
     this.callAPIGlobalAll(this.referenceDate);
     this.fetchData(this.referenceDate);
-  }
-
-  fetchData(refDate) {
-    if (this.state.selectCountry == 'Thailand') this.callAPIThailand();else if (this.state.fastMode) this.callAPIGlobal(this.state.selectCity, this.state.selectCountry, new Date(refDate.getTime()));else this.callAPIGlobalTimeline(this.state.selectCity, this.state.selectCountry);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -303,491 +882,1046 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       this.fetchData(this.referenceDate);
     }
 
-    if (prevState.selectCategory != this.state.selectCategory) this.globalRanking(this.state.selectCategory);
+    if (prevState.selectCategory != this.state.selectCategory || prevState.selectCountry != this.state.selectCountry) this.globalRanking(this.state.selectCategory);
   }
 
-  clearAxiosCalls() {
-    this.cancelSource.cancel('Axios operations cleared');
-    const CancelToken = axios__WEBPACK_IMPORTED_MODULE_11___default.a.CancelToken;
-    this.cancelSource = CancelToken.source();
-  } //For ranking and map functionalities
-  //Only data from one day/file is processed
+  renderSourceInfo() {
+    const {
+      data_text
+    } = this.state;
+    return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["MuiThemeProvider"], {
+      theme: _components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["darkTheme"],
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 138,
+        columnNumber: 4
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      align: "left",
+      color: "textPrimary",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 139,
+        columnNumber: 5
+      }
+    }, __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 140,
+        columnNumber: 6
+      }
+    }), "Last updated: ", data_text.updatedDate), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "subtitle2",
+      align: "left",
+      color: "textPrimary",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 143,
+        columnNumber: 5
+      }
+    }, __jsx("a", {
+      href: data_text.source,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 144,
+        columnNumber: 6
+      }
+    }, " ", data_text.source)));
+  }
 
-
-  async callAPIGlobalAll(markDate) {
-    markDate = new Date(markDate.getTime());
-    let countries = [];
-    let countriesN = 0;
-    let data = new Object();
-    const sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
-    const sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
-    const formatChange = new Date(2020, 2, 22).getTime();
-    let cityIndex = 0;
-    let countryIndex = 1;
-    let conIndex = 3;
-    let deathIndex = 4;
-    let recIndex = 5;
-    let quoteLimit = 0; //Workaround for source's formatting inconsistencies
-
-    if (cityIndex == 0 && markDate.getTime() >= formatChange) {
-      cityIndex = 2;
-      countryIndex = 3;
-      conIndex = 7;
-      deathIndex = 8;
-      recIndex = 9;
-      quoteLimit = 2;
-    }
-
-    let lines = '';
-    const markDateStr = markDate.toISOString();
-    const sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear(); //console.log(sourceDate);
-
-    try {
-      const cancelToken = this.cancelSource.token;
-      const response = await axios__WEBPACK_IMPORTED_MODULE_11___default.a.get(sourcePrefix + sourceDate + '.csv', {
-        headers: {
-          'Content-Type': 'text/csv'
+  renderFetchControls(which) {
+    if (which == 0) {
+      //Button Fast/Full Mode Select
+      const {
+        fastMode
+      } = this.state;
+      return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 161,
+          columnNumber: 5
+        }
+      }), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 161,
+          columnNumber: 10
+        }
+      }), __jsx("button", {
+        style: {
+          height: '32px',
+          width: '128px',
+          float: 'right',
+          color: fastMode ? cDRed : 'blue'
         },
-        cancelToken: cancelToken
-      });
-      lines = response.data.split(/\r?\n/);
-    } catch (err) {
-      console.log(err);
-      return undefined;
-    }
-
-    if (lines != '') {
-      for (let i = 1; i < lines.length; i++) {
-        if (lines[i] == '' || (lines[i].match(/"/g) || []).length > quoteLimit) continue;
-        const values = lines[i].split(',');
-        const country = values[countryIndex];
-        const city = values[cityIndex];
-        let confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
-        let hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
-        let deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
-        let recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
-
-        if (data[country] != undefined) {
-          confirmed += data[country]["Confirmed"];
-          hospitalized += data[country]["Hospitalized"];
-          deaths += data[country]["Deaths"];
-          recovered += data[country]["Recovered"];
-        } else {
-          data[country] = new Object();
-          data[country].Country = country;
-          data[country].Cities = [];
-          data[country].CitiesN = 0;
-          countries[countriesN] = country;
-          countriesN++;
+        onClick: () => this.setState({
+          fastMode: !fastMode
+        }),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 162,
+          columnNumber: 5
         }
-
-        const citiesN = data[country].CitiesN;
-        data[country].Confirmed = confirmed;
-        data[country].Hospitalized = hospitalized;
-        data[country].Deaths = deaths;
-        data[country].Recovered = recovered;
-        data[country].RecoveryRate = (recovered / confirmed * 100).toFixed(2);
-        data[country].MortalityRate = (deaths / confirmed * 100).toFixed(2);
-
-        if (city != '') {
-          data[country].Cities[citiesN] = city;
-          data[country].CitiesN = citiesN + 1;
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 171,
+          columnNumber: 6
         }
-      } //console.log(data);
-
-
-      const mapGlobalData = this.processMapGlobalData(countries, data);
-      this.setState({
-        countries: countries,
-        globalData: data,
-        mapGlobalData: mapGlobalData
-      });
-    }
-
-    this.globalRanking(this.state.selectCategory);
-  } //When foreign country is selected
-  //Provides retrospective data and graph functionalities
-  //Taxing, over 200 days/files must be processed
-  //Somehow sometimes fast, sometimes slow. Cause still unknown.
-
-
-  async callAPIGlobalTimeline(city, country) {
-    if (city == 'Overall') {
-      city = '';
-    }
-
-    let data = [{}];
-    let dataN = 0;
-    let prevConfirmed = 0;
-    let prevHospitalized = 0;
-    let prevDeaths = 0;
-    let prevRecovered = 0;
-    const sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
-    const sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
-    let markDate = new Date(2020, 0, 23);
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const now = tomorrow.getTime();
-    let cityIndex = 0;
-    let countryIndex = 1;
-    let conIndex = 3;
-    let deathIndex = 4;
-    let recIndex = 5;
-    let lastIndex = 1;
-    const formatChange = new Date(2020, 2, 22).getTime();
-
-    while (markDate.getTime() < now) {
-      let lines = '';
-      const markDateStr = markDate.toISOString();
-      const sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
-      console.log(sourceDate); //console.log(lastIndex);
-      //Workaround for source's formatting inconsistencies
-
-      if (cityIndex == 0 && markDate.getTime() >= formatChange) {
-        cityIndex = 2;
-        countryIndex = 3;
-        conIndex = 7;
-        deathIndex = 8;
-        recIndex = 9;
-      }
-
-      try {
-        const cancelToken = this.cancelSource.token;
-        const response = await axios__WEBPACK_IMPORTED_MODULE_11___default.a.get(sourcePrefix + sourceDate + '.csv', {
-          headers: {
-            'Content-Type': 'text/csv'
-          },
-          cancelToken: cancelToken
-        });
-        lines = response.data.split(/\r?\n/);
-      } catch (err) {
-        console.log(err);
-        return undefined;
-      }
-
-      markDate.setDate(markDate.getDate() + 1);
-      if (lines == '') continue;
-      console.log(lastIndex);
-      const date = sourceDate.replace('-', '\/').replace('-', '\/');
-      let values = undefined;
-      if (lines[lastIndex]) values = lines[lastIndex].split(',');else lastIndex = 1;
-
-      if (values == undefined || city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex]) {
-        for (let i = lastIndex + 1; i < lines.length; i++) {
-          values = lines[i].split(',');
-
-          if (city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex]) {
-            values = undefined;
-            continue;
-          }
-
-          lastIndex = i;
-          break;
+      }, fastMode ? "FAST MODE" : "FULL MODE")));
+    } else if (which == 1) {
+      //Dropdown Country Select
+      const {
+        countries,
+        selectCountry
+      } = this.state;
+      return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 180,
+          columnNumber: 5
         }
-
-        if (values == undefined) {
-          for (let i = 1; i < lastIndex; i++) {
-            values = lines[i].split(',');
-
-            if (city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex]) {
-              values = undefined;
-              continue;
-            }
-
-            lastIndex = i;
-            break;
-          }
+      }), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 180,
+          columnNumber: 10
         }
+      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        options: countries,
+        value: selectCountry,
+        onChange: select => this.setState({
+          selectCountry: select.value,
+          selectCity: 'Overall'
+        }),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 181,
+          columnNumber: 5
+        }
+      }));
+    } else {
+      //Dropdown City Select
+      const {
+        selectCountry,
+        selectCity
+      } = this.state;
+      const selectedCountryData = this.state.globalData[selectCountry];
+      let cityChoice = ["Overall"];
+
+      if (selectedCountryData != undefined && selectedCountryData.CitiesN != 0) {
+        cityChoice = selectedCountryData.Cities.slice(0);
+        cityChoice.splice(0, 0, "Overall");
       }
 
-      if (values != undefined) {
-        const confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
-        const hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
-        const deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
-        const recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
-        data[dataN] = {
-          Date: date,
-          Confirmed: confirmed,
-          Hospitalized: hospitalized,
-          Deaths: deaths,
-          Recovered: recovered,
-          NewConfirmed: confirmed - prevConfirmed,
-          NewHospitalized: hospitalized - prevHospitalized,
-          NewDeaths: deaths - prevDeaths,
-          NewRecovered: recovered - prevRecovered
-        };
-        prevConfirmed = confirmed;
-        prevHospitalized = hospitalized;
-        prevDeaths = deaths;
-        prevRecovered = recovered;
-        dataN++;
-      }
-    }
-
-    console.log(data);
-    this.processData(sourceRef, data);
-  } //When foreign country is selected
-  //No streak data or timeline functionality
-  //Only data from two days/files is processed
-
-
-  async callAPIGlobal(city, country, markDate, process = true) {
-    if (city == 'Overall') {
-      city = '';
-    }
-
-    let data = [{}];
-    data[0] = {
-      Date: '',
-      Confirmed: 0,
-      Hospitalized: 0,
-      Deaths: 0,
-      Recovered: 0,
-      RecoveryRate: 0,
-      MortalityRate: 0,
-      NewConfirmed: 0,
-      NewHospitalized: 0,
-      NewDeaths: 0,
-      NewRecovered: 0
-    };
-    const thisData = data[0];
-    const sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
-    const sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
-    let lines = '';
-
-    while (lines == '') {
-      const markDateStr = markDate.toISOString();
-      const sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
-      markDate.setDate(markDate.getDate() - 1); //console.log(sourceDate);
-
-      try {
-        const cancelToken = this.cancelSource.token;
-        const response = await axios__WEBPACK_IMPORTED_MODULE_11___default.a.get(sourcePrefix + sourceDate + '.csv', {
-          headers: {
-            'Content-Type': 'text/csv'
-          },
-          cancelToken: cancelToken
-        });
-        lines = response.data.split(/\r?\n/);
-        thisData.Date = sourceDate.replace('-', '\/').replace('-', '\/');
-      } catch (err) {
-        console.log(err);
-        return undefined;
-      }
-    }
-
-    for (let i = 1; i < lines.length; i++) {
-      if ((lines[i].match(/"/g) || []).length > 2) continue;
-      const values = lines[i].split(',');
-      if (city != '' && city != values[2] || country != '' && country != values[3]) continue;
-      const confirmed = thisData["Confirmed"] + (values[7] == '' ? 0 : parseInt(values[7]));
-      const deaths = thisData["Deaths"] + (values[8] == '' ? 0 : parseInt(values[8]));
-      const recovered = thisData["Recovered"] + (values[9] == '' ? 0 : parseInt(values[9]));
-      thisData.Confirmed = confirmed;
-      thisData.Hospitalized = thisData["Hospitalized"] + (values[10] == '' ? 0 : parseInt(values[10]));
-      thisData.Deaths = deaths;
-      thisData.Recovered = recovered;
-      thisData.RecoveryRate = recovered / confirmed * 100;
-      thisData.MortalityRate = deaths / confirmed * 100;
-    }
-
-    if (process) {
-      const prevData = await this.callAPIGlobal(city, country, markDate, false);
-      thisData.NewConfirmed = thisData.Confirmed - prevData.Confirmed;
-      thisData.NewHospitalized = thisData.Hospitalized - prevData.Hospitalized;
-      thisData.NewDeaths = thisData.Deaths - prevData.Deaths;
-      thisData.NewRecovered = thisData.Recovered - prevData.Recovered; //console.log(data);
-
-      this.processData(sourceRef, data, false);
-    }
-
-    return thisData;
-  } //For when Thailand is selected
-  //Provides retrospective data and graph functionalities
-  //Local scoped source, data from over 200 days are stored within only one file
-
-
-  async callAPIThailand() {
-    const source = 'https://covid19.th-stat.com/api/open/timeline';
-    let data = [];
-
-    try {
-      const cancelToken = this.cancelSource.token;
-      const response = await axios__WEBPACK_IMPORTED_MODULE_11___default.a.get(source, {
-        cancelToken: cancelToken
-      });
-      data = response.data['Data'];
-    } catch (err) {
-      console.log(err);
-      return undefined;
-    }
-
-    if (data.length > 0) this.processData(source, data);
-  }
-
-  getLastDate(type, data) {
-    for (let i = data.length - 1; i >= 0; i--) {
-      if (data[i][type] != 0) return data[i]['Date'];
+      return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 197,
+          columnNumber: 5
+        }
+      }), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 197,
+          columnNumber: 10
+        }
+      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        options: cityChoice,
+        value: selectCity,
+        onChange: select => this.setState({
+          selectCity: select.value
+        }),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 198,
+          columnNumber: 5
+        }
+      }));
     }
   }
 
-  getDateDiff(date) {
-    let now = new Date().getTime();
-    return Math.floor((now - new Date(date).getTime()) / 86400000);
+  renderNumbers(which) {
+    const {
+      data_text
+    } = this.state;
+    const {
+      classes
+    } = this.props;
+
+    if (which == 0) {
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 211,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'steelblue'
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 212,
+          columnNumber: 6
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 212,
+          columnNumber: 49
+        }
+      }, "Confirmed")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: cBlue
+        },
+        variant: "h3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 213,
+          columnNumber: 6
+        }
+      }, data_text.confirmed.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'steelblue'
+        },
+        variant: "h5",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 214,
+          columnNumber: 6
+        }
+      }, "+ ", data_text.newConfirmed.toLocaleString()));
+    } else if (which == 1) {
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 220,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'goldenrod'
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 221,
+          columnNumber: 6
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 221,
+          columnNumber: 49
+        }
+      }, "Hospitalized")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: cOrange
+        },
+        variant: "h3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 222,
+          columnNumber: 6
+        }
+      }, data_text.hospitalized.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'goldenrod'
+        },
+        variant: "h5",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 223,
+          columnNumber: 6
+        }
+      }, data_text.newHospitalized >= 0 ? '+' : '-', " ", Math.abs(data_text.newHospitalized).toLocaleString()));
+    } else if (which == 2) {
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 231,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'fireBrick'
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 232,
+          columnNumber: 6
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 232,
+          columnNumber: 49
+        }
+      }, "Deaths")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: cRed
+        },
+        variant: "h3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 233,
+          columnNumber: 6
+        }
+      }, data_text.deaths.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'fireBrick'
+        },
+        variant: "h5",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 234,
+          columnNumber: 6
+        }
+      }, "+ ", data_text.newDeaths.toLocaleString()));
+    } else {
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 240,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'green'
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 241,
+          columnNumber: 6
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 241,
+          columnNumber: 45
+        }
+      }, "Recovered")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: cGreen
+        },
+        variant: "h3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 242,
+          columnNumber: 6
+        }
+      }, data_text.recovered.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        style: {
+          color: 'green'
+        },
+        variant: "h5",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 243,
+          columnNumber: 6
+        }
+      }, "+ ", data_text.newRecovered.toLocaleString()));
+    }
   }
 
-  processData(source, data, hasTimeline = true) {
-    if (data.length <= 0) return;
-    const lastData = data.slice(-1)[0];
-    const dataReformatted = data.slice().map(d => {
-      return Object.assign({}, d, {
-        Date: d.Date.slice(3, 6) + d.Date.slice(0, 2)
-      });
-    });
-    const lastUpdated = lastData['Date'];
-    let lastConfirmedFormatted = 0;
-    let lastDeathFormatted = 0;
-    let noConfirmedStreak = 0;
-    let noDeathStreak = 0;
+  renderStreaks() {
+    const {
+      classes
+    } = this.props;
+    return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 252,
+        columnNumber: 4
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "h6",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 253,
+        columnNumber: 5
+      }
+    }, "Last confirmed: ", this.state.lastConfirmed, " (", this.state.noConfirmedStreak, " days ago)"), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "h6",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 256,
+        columnNumber: 5
+      }
+    }, "Last death: ", this.state.lastDeath, " (", this.state.noDeathStreak, " days ago)"));
+  }
 
-    if (hasTimeline) {
-      const lastConfirmed = this.getLastDate('NewConfirmed', data);
-      const lastDeath = this.getLastDate('NewDeaths', data);
-      lastConfirmedFormatted = lastConfirmed.slice(3, 6) + lastConfirmed.slice(0, 3) + lastConfirmed.slice(6);
-      lastDeathFormatted = lastDeath.slice(3, 6) + lastDeath.slice(0, 3) + lastDeath.slice(6);
-      noConfirmedStreak = this.getDateDiff(lastConfirmed);
-      noDeathStreak = this.getDateDiff(lastDeath);
-    }
-
-    this.setState({
-      hasTimeline: hasTimeline,
-      dataTimeline: dataReformatted,
-      dataTimeline15: dataReformatted.slice(1).slice(-15),
-      data_text: {
-        source: source,
-        updatedDate: lastUpdated.slice(3, 6) + lastUpdated.slice(0, 3) + lastUpdated.slice(6),
-        confirmed: lastData['Confirmed'],
-        hospitalized: lastData['Hospitalized'],
-        deaths: lastData['Deaths'],
-        recovered: lastData['Recovered'],
-        newConfirmed: lastData['NewConfirmed'],
-        newHospitalized: lastData['NewHospitalized'],
-        newDeaths: lastData['NewDeaths'],
-        newRecovered: lastData['NewRecovered']
+  renderRates() {
+    const {
+      classes
+    } = this.props;
+    return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 266,
+        columnNumber: 4
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "h6",
+      style: {
+        color: 'green'
       },
-      data_pie: [{
-        name: 'Hospitalized',
-        value: lastData['Hospitalized']
-      }, {
-        name: 'Deaths',
-        value: lastData['Deaths']
-      }, {
-        name: 'Recovered',
-        value: lastData['Recovered']
-      }],
-      lastConfirmed: lastConfirmedFormatted,
-      lastDeath: lastDeathFormatted,
-      noConfirmedStreak: noConfirmedStreak,
-      noDeathStreak: noDeathStreak,
-      rateRecovery: (100 * lastData['Recovered'] / lastData['Confirmed']).toFixed(2) + '%',
-      rateDeath: (100 * lastData['Deaths'] / lastData['Confirmed']).toFixed(2) + '%'
-    });
-  }
-
-  countryCompare(category) {
-    return function innerSort(a, b) {
-      let valA = a[category];
-      let valB = b[category];
-
-      if (typeof valA == "string") {
-        valA = parseInt(valA);
-        valB = parseInt(valB);
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 267,
+        columnNumber: 5
       }
-
-      if (valA > valB) return -1;else if (valA < valB) return 1;else return 0;
-    };
+    }, "Recovery Rate: ", this.state.rateRecovery), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "h6",
+      style: {
+        color: cDRed
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 270,
+        columnNumber: 5
+      }
+    }, "Mortality Rate: ", this.state.rateDeath));
   }
 
-  globalRankSelect(ranking, country) {
-    return ranking.findIndex(x => x.Country == country);
-  }
-
-  globalRankTopTen(ranking) {
-    return ranking.slice(0, 10);
-  }
-
-  globalRanking(category) {
-    const countries = Object.values(this.state.globalData);
-    countries.sort(this.countryCompare(category)); //console.log(countries);
-
-    this.setState({
-      rankSelect: this.globalRankSelect(countries, this.state.selectCountry),
-      rankTopTen: this.globalRankTopTen(countries)
-    });
-  }
-
-  globalRankingHeading(category) {
-    if (category == 'Confirmed') return "Confirmed Cases Count";else if (category == 'Hospitalized') return "Active Cases Count";else if (category == 'Deaths') return "Deceased Cases Count";else if (category == 'Recovered') return "Recovered Cases Count";else if (category == 'RecoveryRate') return "Recovery Rate";else if (category == 'MortalityRate') return "Mortality Rate";
-  }
-
-  countryEncodeAssist(country, countriesName) {
-    if (!countriesName.includes(country)) {
-      if (country == "Bolivia") country = "Bolivia, Plurinational State of";else if (country == "Brunei") country = "Brunei Darussalam";else if (country == "Burma") country = "Myanmar";else if (country == "Congo (Brazzaville)") country = "Congo";else if (country == "Congo (Kinshasa)") country = "Congo, Democratic Republic of the";else if (country == "Cote d'Ivoire") country = "Côte d'Ivoire";else if (country == "Iran") country = "Iran, Islamic Republic of";else if (country == "Kosovo") country = "Serbia";else if (country == "Laos") country = "Lao People's Democratic Republic";else if (country == "Moldova") country = "Moldova, Republic of";else if (country == "Russia") country = "Russian Federation";else if (country == "Syria") country = "Syrian Arab Republic";else if (country == "Taiwan*") country = "Taiwan, Province of China";else if (country == "Tanzania") country = "Tanzania, United Republic of";else if (country == "US") country = "United States of America";else if (country == "United Kingdom") country = "United Kingdom of Great Britain and Northern Ireland";else if (country == "Venezuela") country = "Venezuela, Bolivarian Republic of";else if (country == "Vietnam") country = "Viet Nam";else if (country == "West Bank and Gaza") country = "Palestine, State of";else return undefined;
-    }
-
+  renderGraphButton() {
     const {
-      getCode
-    } = __webpack_require__(/*! country-list */ "country-list");
-
-    return getCode(country);
+      classes
+    } = this.props;
+    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("button", {
+      style: {
+        height: '32px',
+        width: '144px',
+        float: 'right',
+        color: this.state.showGraph ? 'grey' : 'steelblue'
+      },
+      onClick: () => this.setState({
+        showGraph: !this.state.showGraph
+      }),
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 281,
+        columnNumber: 4
+      }
+    }, "Show/Hide Graphs"), __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 292,
+        columnNumber: 4
+      }
+    }));
   }
 
-  countryDecodeAssist(code) {
+  renderGraphs() {
     const {
-      getName,
-      getNames
-    } = __webpack_require__(/*! country-list */ "country-list");
-
-    const countriesName = getNames();
-    let country = getName(code);
-    if (country == "Bolivia, Plurinational State of") country = "Bolivia";else if (country == "Brunei Darussalam") country = "Brunei";else if (country == "Myanmar") country = "Burma";else if (country == "Congo") country = "Congo (Brazzaville)";else if (country == "Congo, Democratic Republic of the") country = "Congo (Kinshasa)";else if (country == "Côte d'Ivoire") country = "Cote d'Ivoire";else if (country == "Iran, Islamic Republic of") country = "Iran";else if (country == "Serbia") country = "Kosovo";else if (country == "Lao People's Democratic Republic") country = "Laos";else if (country == "Moldova, Republic of") country = "Moldova";else if (country == "Russian Federation") country = "Russia";else if (country == "Syrian Arab Republic") country = "Syria";else if (country == "Taiwan") country = "Taiwan*";else if (country == "Tanzania, United Republic of") country = "Tanzania";else if (country == "United States of America") country = "US";else if (country == "United Kingdom of Great Britain and Northern Ireland") country = "United Kingdom";else if (country == "Venezuela, Bolivarian Republic of") country = "Venezuela";else if (country == "Viet Nam") country = "Vietnam";else if (country == "Palestine, State of") country = "West Bank and Gaza";
-    return country;
-  }
-
-  processMapGlobalData(countries, globalData) {
+      classes
+    } = this.props;
     const {
-      getCode,
-      getNames
-    } = __webpack_require__(/*! country-list */ "country-list");
-
-    const countriesName = getNames();
-    const mapGlobalData = {
-      Confirmed: {},
-      Hospitalized: {},
-      Deaths: {},
-      Recovered: {},
-      RecoveryRate: {},
-      MortalityRate: {}
-    };
-
-    for (let i = 0; i < countries.length; i++) {
-      const country = countries[i];
-      const data = globalData[country];
-      const code = this.countryEncodeAssist(country, countriesName);
-      if (code == undefined) continue;
-      mapGlobalData['Confirmed'][code] = data['Confirmed'];
-      mapGlobalData['Hospitalized'][code] = data['Hospitalized'];
-      mapGlobalData['Deaths'][code] = data['Deaths'];
-      mapGlobalData['Recovered'][code] = data['Recovered'];
-      mapGlobalData['RecoveryRate'][code] = parseFloat(data['RecoveryRate']);
-      mapGlobalData['MortalityRate'][code] = parseFloat(data['MortalityRate']);
-    } //console.log(mapGlobalData);
-
-
-    return mapGlobalData;
+      dataTimeline,
+      dataTimeline15,
+      data_pie
+    } = this.state;
+    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      container: true,
+      spacing: 2,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 302,
+        columnNumber: 4
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      item: true,
+      xs: 12,
+      sm: 6,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 305,
+        columnNumber: 5
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 306,
+        columnNumber: 6
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["ResponsiveContainer"], {
+      width: "100%",
+      height: 300,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 307,
+        columnNumber: 7
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["BarChart"], {
+      width: 500,
+      height: 300,
+      data: dataTimeline15,
+      margin: {
+        top: 5,
+        right: 5,
+        left: 0,
+        bottom: 5
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 308,
+        columnNumber: 8
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["CartesianGrid"], {
+      strokeDasharray: "3 3",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 314,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["XAxis"], {
+      dataKey: "Date",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 315,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["YAxis"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 316,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Tooltip"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 317,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Legend"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 318,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Bar"], {
+      dataKey: "NewConfirmed",
+      fill: cBlue,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 319,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Bar"], {
+      dataKey: "NewDeaths",
+      fill: cRed,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 320,
+        columnNumber: 9
+      }
+    }))))), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      item: true,
+      xs: 12,
+      sm: 6,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 327,
+        columnNumber: 5
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 328,
+        columnNumber: 6
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["ResponsiveContainer"], {
+      width: "100%",
+      height: 300,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 329,
+        columnNumber: 7
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["PieChart"], {
+      width: 400,
+      height: 400,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 330,
+        columnNumber: 8
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Legend"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 331,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Pie"], {
+      dataKey: "value",
+      isAnimationActive: false,
+      data: data_pie,
+      outerRadius: 100,
+      label: true,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 332,
+        columnNumber: 9
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Cell"], {
+      fill: cOrange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 333,
+        columnNumber: 10
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Cell"], {
+      fill: cRed,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 334,
+        columnNumber: 10
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Cell"], {
+      fill: cGreen,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 335,
+        columnNumber: 10
+      }
+    })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Tooltip"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 337,
+        columnNumber: 9
+      }
+    }))))), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      item: true,
+      xs: 12,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 344,
+        columnNumber: 5
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 345,
+        columnNumber: 6
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["ResponsiveContainer"], {
+      width: "100%",
+      height: 500,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 346,
+        columnNumber: 7
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["LineChart"], {
+      data: dataTimeline,
+      margin: {
+        top: 5,
+        right: 5,
+        left: 0,
+        bottom: 5
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 347,
+        columnNumber: 8
+      }
+    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["CartesianGrid"], {
+      strokeDasharray: "3 3",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 351,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["XAxis"], {
+      dataKey: "Date",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 352,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["YAxis"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 353,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Tooltip"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 354,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Legend"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 355,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Line"], {
+      type: "monotone",
+      strokeWidth: 2,
+      dataKey: "Confirmed",
+      stroke: cBlue,
+      dot: false,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 356,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Line"], {
+      type: "monotone",
+      strokeWidth: 2,
+      dataKey: "Hospitalized",
+      stroke: cOrange,
+      dot: false,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 357,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Line"], {
+      type: "monotone",
+      strokeWidth: 2,
+      dataKey: "Deaths",
+      stroke: cRed,
+      dot: false,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 358,
+        columnNumber: 9
+      }
+    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_4__["Line"], {
+      type: "monotone",
+      strokeWidth: 2,
+      dataKey: "Recovered",
+      stroke: cGreen,
+      dot: false,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 359,
+        columnNumber: 9
+      }
+    })))))), __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 367,
+        columnNumber: 4
+      }
+    }), __jsx("button", {
+      style: {
+        height: '32px',
+        width: '144px',
+        float: 'right',
+        color: 'grey'
+      },
+      onClick: () => this.setState({
+        showGraph: !this.state.showGraph
+      }),
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 368,
+        columnNumber: 4
+      }
+    }, "Hide Graphs"), __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 374,
+        columnNumber: 4
+      }
+    }), __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 374,
+        columnNumber: 9
+      }
+    }));
   }
 
-  renderMap(category) {
+  renderRankingHeader() {
+    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "h5",
+      style: {
+        color: cRed
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 383,
+        columnNumber: 4
+      }
+    }, __jsx("b", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 384,
+        columnNumber: 5
+      }
+    }, "Global Ranking based on:")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "h5",
+      style: {
+        color: cDRed
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 386,
+        columnNumber: 4
+      }
+    }, this.globalRankingHeading(this.state.selectCategory)));
+  }
+
+  renderCategoryDropdown() {
+    const categoryChoice = ['Confirmed', 'Hospitalized', 'Deaths', 'Recovered', 'RecoveryRate', 'MortalityRate'];
+    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 397,
+        columnNumber: 4
+      }
+    }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      options: categoryChoice,
+      value: 'Hospitalized',
+      onChange: select => this.setState({
+        selectCategory: select.value
+      }),
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 398,
+        columnNumber: 4
+      }
+    }));
+  }
+
+  renderRanking() {
+    if (this.state.rankSelect < 0) return null;
+    const {
+      classes
+    } = this.props;
+    const {
+      selectCountry,
+      selectCategory
+    } = this.state;
+    let rankSuffix = " cases";
+    if (selectCategory == 'RecoveryRate' || selectCategory == 'MortalityRate') rankSuffix = "%";
+    return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      item: true,
+      xs: 3,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 416,
+        columnNumber: 4
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      container: true,
+      spacing: 2,
+      direction: "column",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 417,
+        columnNumber: 5
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      item: true,
+      xs: 12,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 418,
+        columnNumber: 6
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 419,
+        columnNumber: 7
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      align: "center",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 420,
+        columnNumber: 8
+      }
+    }, __jsx("b", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 421,
+        columnNumber: 9
+      }
+    }, "Rank ", this.state.rankSelect, ". ", selectCountry, " - ", this.state.globalData[selectCountry][selectCategory], rankSuffix), __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 422,
+        columnNumber: 9
+      }
+    }), "out of ", this.state.countries.length, " countries"))), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      item: true,
+      xs: 12,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 426,
+        columnNumber: 6
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 427,
+        columnNumber: 7
+      }
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      variant: "h6",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 428,
+        columnNumber: 8
+      }
+    }, __jsx("b", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 429,
+        columnNumber: 9
+      }
+    }, "Top 10 Countries"), __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 429,
+        columnNumber: 32
+      }
+    })), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 431,
+        columnNumber: 8
+      }
+    }, this.state.rankTopTen.map((c, i) => __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("b", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 433,
+        columnNumber: 11
+      }
+    }, i + 1, "."), " ", c.Country, " - ", c[selectCategory], rankSuffix, __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 433,
+        columnNumber: 70
+      }
+    }))))))));
+  }
+
+  renderMap() {
+    if (this.state.mapGlobalData == null) return null;
+
     const handleClick = (e, code) => {
       const country = this.countryDecodeAssist(code);
       if (this.state.countries.includes(country)) this.setState({
@@ -796,6 +1930,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       });
     };
 
+    const category = this.state.selectCategory;
     const data = this.state.mapGlobalData;
     const mapData = data[category]; //console.log(mapData);
 
@@ -808,7 +1943,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 764,
+        lineNumber: 468,
         columnNumber: 4
       }
     }, __jsx(VectorMap, {
@@ -824,7 +1959,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       containerClassName: "map",
       regionStyle: {
         initial: {
-          fill: "#C0C0C0",
+          fill: "#A0A0A0",
           "fill-opacity": 1,
           stroke: "white",
           "stroke-width": 0.2,
@@ -853,978 +1988,199 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 765,
+        lineNumber: 469,
         columnNumber: 5
       }
     }));
   }
 
   render() {
+    if (!this.state.hasData) return "ERROR: Cannot fetch data";
     const {
       classes
     } = this.props;
-    const {
-      selectCountry,
-      selectCity,
-      fastMode,
-      dataTimeline,
-      dataTimeline15,
-      data_text,
-      data_pie,
-      selectCategory
-    } = this.state;
-    const selectedCountryData = this.state.globalData[selectCountry];
-    let cityChoice = ["Overall"];
-
-    if (selectedCountryData != undefined && selectedCountryData.CitiesN != 0) {
-      cityChoice = selectedCountryData.Cities.slice(0);
-      cityChoice.splice(0, 0, "Overall");
-    }
-
-    const categoryChoice = ['Confirmed', 'Hospitalized', 'Deaths', 'Recovered', 'RecoveryRate', 'MortalityRate'];
-    let rankSuffix = " cases";
-
-    if (selectCategory == 'RecoveryRate' || selectCategory == 'MortalityRate') {
-      rankSuffix = "%";
-    }
-
     return __jsx("div", {
       className: classes.root,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 838,
+        lineNumber: 526,
         columnNumber: 4
       }
-    }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["CssBaseline"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 839,
+        lineNumber: 527,
         columnNumber: 5
       }
-    }), __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    }), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["AppBar"], {
       style: {
         background: cDRed
       },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 840,
+        lineNumber: 530,
         columnNumber: 5
       }
-    }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Toolbar"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 841,
+        lineNumber: 531,
         columnNumber: 6
       }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
       variant: "h4",
       className: classes.title,
       align: "center",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 842,
+        lineNumber: 532,
         columnNumber: 7
       }
     }, __jsx("b", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 843,
+        lineNumber: 533,
         columnNumber: 8
       }
-    }, "Simple COVID-19 Dashboard")))), __jsx("div", {
+    }, "COVID-19 Dashboard")))), __jsx("div", {
       className: classes.appBarSpacer,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 847,
+        lineNumber: 537,
         columnNumber: 5
       }
-    }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    }), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Container"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 848,
+        lineNumber: 539,
         columnNumber: 5
       }
-    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       container: true,
       spacing: 2,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 850,
+        lineNumber: 542,
         columnNumber: 6
       }
-    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 4,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 854,
+        lineNumber: 544,
         columnNumber: 7
       }
-    }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["MuiThemeProvider"], {
-      theme: darkTheme,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 855,
-        columnNumber: 8
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      align: "left",
-      color: "textPrimary",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 856,
-        columnNumber: 9
-      }
-    }, __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 857,
-        columnNumber: 10
-      }
-    }), "Last updated: ", data_text.updatedDate), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "subtitle2",
-      align: "left",
-      color: "textPrimary",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 860,
-        columnNumber: 9
-      }
-    }, __jsx("a", {
-      href: data_text.source,
-      target: "_blank",
-      rel: "noopener noreferrer",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 861,
-        columnNumber: 10
-      }
-    }, " ", data_text.source)))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderSourceInfo()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 2,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 874,
+        lineNumber: 546,
         columnNumber: 7
       }
-    }, __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 875,
-        columnNumber: 8
-      }
-    }), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 875,
-        columnNumber: 13
-      }
-    }), __jsx("button", {
-      style: {
-        height: '32px',
-        width: '128px',
-        float: 'right',
-        color: fastMode ? cDRed : 'blue'
-      },
-      onClick: () => this.setState({
-        fastMode: !fastMode
-      }),
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 876,
-        columnNumber: 8
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 885,
-        columnNumber: 9
-      }
-    }, fastMode ? "FAST MODE" : "FULL MODE"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderFetchControls(0)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 3,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 888,
+        lineNumber: 547,
         columnNumber: 7
       }
-    }, __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 889,
-        columnNumber: 8
-      }
-    }), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 889,
-        columnNumber: 13
-      }
-    }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_9___default.a, {
-      options: this.state.countries,
-      value: selectCountry,
-      onChange: select => this.setState({
-        selectCountry: select.value,
-        selectCity: 'Overall'
-      }),
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 890,
-        columnNumber: 8
-      }
-    })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderFetchControls(1)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 3,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 894,
+        lineNumber: 548,
         columnNumber: 7
       }
-    }, __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 895,
-        columnNumber: 8
-      }
-    }), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 895,
-        columnNumber: 13
-      }
-    }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_9___default.a, {
-      options: cityChoice,
-      value: selectCity,
-      onChange: select => this.setState({
-        selectCity: select.value
-      }),
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 896,
-        columnNumber: 8
-      }
-    })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderFetchControls(2)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 6,
       sm: 3,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 903,
+        lineNumber: 550,
         columnNumber: 7
       }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 904,
-        columnNumber: 8
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'steelblue'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 905,
-        columnNumber: 9
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 905,
-        columnNumber: 52
-      }
-    }, "Confirmed")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: cBlue
-      },
-      variant: "h3",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 906,
-        columnNumber: 9
-      }
-    }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'steelblue'
-      },
-      variant: "h5",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 907,
-        columnNumber: 9
-      }
-    }, "+ ", data_text.newConfirmed.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderNumbers(0)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 6,
       sm: 3,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 910,
+        lineNumber: 551,
         columnNumber: 7
       }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 911,
-        columnNumber: 8
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'goldenrod'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 912,
-        columnNumber: 9
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 912,
-        columnNumber: 52
-      }
-    }, "Hospitalized")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: cOrange
-      },
-      variant: "h3",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 913,
-        columnNumber: 9
-      }
-    }, data_text.hospitalized.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'goldenrod'
-      },
-      variant: "h5",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 914,
-        columnNumber: 9
-      }
-    }, data_text.newHospitalized >= 0 ? '+' : '-', " ", Math.abs(data_text.newHospitalized).toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderNumbers(1)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 6,
       sm: 3,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 919,
+        lineNumber: 552,
         columnNumber: 7
       }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 920,
-        columnNumber: 8
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'fireBrick'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 921,
-        columnNumber: 9
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 921,
-        columnNumber: 52
-      }
-    }, "Deaths")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: cRed
-      },
-      variant: "h3",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 922,
-        columnNumber: 9
-      }
-    }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'fireBrick'
-      },
-      variant: "h5",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 923,
-        columnNumber: 9
-      }
-    }, "+ ", data_text.newDeaths.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderNumbers(2)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 6,
       sm: 3,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 926,
+        lineNumber: 553,
         columnNumber: 7
       }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 927,
-        columnNumber: 8
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'green'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 928,
-        columnNumber: 9
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 928,
-        columnNumber: 48
-      }
-    }, "Recovered")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: cGreen
-      },
-      variant: "h3",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 929,
-        columnNumber: 9
-      }
-    }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      style: {
-        color: 'green'
-      },
-      variant: "h5",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 930,
-        columnNumber: 9
-      }
-    }, "+ ", data_text.newRecovered.toLocaleString()))), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderNumbers(3)), " ", this.state.hasTimeline && __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 6,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 938,
-        columnNumber: 8
+        lineNumber: 555,
+        columnNumber: 38
       }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 939,
-        columnNumber: 9
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h6",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 940,
-        columnNumber: 10
-      }
-    }, "Last confirmed: ", this.state.lastConfirmed, " (", this.state.noConfirmedStreak, " days ago)"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h6",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 943,
-        columnNumber: 10
-      }
-    }, "Last death: ", this.state.lastDeath, " (", this.state.noDeathStreak, " days ago)")))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderStreaks()), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: this.state.hasTimeline ? 6 : 12,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 953,
+        lineNumber: 556,
         columnNumber: 7
       }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
+    }, this.renderRates()), " "), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 954,
-        columnNumber: 8
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h6",
-      style: {
-        color: 'green'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 955,
-        columnNumber: 9
-      }
-    }, "Recovery Rate: ", this.state.rateRecovery), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h6",
-      style: {
-        color: cDRed
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 958,
-        columnNumber: 9
-      }
-    }, "Mortality Rate: ", this.state.rateDeath)))), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 969,
+        lineNumber: 561,
         columnNumber: 6
       }
-    }), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("button", {
-      style: {
-        height: '32px',
-        width: '144px',
-        float: 'right',
-        color: this.state.showGraph ? 'grey' : 'steelblue'
-      },
-      onClick: () => this.setState({
-        showGraph: !this.state.showGraph
-      }),
+    }), this.state.hasTimeline && this.renderGraphButton(), " ", __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 972,
-        columnNumber: 7
-      }
-    }, "Show/Hide Graphs"), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 983,
-        columnNumber: 7
-      }
-    })), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 986,
+        lineNumber: 562,
         columnNumber: 6
       }
-    }), this.state.showGraph && //Whether or not to display graphs
-    __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      container: true,
-      spacing: 2,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 990,
-        columnNumber: 6
-      }
-    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      item: true,
-      xs: 12,
-      sm: 6,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 992,
-        columnNumber: 7
-      }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 993,
-        columnNumber: 8
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["ResponsiveContainer"], {
-      width: "100%",
-      height: 300,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 994,
-        columnNumber: 9
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["BarChart"], {
-      width: 500,
-      height: 300,
-      data: dataTimeline15,
-      margin: {
-        top: 5,
-        right: 5,
-        left: 0,
-        bottom: 5
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 995,
-        columnNumber: 10
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["CartesianGrid"], {
-      strokeDasharray: "3 3",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1001,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["XAxis"], {
-      dataKey: "Date",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1002,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["YAxis"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1003,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Tooltip"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1004,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Legend"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1005,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Bar"], {
-      dataKey: "NewConfirmed",
-      fill: cBlue,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1006,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Bar"], {
-      dataKey: "NewDeaths",
-      fill: cRed,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1007,
-        columnNumber: 11
-      }
-    }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      item: true,
-      xs: 12,
-      sm: 6,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1014,
-        columnNumber: 7
-      }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1015,
-        columnNumber: 8
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["ResponsiveContainer"], {
-      width: "100%",
-      height: 300,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1016,
-        columnNumber: 9
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["PieChart"], {
-      width: 400,
-      height: 400,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1017,
-        columnNumber: 10
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Legend"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1018,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Pie"], {
-      dataKey: "value",
-      isAnimationActive: false,
-      data: data_pie,
-      outerRadius: 100,
-      label: true,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1019,
-        columnNumber: 11
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Cell"], {
-      fill: cOrange,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1020,
-        columnNumber: 12
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Cell"], {
-      fill: cRed,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1021,
-        columnNumber: 12
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Cell"], {
-      fill: cGreen,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1022,
-        columnNumber: 12
-      }
-    })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Tooltip"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1024,
-        columnNumber: 11
-      }
-    }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      item: true,
-      xs: 12,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1031,
-        columnNumber: 7
-      }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1032,
-        columnNumber: 8
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["ResponsiveContainer"], {
-      width: "100%",
-      height: 500,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1033,
-        columnNumber: 9
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["LineChart"], {
-      data: dataTimeline,
-      margin: {
-        top: 5,
-        right: 5,
-        left: 0,
-        bottom: 5
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1034,
-        columnNumber: 10
-      }
-    }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["CartesianGrid"], {
-      strokeDasharray: "3 3",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1038,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["XAxis"], {
-      dataKey: "Date",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1039,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["YAxis"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1040,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Tooltip"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1041,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Legend"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1042,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Line"], {
-      type: "monotone",
-      strokeWidth: 2,
-      dataKey: "Confirmed",
-      stroke: cBlue,
-      dot: false,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1043,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Line"], {
-      type: "monotone",
-      strokeWidth: 2,
-      dataKey: "Hospitalized",
-      stroke: cOrange,
-      dot: false,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1044,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Line"], {
-      type: "monotone",
-      strokeWidth: 2,
-      dataKey: "Deaths",
-      stroke: cRed,
-      dot: false,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1045,
-        columnNumber: 11
-      }
-    }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_12__["Line"], {
-      type: "monotone",
-      strokeWidth: 2,
-      dataKey: "Recovered",
-      stroke: cGreen,
-      dot: false,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1046,
-        columnNumber: 11
-      }
-    })))))), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1053,
-        columnNumber: 6
-      }
-    }), __jsx("button", {
-      style: {
-        height: '32px',
-        width: '144px',
-        float: 'right',
-        color: 'grey'
-      },
-      onClick: () => this.setState({
-        showGraph: !this.state.showGraph
-      }),
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1054,
-        columnNumber: 6
-      }
-    }, "Hide Graphs"), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1060,
-        columnNumber: 6
-      }
-    }), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1060,
-        columnNumber: 11
-      }
-    })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }), this.state.showGraph && this.renderGraphs(), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       container: true,
       spacing: 2,
       justify: "space-between",
@@ -1832,248 +2188,85 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1067,
-        columnNumber: 8
+        lineNumber: 566,
+        columnNumber: 6
       }
-    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 6,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1068,
-        columnNumber: 9
+        lineNumber: 567,
+        columnNumber: 7
       }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h5",
-      style: {
-        color: cRed
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1069,
-        columnNumber: 10
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1070,
-        columnNumber: 11
-      }
-    }, "Global Ranking based on:")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h5",
-      style: {
-        color: cDRed
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1072,
-        columnNumber: 10
-      }
-    }, this.globalRankingHeading(selectCategory))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderRankingHeader()), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 2,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1076,
-        columnNumber: 9
-      }
-    }, __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1077,
-        columnNumber: 10
-      }
-    }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_9___default.a, {
-      options: categoryChoice,
-      value: 'Hospitalized',
-      onChange: select => this.setState({
-        selectCategory: select.value
-      }),
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1078,
-        columnNumber: 10
-      }
-    }))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      container: true,
-      spacing: 2,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1084,
-        columnNumber: 6
-      }
-    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      item: true,
-      xs: 3,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1086,
+        lineNumber: 568,
         columnNumber: 7
       }
-    }, this.state.rankSelect >= 0 && __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderCategoryDropdown()), " "), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       container: true,
       spacing: 2,
-      direction: "column",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1088,
-        columnNumber: 9
+        lineNumber: 573,
+        columnNumber: 6
       }
-    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      item: true,
-      xs: 12,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1089,
-        columnNumber: 10
-      }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1090,
-        columnNumber: 11
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      align: "center",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1091,
-        columnNumber: 12
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1092,
-        columnNumber: 13
-      }
-    }, "Rank ", this.state.rankSelect, ". ", selectCountry, " - ", this.state.globalData[selectCountry][selectCategory], rankSuffix), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1093,
-        columnNumber: 13
-      }
-    }), "out of ", this.state.countries.length, " countries"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      item: true,
-      xs: 12,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1097,
-        columnNumber: 10
-      }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paper,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1098,
-        columnNumber: 11
-      }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "h6",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1099,
-        columnNumber: 12
-      }
-    }, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1100,
-        columnNumber: 13
-      }
-    }, "Top 10 Countries"), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1100,
-        columnNumber: 36
-      }
-    })), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1102,
-        columnNumber: 12
-      }
-    }, this.state.rankTopTen.map((c, i) => __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("b", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1104,
-        columnNumber: 15
-      }
-    }, i + 1, "."), " ", c.Country, " - ", c[selectCategory], rankSuffix, __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 1104,
-        columnNumber: 74
-      }
-    })))))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    }, this.renderRanking(), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
       item: true,
       xs: 9,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1115,
+        lineNumber: 575,
         columnNumber: 7
       }
-    }, this.state.mapGlobalData != null && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.renderMap(selectCategory))))), __jsx("footer", {
+    }, this.renderMap()), " ")), __jsx("footer", {
       className: classes.footer,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1129,
+        lineNumber: 581,
         columnNumber: 5
       }
-    }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      className: classes.paperFoot,
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Paper"], {
+      className: classes.paper,
+      style: {
+        background: "#8F8080"
+      },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1130,
+        lineNumber: 582,
         columnNumber: 6
       }
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
       variant: "h6",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1131,
+        lineNumber: 583,
         columnNumber: 7
       }
     }, __jsx("b", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1132,
+        lineNumber: 584,
         columnNumber: 8
       }
-    }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    }, "COVID-19 Dashboard for Tencent Thailand's Internship Project")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
       component: "p",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 1134,
+        lineNumber: 586,
         columnNumber: 7
       }
     }, "By Thanjira S. and Woottipat H."))));
@@ -2081,7 +2274,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["withStyles"])(styles)(App));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["withStyles"])(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_1__["styles"])(App));
 
 /***/ }),
 

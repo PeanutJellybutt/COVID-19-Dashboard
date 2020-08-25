@@ -505,7 +505,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Vava\\Desktop\\covid-19-dashboard\\.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\.next");
       return error;
     }
   };

@@ -1,5 +1,851 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_app.js"],{
 
+/***/ "./components/dataFetch.js":
+/*!*********************************!*\
+  !*** ./components/dataFetch.js ***!
+  \*********************************/
+/*! exports provided: fetchData, callAPIGlobalAll, callAPIGlobalTimeline, callAPIGlobal, callAPIThailand, clearAxiosCalls, getLastDate, getDateDiff, processData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchData", function() { return fetchData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIGlobalAll", function() { return callAPIGlobalAll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIGlobalTimeline", function() { return callAPIGlobalTimeline; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIGlobal", function() { return callAPIGlobal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callAPIThailand", function() { return callAPIThailand; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearAxiosCalls", function() { return clearAxiosCalls; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLastDate", function() { return getLastDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDateDiff", function() { return getDateDiff; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processData", function() { return processData; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function fetchData(refDate) {
+  if (this.state.selectCountry == 'Thailand') this.callAPIThailand();else if (this.state.fastMode) this.callAPIGlobal(this.state.selectCity, this.state.selectCountry, new Date(refDate.getTime()));else this.callAPIGlobalTimeline(this.state.selectCity, this.state.selectCountry);
+} //For ranking and map functionalities
+//Only data from one day/file is processed
+
+function callAPIGlobalAll(markDate) {
+  var countries, countriesN, data, sourceRef, sourcePrefix, formatChange, cityIndex, countryIndex, conIndex, deathIndex, recIndex, quoteLimit, lines, markDateStr, sourceDate, cancelToken, response, i, values, country, city, confirmed, hospitalized, deaths, recovered, citiesN, mapGlobalData;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobalAll$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          markDate = new Date(markDate.getTime());
+          countries = [];
+          countriesN = 0;
+          data = new Object();
+          sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+          sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+          formatChange = new Date(2020, 2, 22).getTime();
+          cityIndex = 0;
+          countryIndex = 1;
+          conIndex = 3;
+          deathIndex = 4;
+          recIndex = 5;
+          quoteLimit = 0; //Workaround for source's formatting inconsistencies
+
+          if (cityIndex == 0 && markDate.getTime() >= formatChange) {
+            cityIndex = 2;
+            countryIndex = 3;
+            conIndex = 7;
+            deathIndex = 8;
+            recIndex = 9;
+            quoteLimit = 2;
+          }
+
+          lines = '';
+          markDateStr = markDate.toISOString();
+          sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear(); //console.log(sourceDate);
+
+          _context.prev = 17;
+          cancelToken = this.cancelSource.token;
+          _context.next = 21;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(sourcePrefix + sourceDate + '.csv', {
+            headers: {
+              'Content-Type': 'text/csv'
+            },
+            cancelToken: cancelToken
+          }));
+
+        case 21:
+          response = _context.sent;
+          lines = response.data.split(/\r?\n/);
+          _context.next = 29;
+          break;
+
+        case 25:
+          _context.prev = 25;
+          _context.t0 = _context["catch"](17);
+          console.log(_context.t0);
+          return _context.abrupt("return", undefined);
+
+        case 29:
+          if (!(lines != '')) {
+            _context.next = 55;
+            break;
+          }
+
+          i = 1;
+
+        case 31:
+          if (!(i < lines.length)) {
+            _context.next = 53;
+            break;
+          }
+
+          if (!(lines[i] == '' || (lines[i].match(/"/g) || []).length > quoteLimit)) {
+            _context.next = 34;
+            break;
+          }
+
+          return _context.abrupt("continue", 50);
+
+        case 34:
+          values = lines[i].split(',');
+          country = values[countryIndex];
+          city = values[cityIndex];
+          confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+          hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+          deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+          recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
+
+          if (data[country] != undefined) {
+            confirmed += data[country]["Confirmed"];
+            hospitalized += data[country]["Hospitalized"];
+            deaths += data[country]["Deaths"];
+            recovered += data[country]["Recovered"];
+          } else {
+            data[country] = new Object();
+            data[country].Country = country;
+            data[country].Cities = [];
+            data[country].CitiesN = 0;
+            countries[countriesN] = country;
+            countriesN++;
+          }
+
+          citiesN = data[country].CitiesN;
+          data[country].Confirmed = confirmed;
+          data[country].Hospitalized = hospitalized;
+          data[country].Deaths = deaths;
+          data[country].Recovered = recovered;
+          data[country].RecoveryRate = (recovered / confirmed * 100).toFixed(2);
+          data[country].MortalityRate = (deaths / confirmed * 100).toFixed(2);
+
+          if (city != '') {
+            data[country].Cities[citiesN] = city;
+            data[country].CitiesN = citiesN + 1;
+          }
+
+        case 50:
+          i++;
+          _context.next = 31;
+          break;
+
+        case 53:
+          //console.log(data);
+          mapGlobalData = this.processMapGlobalData(countries, data);
+          this.setState({
+            countries: countries,
+            globalData: data,
+            mapGlobalData: mapGlobalData
+          });
+
+        case 55:
+          this.globalRanking(this.state.selectCategory);
+
+        case 56:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, this, [[17, 25]], Promise);
+} //When foreign country is selected
+//Provides retrospective data and graph functionalities
+//Taxing, over 200 days/files must be processed
+//Somehow sometimes fast, sometimes slow. Cause still unknown.
+
+function callAPIGlobalTimeline(city, country) {
+  var data, dataN, prevConfirmed, prevHospitalized, prevDeaths, prevRecovered, sourceRef, sourcePrefix, markDate, tomorrow, now, cityIndex, countryIndex, conIndex, deathIndex, recIndex, lastIndex, formatChange, lines, markDateStr, sourceDate, cancelToken, response, date, values, i, _i, confirmed, hospitalized, deaths, recovered;
+
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobalTimeline$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          if (city == 'Overall') {
+            city = '';
+          }
+
+          data = [{}];
+          dataN = 0;
+          prevConfirmed = 0;
+          prevHospitalized = 0;
+          prevDeaths = 0;
+          prevRecovered = 0;
+          sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+          sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+          markDate = new Date(2020, 0, 23);
+          tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          now = tomorrow.getTime();
+          cityIndex = 0;
+          countryIndex = 1;
+          conIndex = 3;
+          deathIndex = 4;
+          recIndex = 5;
+          lastIndex = 1;
+          formatChange = new Date(2020, 2, 22).getTime();
+
+        case 20:
+          if (!(markDate.getTime() < now)) {
+            _context2.next = 72;
+            break;
+          }
+
+          lines = '';
+          markDateStr = markDate.toISOString();
+          sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
+          console.log(sourceDate); //console.log(lastIndex);
+          //Workaround for source's formatting inconsistencies
+
+          if (cityIndex == 0 && markDate.getTime() >= formatChange) {
+            cityIndex = 2;
+            countryIndex = 3;
+            conIndex = 7;
+            deathIndex = 8;
+            recIndex = 9;
+          }
+
+          _context2.prev = 26;
+          cancelToken = this.cancelSource.token;
+          _context2.next = 30;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(sourcePrefix + sourceDate + '.csv', {
+            headers: {
+              'Content-Type': 'text/csv'
+            },
+            cancelToken: cancelToken
+          }));
+
+        case 30:
+          response = _context2.sent;
+          lines = response.data.split(/\r?\n/);
+          _context2.next = 38;
+          break;
+
+        case 34:
+          _context2.prev = 34;
+          _context2.t0 = _context2["catch"](26);
+          console.log(_context2.t0);
+          return _context2.abrupt("return", undefined);
+
+        case 38:
+          markDate.setDate(markDate.getDate() + 1);
+
+          if (!(lines == '')) {
+            _context2.next = 41;
+            break;
+          }
+
+          return _context2.abrupt("continue", 20);
+
+        case 41:
+          console.log(lastIndex);
+          date = sourceDate.replace('-', '\/').replace('-', '\/');
+          values = undefined;
+          if (lines[lastIndex]) values = lines[lastIndex].split(',');else lastIndex = 1;
+
+          if (!(values == undefined || city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
+            _context2.next = 69;
+            break;
+          }
+
+          i = lastIndex + 1;
+
+        case 47:
+          if (!(i < lines.length)) {
+            _context2.next = 57;
+            break;
+          }
+
+          values = lines[i].split(',');
+
+          if (!(city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
+            _context2.next = 52;
+            break;
+          }
+
+          values = undefined;
+          return _context2.abrupt("continue", 54);
+
+        case 52:
+          lastIndex = i;
+          return _context2.abrupt("break", 57);
+
+        case 54:
+          i++;
+          _context2.next = 47;
+          break;
+
+        case 57:
+          if (!(values == undefined)) {
+            _context2.next = 69;
+            break;
+          }
+
+          _i = 1;
+
+        case 59:
+          if (!(_i < lastIndex)) {
+            _context2.next = 69;
+            break;
+          }
+
+          values = lines[_i].split(',');
+
+          if (!(city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
+            _context2.next = 64;
+            break;
+          }
+
+          values = undefined;
+          return _context2.abrupt("continue", 66);
+
+        case 64:
+          lastIndex = _i;
+          return _context2.abrupt("break", 69);
+
+        case 66:
+          _i++;
+          _context2.next = 59;
+          break;
+
+        case 69:
+          if (values != undefined) {
+            confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
+            hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
+            deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
+            recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
+            data[dataN] = {
+              Date: date,
+              Confirmed: confirmed,
+              Hospitalized: hospitalized,
+              Deaths: deaths,
+              Recovered: recovered,
+              NewConfirmed: confirmed - prevConfirmed,
+              NewHospitalized: hospitalized - prevHospitalized,
+              NewDeaths: deaths - prevDeaths,
+              NewRecovered: recovered - prevRecovered
+            };
+            prevConfirmed = confirmed;
+            prevHospitalized = hospitalized;
+            prevDeaths = deaths;
+            prevRecovered = recovered;
+            dataN++;
+          }
+
+          _context2.next = 20;
+          break;
+
+        case 72:
+          console.log(data);
+          this.processData(sourceRef, data);
+
+        case 74:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, null, this, [[26, 34]], Promise);
+} //When foreign country is selected
+//No streak data or timeline functionality
+//Only data from two days/files is processed
+
+function callAPIGlobal(city, country, markDate) {
+  var process,
+      data,
+      thisData,
+      sourceRef,
+      sourcePrefix,
+      lines,
+      markDateStr,
+      sourceDate,
+      cancelToken,
+      response,
+      i,
+      values,
+      confirmed,
+      deaths,
+      recovered,
+      prevData,
+      _args3 = arguments;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobal$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          process = _args3.length > 3 && _args3[3] !== undefined ? _args3[3] : true;
+
+          if (city == 'Overall') {
+            city = '';
+          }
+
+          data = [{}];
+          data[0] = {
+            Date: '',
+            Confirmed: 0,
+            Hospitalized: 0,
+            Deaths: 0,
+            Recovered: 0,
+            RecoveryRate: 0,
+            MortalityRate: 0,
+            NewConfirmed: 0,
+            NewHospitalized: 0,
+            NewDeaths: 0,
+            NewRecovered: 0
+          };
+          thisData = data[0];
+          sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
+          sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
+          lines = '';
+
+        case 8:
+          if (!(lines == '')) {
+            _context3.next = 27;
+            break;
+          }
+
+          markDateStr = markDate.toISOString();
+          sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
+          markDate.setDate(markDate.getDate() - 1); //console.log(sourceDate);
+
+          _context3.prev = 12;
+          cancelToken = this.cancelSource.token;
+          _context3.next = 16;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(sourcePrefix + sourceDate + '.csv', {
+            headers: {
+              'Content-Type': 'text/csv'
+            },
+            cancelToken: cancelToken
+          }));
+
+        case 16:
+          response = _context3.sent;
+          lines = response.data.split(/\r?\n/);
+          thisData.Date = sourceDate.replace('-', '\/').replace('-', '\/');
+          _context3.next = 25;
+          break;
+
+        case 21:
+          _context3.prev = 21;
+          _context3.t0 = _context3["catch"](12);
+          console.log(_context3.t0);
+          return _context3.abrupt("return", undefined);
+
+        case 25:
+          _context3.next = 8;
+          break;
+
+        case 27:
+          i = 1;
+
+        case 28:
+          if (!(i < lines.length)) {
+            _context3.next = 46;
+            break;
+          }
+
+          if (!((lines[i].match(/"/g) || []).length > 2)) {
+            _context3.next = 31;
+            break;
+          }
+
+          return _context3.abrupt("continue", 43);
+
+        case 31:
+          values = lines[i].split(',');
+
+          if (!(city != '' && city != values[2] || country != '' && country != values[3])) {
+            _context3.next = 34;
+            break;
+          }
+
+          return _context3.abrupt("continue", 43);
+
+        case 34:
+          confirmed = thisData["Confirmed"] + (values[7] == '' ? 0 : parseInt(values[7]));
+          deaths = thisData["Deaths"] + (values[8] == '' ? 0 : parseInt(values[8]));
+          recovered = thisData["Recovered"] + (values[9] == '' ? 0 : parseInt(values[9]));
+          thisData.Confirmed = confirmed;
+          thisData.Hospitalized = thisData["Hospitalized"] + (values[10] == '' ? 0 : parseInt(values[10]));
+          thisData.Deaths = deaths;
+          thisData.Recovered = recovered;
+          thisData.RecoveryRate = recovered / confirmed * 100;
+          thisData.MortalityRate = deaths / confirmed * 100;
+
+        case 43:
+          i++;
+          _context3.next = 28;
+          break;
+
+        case 46:
+          if (!process) {
+            _context3.next = 55;
+            break;
+          }
+
+          _context3.next = 49;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.callAPIGlobal(city, country, markDate, false));
+
+        case 49:
+          prevData = _context3.sent;
+          thisData.NewConfirmed = thisData.Confirmed - prevData.Confirmed;
+          thisData.NewHospitalized = thisData.Hospitalized - prevData.Hospitalized;
+          thisData.NewDeaths = thisData.Deaths - prevData.Deaths;
+          thisData.NewRecovered = thisData.Recovered - prevData.Recovered; //console.log(data);
+
+          this.processData(sourceRef, data, false);
+
+        case 55:
+          return _context3.abrupt("return", thisData);
+
+        case 56:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  }, null, this, [[12, 21]], Promise);
+} //For when Thailand is selected
+//Provides retrospective data and graph functionalities
+//Local scoped source, data from over 200 days are stored within only one file
+
+function callAPIThailand() {
+  var source, data, cancelToken, response;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIThailand$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          source = 'https://covid19.th-stat.com/api/open/timeline';
+          data = [];
+          _context4.prev = 2;
+          cancelToken = this.cancelSource.token;
+          _context4.next = 6;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(source, {
+            cancelToken: cancelToken
+          }));
+
+        case 6:
+          response = _context4.sent;
+          data = response.data['Data'];
+          _context4.next = 14;
+          break;
+
+        case 10:
+          _context4.prev = 10;
+          _context4.t0 = _context4["catch"](2);
+          console.log(_context4.t0);
+          return _context4.abrupt("return", undefined);
+
+        case 14:
+          if (data != undefined) {
+            //console.log(data);
+            this.processData(source, data);
+          }
+
+        case 15:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  }, null, this, [[2, 10]], Promise);
+}
+function clearAxiosCalls() {
+  this.cancelSource.cancel('Axios operations cleared');
+  var CancelToken = axios__WEBPACK_IMPORTED_MODULE_1___default.a.CancelToken;
+  this.cancelSource = CancelToken.source();
+}
+function getLastDate(type, data) {
+  for (var i = data.length - 1; i >= 0; i--) {
+    if (data[i][type] != 0) return data[i]['Date'];
+  }
+}
+function getDateDiff(date) {
+  var now = new Date().getTime();
+  return Math.floor((now - new Date(date).getTime()) / 86400000);
+}
+function processData(source, data) {
+  var hasTimeline = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  if (data.length <= 0) return;
+  var lastData = data.slice(-1)[0];
+  var dataReformatted = data.slice().map(function (d) {
+    return Object.assign({}, d, {
+      Date: d.Date.slice(3, 6) + d.Date.slice(0, 2)
+    });
+  });
+  var lastUpdated = lastData['Date'];
+  var lastConfirmedFormatted = 0;
+  var lastDeathFormatted = 0;
+  var noConfirmedStreak = 0;
+  var noDeathStreak = 0;
+
+  if (hasTimeline) {
+    var lastConfirmed = this.getLastDate('NewConfirmed', data);
+    var lastDeath = this.getLastDate('NewDeaths', data);
+    lastConfirmedFormatted = lastConfirmed.slice(3, 6) + lastConfirmed.slice(0, 3) + lastConfirmed.slice(6);
+    lastDeathFormatted = lastDeath.slice(3, 6) + lastDeath.slice(0, 3) + lastDeath.slice(6);
+    noConfirmedStreak = this.getDateDiff(lastConfirmed);
+    noDeathStreak = this.getDateDiff(lastDeath);
+  }
+
+  this.setState({
+    hasData: true,
+    hasTimeline: hasTimeline,
+    dataTimeline: dataReformatted,
+    dataTimeline15: dataReformatted.slice(1).slice(-15),
+    data_text: {
+      source: source,
+      updatedDate: lastUpdated.slice(3, 6) + lastUpdated.slice(0, 3) + lastUpdated.slice(6),
+      confirmed: lastData['Confirmed'],
+      hospitalized: lastData['Hospitalized'],
+      deaths: lastData['Deaths'],
+      recovered: lastData['Recovered'],
+      newConfirmed: lastData['NewConfirmed'],
+      newHospitalized: lastData['NewHospitalized'],
+      newDeaths: lastData['NewDeaths'],
+      newRecovered: lastData['NewRecovered']
+    },
+    data_pie: [{
+      name: 'Hospitalized',
+      value: lastData['Hospitalized']
+    }, {
+      name: 'Deaths',
+      value: lastData['Deaths']
+    }, {
+      name: 'Recovered',
+      value: lastData['Recovered']
+    }],
+    lastConfirmed: lastConfirmedFormatted,
+    lastDeath: lastDeathFormatted,
+    noConfirmedStreak: noConfirmedStreak,
+    noDeathStreak: noDeathStreak,
+    rateRecovery: (100 * lastData['Recovered'] / lastData['Confirmed']).toFixed(2) + '%',
+    rateDeath: (100 * lastData['Deaths'] / lastData['Confirmed']).toFixed(2) + '%'
+  });
+}
+
+/***/ }),
+
+/***/ "./components/dataMap.js":
+/*!*******************************!*\
+  !*** ./components/dataMap.js ***!
+  \*******************************/
+/*! exports provided: countryEncodeAssist, countryDecodeAssist, processMapGlobalData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countryEncodeAssist", function() { return countryEncodeAssist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countryDecodeAssist", function() { return countryDecodeAssist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processMapGlobalData", function() { return processMapGlobalData; });
+function countryEncodeAssist(country, countriesName) {
+  if (!countriesName.includes(country)) {
+    if (country == "Bolivia") country = "Bolivia, Plurinational State of";else if (country == "Brunei") country = "Brunei Darussalam";else if (country == "Burma") country = "Myanmar";else if (country == "Congo (Brazzaville)") country = "Congo";else if (country == "Congo (Kinshasa)") country = "Congo, Democratic Republic of the";else if (country == "Cote d'Ivoire") country = "Côte d'Ivoire";else if (country == "Iran") country = "Iran, Islamic Republic of";else if (country == "Kosovo") country = "Serbia";else if (country == "Laos") country = "Lao People's Democratic Republic";else if (country == "Moldova") country = "Moldova, Republic of";else if (country == "Russia") country = "Russian Federation";else if (country == "Syria") country = "Syrian Arab Republic";else if (country == "Taiwan*") country = "Taiwan, Province of China";else if (country == "Tanzania") country = "Tanzania, United Republic of";else if (country == "US") country = "United States of America";else if (country == "United Kingdom") country = "United Kingdom of Great Britain and Northern Ireland";else if (country == "Venezuela") country = "Venezuela, Bolivarian Republic of";else if (country == "Vietnam") country = "Viet Nam";else if (country == "West Bank and Gaza") country = "Palestine, State of";else return undefined;
+  }
+
+  var _require = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
+      getCode = _require.getCode;
+
+  return getCode(country);
+}
+function countryDecodeAssist(code) {
+  var _require2 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
+      getName = _require2.getName,
+      getNames = _require2.getNames;
+
+  var countriesName = getNames();
+  var country = getName(code);
+  if (country == "Bolivia, Plurinational State of") country = "Bolivia";else if (country == "Brunei Darussalam") country = "Brunei";else if (country == "Myanmar") country = "Burma";else if (country == "Congo") country = "Congo (Brazzaville)";else if (country == "Congo, Democratic Republic of the") country = "Congo (Kinshasa)";else if (country == "Côte d'Ivoire") country = "Cote d'Ivoire";else if (country == "Iran, Islamic Republic of") country = "Iran";else if (country == "Serbia") country = "Kosovo";else if (country == "Lao People's Democratic Republic") country = "Laos";else if (country == "Moldova, Republic of") country = "Moldova";else if (country == "Russian Federation") country = "Russia";else if (country == "Syrian Arab Republic") country = "Syria";else if (country == "Taiwan") country = "Taiwan*";else if (country == "Tanzania, United Republic of") country = "Tanzania";else if (country == "United States of America") country = "US";else if (country == "United Kingdom of Great Britain and Northern Ireland") country = "United Kingdom";else if (country == "Venezuela, Bolivarian Republic of") country = "Venezuela";else if (country == "Viet Nam") country = "Vietnam";else if (country == "Palestine, State of") country = "West Bank and Gaza";
+  return country;
+}
+function processMapGlobalData(countries, globalData) {
+  var _require3 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
+      getCode = _require3.getCode,
+      getNames = _require3.getNames;
+
+  var countriesName = getNames();
+  var mapGlobalData = {
+    Confirmed: {},
+    Hospitalized: {},
+    Deaths: {},
+    Recovered: {},
+    RecoveryRate: {},
+    MortalityRate: {}
+  };
+
+  for (var i = 0; i < countries.length; i++) {
+    var country = countries[i];
+    var data = globalData[country];
+    var code = this.countryEncodeAssist(country, countriesName);
+    if (code == undefined) continue;
+    mapGlobalData['Confirmed'][code] = data['Confirmed'];
+    mapGlobalData['Hospitalized'][code] = data['Hospitalized'];
+    mapGlobalData['Deaths'][code] = data['Deaths'];
+    mapGlobalData['Recovered'][code] = data['Recovered'];
+    mapGlobalData['RecoveryRate'][code] = parseFloat(data['RecoveryRate']);
+    mapGlobalData['MortalityRate'][code] = parseFloat(data['MortalityRate']);
+  } //console.log(mapGlobalData);
+
+
+  return mapGlobalData;
+}
+
+/***/ }),
+
+/***/ "./components/dataRank.js":
+/*!********************************!*\
+  !*** ./components/dataRank.js ***!
+  \********************************/
+/*! exports provided: countryCompare, globalRankSelect, globalRankTopTen, globalRanking, globalRankingHeading */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countryCompare", function() { return countryCompare; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRankSelect", function() { return globalRankSelect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRankTopTen", function() { return globalRankTopTen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRanking", function() { return globalRanking; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalRankingHeading", function() { return globalRankingHeading; });
+function countryCompare(category) {
+  return function innerSort(a, b) {
+    var valA = a[category];
+    var valB = b[category];
+
+    if (typeof valA == "string") {
+      valA = parseInt(valA);
+      valB = parseInt(valB);
+    }
+
+    if (valA > valB) return -1;else if (valA < valB) return 1;else return 0;
+  };
+}
+function globalRankSelect(ranking, country) {
+  return ranking.findIndex(function (x) {
+    return x.Country == country;
+  }) + 1;
+}
+function globalRankTopTen(ranking) {
+  return ranking.slice(0, 10);
+}
+function globalRanking(category) {
+  var countries = Object.values(this.state.globalData);
+  countries.sort(this.countryCompare(category)); //console.log(countries);
+
+  this.setState({
+    rankSelect: this.globalRankSelect(countries, this.state.selectCountry),
+    rankTopTen: this.globalRankTopTen(countries)
+  });
+}
+function globalRankingHeading(category) {
+  if (category == 'Confirmed') return "Confirmed Cases Count";else if (category == 'Hospitalized') return "Active Cases Count";else if (category == 'Deaths') return "Deceased Cases Count";else if (category == 'Recovered') return "Recovered Cases Count";else if (category == 'RecoveryRate') return "Recovery Rate";else if (category == 'MortalityRate') return "Mortality Rate";
+}
+
+/***/ }),
+
+/***/ "./components/muiComponents.js":
+/*!*************************************!*\
+  !*** ./components/muiComponents.js ***!
+  \*************************************/
+/*! exports provided: withStyles, createMuiTheme, MuiThemeProvider, AppBar, Toolbar, Typography, CssBaseline, Container, Paper, Grid, styles, darkTheme */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "darkTheme", function() { return darkTheme; });
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withStyles", function() { return _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["withStyles"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createMuiTheme", function() { return _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["createMuiTheme"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MuiThemeProvider", function() { return _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["MuiThemeProvider"]; });
+
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AppBar", function() { return _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Toolbar", function() { return _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Typography", function() { return _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "./node_modules/@material-ui/core/esm/CssBaseline/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CssBaseline", function() { return _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Container */ "./node_modules/@material-ui/core/esm/Container/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Container", function() { return _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Paper */ "./node_modules/@material-ui/core/esm/Paper/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Paper", function() { return _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Grid", function() { return _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+
+
+
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    appBarSpacer: theme.mixins.toolbar,
+    title: {
+      flexGrow: 1
+    },
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    paper: {
+      padding: theme.spacing(2),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: "#FFFEFE"
+    },
+    footer: {
+      backgroundColor: theme.palette.background.paper,
+      marginTop: theme.spacing(2)
+    },
+    root: {
+      backgroundColor: "#000000"
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2)
+    }
+  };
+};
+var darkTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["createMuiTheme"])({
+  palette: {
+    type: "dark"
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js ***!
@@ -11458,7 +12304,7 @@ module.exports = JSON.parse("[{\"code\":\"AD\",\"name\":\"Andorra\"},{\"code\":\
 
 exports = module.exports = __webpack_require__(/*! ../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, ".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n", "",{"version":3,"sources":["C:/Users/Vava/Desktop/covid-19-dashboard/node_modules/react-dropdown/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;AAC5B;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,0CAA0C;EAC1C,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,SAAS;EACT,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,SAAS;EACT;AACF;;AAEA;EACE,0CAA0C;EAC1C,uBAAuB;AACzB;;AAEA;EACE,uBAAuB;EACvB,sBAAsB;EACtB,uCAAuC;EACvC,sBAAsB;EACtB,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,iCAAiC;AACnC;;AAEA;EACE,iBAAiB;EACjB,0BAA0B;EAC1B,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,+BAA+B;GAC9B,8BAA8B;AACjC;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB","file":"style.css","sourcesContent":[".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n"]}]);
+exports.push([module.i, ".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n", "",{"version":3,"sources":["C:/Users/Herabat/react-js/covid-19-dashboard/node_modules/react-dropdown/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;AAC5B;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,0CAA0C;EAC1C,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,cAAc;EACd,SAAS;EACT,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,SAAS;EACT;AACF;;AAEA;EACE,0CAA0C;EAC1C,uBAAuB;AACzB;;AAEA;EACE,uBAAuB;EACvB,sBAAsB;EACtB,uCAAuC;EACvC,sBAAsB;EACtB,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,iCAAiC;AACnC;;AAEA;EACE,iBAAiB;EACjB,0BAA0B;EAC1B,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,+BAA+B;GAC9B,8BAA8B;AACjC;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,sBAAsB;EACtB,WAAW;EACX,eAAe;EACf,cAAc;EACd,iBAAiB;AACnB","file":"style.css","sourcesContent":[".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease;\n}\n\n.Dropdown-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0\n}\n\n.is-open .Dropdown-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Dropdown-menu .Dropdown-group > .Dropdown-title{\n  padding: 8px 10px;\n  color: rgba(51, 51, 51, 1);\n  font-weight: bold;\n  text-transform: capitalize;\n}\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Dropdown-option:last-child {\n  border-bottom-right-radius: 2px;\n   border-bottom-left-radius: 2px;\n}\n\n.Dropdown-option:hover {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-option.is-selected {\n  background-color: #f2f9fc;\n  color: #333;\n}\n\n.Dropdown-noresults {\n  box-sizing: border-box;\n  color: #ccc;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n"]}]);
 
 
 /***/ }),
@@ -11472,7 +12318,7 @@ exports.push([module.i, ".Dropdown-root {\n  position: relative;\n}\n\n.Dropdown
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, "svg {\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    overflow: hidden;\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-tip {\r\n    position: absolute;\r\n    display: none;\r\n    border: solid 1px #CDCDCD;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    color: white;\r\n    font-family: sans-serif, Verdana;\r\n    font-size: smaller;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {\r\n    position: absolute;\r\n    left: 10px;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    padding: 3px;\r\n    color: white;\r\n    cursor: pointer;\r\n    line-height: 10px;\r\n    text-align: center;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout {\r\n    width: 10px;\r\n    height: 10px;\r\n}\r\n\r\n.jvectormap-zoomin {\r\n    top: 10px;\r\n}\r\n\r\n.jvectormap-zoomout {\r\n    top: 30px;\r\n}\r\n\r\n.jvectormap-goback {\r\n    bottom: 10px;\r\n    z-index: 1000;\r\n    padding: 6px;\r\n}\r\n\r\n.jvectormap-spinner {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: center no-repeat url(data:image/gif;base64,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);\r\n}\r\n\r\n.jvectormap-legend-title {\r\n    font-weight: bold;\r\n    font-size: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt {\r\n    position: absolute;\r\n}\r\n\r\n.jvectormap-legend-cnt-h {\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend-cnt-v {\r\n    top: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend {\r\n    background: black;\r\n    color: white;\r\n    border-radius: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend {\r\n    float: left;\r\n    margin: 0 10px 10px 0;\r\n    padding: 3px 3px 1px 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend .jvectormap-legend-tick {\r\n    float: left;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend {\r\n    margin: 10px 10px 0 0;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick {\r\n    width: 40px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {\r\n    height: 15px;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-sample {\r\n    height: 20px;\r\n    width: 20px;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.jvectormap-legend-tick-text {\r\n    font-size: 12px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-text {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    line-height: 20px;\r\n    padding-left: 3px;\r\n}", "",{"version":3,"sources":["C:/Users/Vava/Desktop/covid-19-dashboard/public/jquery-jvectormap.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,yBAAyB;IACzB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,gCAAgC;IAChC,kBAAkB;IAClB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,YAAY;IACZ,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,uBAAuB;AAC3B;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,OAAO;IACP,MAAM;IACN,QAAQ;IACR,SAAS;IACT,gvIAAgvI;AACpvI;;AAEA;IACI,iBAAiB;IACjB,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,SAAS;IACT,QAAQ;AACZ;;AAEA;IACI,MAAM;IACN,QAAQ;AACZ;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,qBAAqB;IACrB,wBAAwB;AAC5B;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,qBAAqB;IACrB,YAAY;AAChB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,qBAAqB;IACrB,sBAAsB;AAC1B;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,qBAAqB;IACrB,sBAAsB;IACtB,iBAAiB;IACjB,iBAAiB;AACrB","file":"jquery-jvectormap.css","sourcesContent":["svg {\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    overflow: hidden;\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-tip {\r\n    position: absolute;\r\n    display: none;\r\n    border: solid 1px #CDCDCD;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    color: white;\r\n    font-family: sans-serif, Verdana;\r\n    font-size: smaller;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {\r\n    position: absolute;\r\n    left: 10px;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    padding: 3px;\r\n    color: white;\r\n    cursor: pointer;\r\n    line-height: 10px;\r\n    text-align: center;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout {\r\n    width: 10px;\r\n    height: 10px;\r\n}\r\n\r\n.jvectormap-zoomin {\r\n    top: 10px;\r\n}\r\n\r\n.jvectormap-zoomout {\r\n    top: 30px;\r\n}\r\n\r\n.jvectormap-goback {\r\n    bottom: 10px;\r\n    z-index: 1000;\r\n    padding: 6px;\r\n}\r\n\r\n.jvectormap-spinner {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: center no-repeat url(data:image/gif;base64,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);\r\n}\r\n\r\n.jvectormap-legend-title {\r\n    font-weight: bold;\r\n    font-size: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt {\r\n    position: absolute;\r\n}\r\n\r\n.jvectormap-legend-cnt-h {\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend-cnt-v {\r\n    top: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend {\r\n    background: black;\r\n    color: white;\r\n    border-radius: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend {\r\n    float: left;\r\n    margin: 0 10px 10px 0;\r\n    padding: 3px 3px 1px 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend .jvectormap-legend-tick {\r\n    float: left;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend {\r\n    margin: 10px 10px 0 0;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick {\r\n    width: 40px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {\r\n    height: 15px;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-sample {\r\n    height: 20px;\r\n    width: 20px;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.jvectormap-legend-tick-text {\r\n    font-size: 12px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-text {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    line-height: 20px;\r\n    padding-left: 3px;\r\n}"]}]);
+exports.push([module.i, "svg {\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    overflow: hidden;\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-tip {\r\n    position: absolute;\r\n    display: none;\r\n    border: solid 1px #CDCDCD;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    color: white;\r\n    font-family: sans-serif, Verdana;\r\n    font-size: smaller;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {\r\n    position: absolute;\r\n    left: 10px;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    padding: 3px;\r\n    color: white;\r\n    cursor: pointer;\r\n    line-height: 10px;\r\n    text-align: center;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout {\r\n    width: 10px;\r\n    height: 10px;\r\n}\r\n\r\n.jvectormap-zoomin {\r\n    top: 10px;\r\n}\r\n\r\n.jvectormap-zoomout {\r\n    top: 30px;\r\n}\r\n\r\n.jvectormap-goback {\r\n    bottom: 10px;\r\n    z-index: 1000;\r\n    padding: 6px;\r\n}\r\n\r\n.jvectormap-spinner {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: center no-repeat url(data:image/gif;base64,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);\r\n}\r\n\r\n.jvectormap-legend-title {\r\n    font-weight: bold;\r\n    font-size: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt {\r\n    position: absolute;\r\n}\r\n\r\n.jvectormap-legend-cnt-h {\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend-cnt-v {\r\n    top: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend {\r\n    background: black;\r\n    color: white;\r\n    border-radius: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend {\r\n    float: left;\r\n    margin: 0 10px 10px 0;\r\n    padding: 3px 3px 1px 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend .jvectormap-legend-tick {\r\n    float: left;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend {\r\n    margin: 10px 10px 0 0;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick {\r\n    width: 40px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {\r\n    height: 15px;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-sample {\r\n    height: 20px;\r\n    width: 20px;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.jvectormap-legend-tick-text {\r\n    font-size: 12px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-text {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    line-height: 20px;\r\n    padding-left: 3px;\r\n}", "",{"version":3,"sources":["C:/Users/Herabat/react-js/covid-19-dashboard/public/jquery-jvectormap.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,yBAAyB;IACzB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,gCAAgC;IAChC,kBAAkB;IAClB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,YAAY;IACZ,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,uBAAuB;AAC3B;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,OAAO;IACP,MAAM;IACN,QAAQ;IACR,SAAS;IACT,gvIAAgvI;AACpvI;;AAEA;IACI,iBAAiB;IACjB,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,SAAS;IACT,QAAQ;AACZ;;AAEA;IACI,MAAM;IACN,QAAQ;AACZ;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,qBAAqB;IACrB,wBAAwB;AAC5B;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,qBAAqB;IACrB,YAAY;AAChB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,qBAAqB;IACrB,sBAAsB;AAC1B;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,qBAAqB;IACrB,sBAAsB;IACtB,iBAAiB;IACjB,iBAAiB;AACrB","file":"jquery-jvectormap.css","sourcesContent":["svg {\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    overflow: hidden;\r\n    touch-action: none;\r\n}\r\n\r\n.jvectormap-tip {\r\n    position: absolute;\r\n    display: none;\r\n    border: solid 1px #CDCDCD;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    color: white;\r\n    font-family: sans-serif, Verdana;\r\n    font-size: smaller;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {\r\n    position: absolute;\r\n    left: 10px;\r\n    border-radius: 3px;\r\n    background: #292929;\r\n    padding: 3px;\r\n    color: white;\r\n    cursor: pointer;\r\n    line-height: 10px;\r\n    text-align: center;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.jvectormap-zoomin, .jvectormap-zoomout {\r\n    width: 10px;\r\n    height: 10px;\r\n}\r\n\r\n.jvectormap-zoomin {\r\n    top: 10px;\r\n}\r\n\r\n.jvectormap-zoomout {\r\n    top: 30px;\r\n}\r\n\r\n.jvectormap-goback {\r\n    bottom: 10px;\r\n    z-index: 1000;\r\n    padding: 6px;\r\n}\r\n\r\n.jvectormap-spinner {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: center no-repeat url(data:image/gif;base64,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);\r\n}\r\n\r\n.jvectormap-legend-title {\r\n    font-weight: bold;\r\n    font-size: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt {\r\n    position: absolute;\r\n}\r\n\r\n.jvectormap-legend-cnt-h {\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend-cnt-v {\r\n    top: 0;\r\n    right: 0;\r\n}\r\n\r\n.jvectormap-legend {\r\n    background: black;\r\n    color: white;\r\n    border-radius: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend {\r\n    float: left;\r\n    margin: 0 10px 10px 0;\r\n    padding: 3px 3px 1px 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend .jvectormap-legend-tick {\r\n    float: left;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend {\r\n    margin: 10px 10px 0 0;\r\n    padding: 3px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick {\r\n    width: 40px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {\r\n    height: 15px;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-sample {\r\n    height: 20px;\r\n    width: 20px;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.jvectormap-legend-tick-text {\r\n    font-size: 12px;\r\n}\r\n\r\n.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {\r\n    text-align: center;\r\n}\r\n\r\n.jvectormap-legend-cnt-v .jvectormap-legend-tick-text {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    line-height: 20px;\r\n    padding-left: 3px;\r\n}"]}]);
 
 
 /***/ }),
@@ -69111,69 +69957,66 @@ module.exports = function(module) {
 /*!***********************!*\
   !*** ./pages/_app.js ***!
   \***********************/
-/*! exports provided: default */
+/*! exports provided: VectorMap, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VectorMap", function() { return VectorMap; });
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
 /* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
 /* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
 /* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
-/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/index.js");
-/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/index.js");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
-/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "./node_modules/@material-ui/core/esm/CssBaseline/index.js");
-/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Container */ "./node_modules/@material-ui/core/esm/Container/index.js");
-/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Paper */ "./node_modules/@material-ui/core/esm/Paper/index.js");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/index.js");
-/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-dropdown */ "./node_modules/react-dropdown/dist/index.js");
-/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-dropdown/style.css */ "./node_modules/react-dropdown/style.css");
-/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
-/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../public/jquery-jvectormap.css */ "./public/jquery-jvectormap.css");
-/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next/dist/next-server/lib/dynamic.js");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/muiComponents.js */ "./components/muiComponents.js");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-dropdown */ "./node_modules/react-dropdown/dist/index.js");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-dropdown/style.css */ "./node_modules/react-dropdown/style.css");
+/* harmony import */ var react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_dropdown_style_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/dataFetch.js */ "./components/dataFetch.js");
+/* harmony import */ var _components_dataRank_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/dataRank.js */ "./components/dataRank.js");
+/* harmony import */ var _components_dataMap_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/dataMap.js */ "./components/dataMap.js");
+/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../public/jquery-jvectormap.css */ "./public/jquery-jvectormap.css");
+/* harmony import */ var _public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_public_jquery_jvectormap_css__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next/dist/next-server/lib/dynamic.js");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_16__);
 
 
 
 
 
 
-var _jsxFileName = "C:\\Users\\Vava\\Desktop\\covid-19-dashboard\\pages\\_app.js";
+var _jsxFileName = "C:\\Users\\Herabat\\react-js\\covid-19-dashboard\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
+ //MUI
+
+ //DROPDOWN
+
+
+ //RECHARTS
+
+ //AXIOS DATA
+
+
+ //RANKING
+
+ //JVECTORMAP
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-var VectorMap = next_dynamic__WEBPACK_IMPORTED_MODULE_20___default()(function () {
+var VectorMap = next_dynamic__WEBPACK_IMPORTED_MODULE_16___default()(function () {
   return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! react-jvectormap */ "./node_modules/react-jvectormap/build/index.js", 7)).then(function (m) {
     return m.VectorMap;
   });
@@ -69185,58 +70028,8 @@ var VectorMap = next_dynamic__WEBPACK_IMPORTED_MODULE_20___default()(function ()
     },
     modules: ["react-jvectormap"]
   }
-});
+}); //----------------------------------------------------------------
 
-var styles = function styles(theme) {
-  return {
-    appBarSpacer: theme.mixins.toolbar,
-    title: {
-      flexGrow: 1
-    },
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    paper: {
-      padding: theme.spacing(2),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: "#FFFEFE"
-    },
-    paperFoot: {
-      padding: theme.spacing(2),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: "#777070"
-    },
-    footer: {
-      backgroundColor: theme.palette.background.paper,
-      marginTop: theme.spacing(2)
-    },
-    root: {
-      backgroundColor: "#000000"
-    },
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2)
-    }
-  };
-};
-
-var darkTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["createMuiTheme"])({
-  palette: {
-    type: "dark"
-  }
-});
 var cBlue = '#20A0E0';
 var cOrange = '#F7B860';
 var cRed = '#E04040';
@@ -69251,10 +70044,11 @@ var App = /*#__PURE__*/function (_React$Component) {
   function App(props) {
     var _this;
 
-    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, App);
+    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, App);
 
     _this = _super.call(this, props);
     _this.state = {
+      hasData: false,
       selectCountry: 'Thailand',
       selectCity: 'Overall',
       countries: [],
@@ -69291,7 +70085,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this.referenceDate.setDate(_this.referenceDate.getDate() - 1);
 
-    var CancelToken = axios__WEBPACK_IMPORTED_MODULE_17___default.a.CancelToken;
+    var CancelToken = axios__WEBPACK_IMPORTED_MODULE_11___default.a.CancelToken;
     _this.cancelSource = CancelToken.source();
 
     var _require = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
@@ -69301,20 +70095,35 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this.getCountryCode = getCode;
     _this.getCountryName = getName;
-    _this.getCountryData = getData;
+    _this.getCountryData = getData; //Binding dataFetch functions
+
+    _this.fetchData = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["fetchData"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.callAPIGlobalAll = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["callAPIGlobalAll"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.callAPIGlobalTimeline = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["callAPIGlobalTimeline"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.callAPIGlobal = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["callAPIGlobal"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.callAPIThailand = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["callAPIThailand"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.clearAxiosCalls = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["clearAxiosCalls"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.getLastDate = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["getLastDate"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.getDateDiff = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["getDateDiff"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.processData = _components_dataFetch_js__WEBPACK_IMPORTED_MODULE_12__["processData"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this)); //Binding dataRank functions
+
+    _this.countryCompare = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_13__["countryCompare"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.globalRankSelect = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_13__["globalRankSelect"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.globalRankTopTen = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_13__["globalRankTopTen"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.globalRanking = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_13__["globalRanking"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.globalRankingHeading = _components_dataRank_js__WEBPACK_IMPORTED_MODULE_13__["globalRankingHeading"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this)); //Binding dataRank functions
+
+    _this.countryEncodeAssist = _components_dataMap_js__WEBPACK_IMPORTED_MODULE_14__["countryEncodeAssist"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.countryDecodeAssist = _components_dataMap_js__WEBPACK_IMPORTED_MODULE_14__["countryDecodeAssist"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.processMapGlobalData = _components_dataMap_js__WEBPACK_IMPORTED_MODULE_14__["processMapGlobalData"].bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
     return _this;
   }
 
-  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(App, [{
+  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.callAPIGlobalAll(this.referenceDate);
       this.fetchData(this.referenceDate);
-    }
-  }, {
-    key: "fetchData",
-    value: function fetchData(refDate) {
-      if (this.state.selectCountry == 'Thailand') this.callAPIThailand();else if (this.state.fastMode) this.callAPIGlobal(this.state.selectCity, this.state.selectCountry, new Date(refDate.getTime()));else this.callAPIGlobalTimeline(this.state.selectCity, this.state.selectCountry);
     }
   }, {
     key: "componentDidUpdate",
@@ -69324,741 +70133,1071 @@ var App = /*#__PURE__*/function (_React$Component) {
         this.fetchData(this.referenceDate);
       }
 
-      if (prevState.selectCategory != this.state.selectCategory) this.globalRanking(this.state.selectCategory);
+      if (prevState.selectCategory != this.state.selectCategory || prevState.selectCountry != this.state.selectCountry) this.globalRanking(this.state.selectCategory);
     }
   }, {
-    key: "clearAxiosCalls",
-    value: function clearAxiosCalls() {
-      this.cancelSource.cancel('Axios operations cleared');
-      var CancelToken = axios__WEBPACK_IMPORTED_MODULE_17___default.a.CancelToken;
-      this.cancelSource = CancelToken.source();
-    } //For ranking and map functionalities
-    //Only data from one day/file is processed
-
-  }, {
-    key: "callAPIGlobalAll",
-    value: function callAPIGlobalAll(markDate) {
-      var countries, countriesN, data, sourceRef, sourcePrefix, formatChange, cityIndex, countryIndex, conIndex, deathIndex, recIndex, quoteLimit, lines, markDateStr, sourceDate, cancelToken, response, i, values, country, city, confirmed, hospitalized, deaths, recovered, citiesN, mapGlobalData;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobalAll$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              markDate = new Date(markDate.getTime());
-              countries = [];
-              countriesN = 0;
-              data = new Object();
-              sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
-              sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
-              formatChange = new Date(2020, 2, 22).getTime();
-              cityIndex = 0;
-              countryIndex = 1;
-              conIndex = 3;
-              deathIndex = 4;
-              recIndex = 5;
-              quoteLimit = 0; //Workaround for source's formatting inconsistencies
-
-              if (cityIndex == 0 && markDate.getTime() >= formatChange) {
-                cityIndex = 2;
-                countryIndex = 3;
-                conIndex = 7;
-                deathIndex = 8;
-                recIndex = 9;
-                quoteLimit = 2;
-              }
-
-              lines = '';
-              markDateStr = markDate.toISOString();
-              sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear(); //console.log(sourceDate);
-
-              _context.prev = 17;
-              cancelToken = this.cancelSource.token;
-              _context.next = 21;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(sourcePrefix + sourceDate + '.csv', {
-                headers: {
-                  'Content-Type': 'text/csv'
-                },
-                cancelToken: cancelToken
-              }));
-
-            case 21:
-              response = _context.sent;
-              lines = response.data.split(/\r?\n/);
-              _context.next = 29;
-              break;
-
-            case 25:
-              _context.prev = 25;
-              _context.t0 = _context["catch"](17);
-              console.log(_context.t0);
-              return _context.abrupt("return", undefined);
-
-            case 29:
-              if (!(lines != '')) {
-                _context.next = 55;
-                break;
-              }
-
-              i = 1;
-
-            case 31:
-              if (!(i < lines.length)) {
-                _context.next = 53;
-                break;
-              }
-
-              if (!(lines[i] == '' || (lines[i].match(/"/g) || []).length > quoteLimit)) {
-                _context.next = 34;
-                break;
-              }
-
-              return _context.abrupt("continue", 50);
-
-            case 34:
-              values = lines[i].split(',');
-              country = values[countryIndex];
-              city = values[cityIndex];
-              confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
-              hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
-              deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
-              recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
-
-              if (data[country] != undefined) {
-                confirmed += data[country]["Confirmed"];
-                hospitalized += data[country]["Hospitalized"];
-                deaths += data[country]["Deaths"];
-                recovered += data[country]["Recovered"];
-              } else {
-                data[country] = new Object();
-                data[country].Country = country;
-                data[country].Cities = [];
-                data[country].CitiesN = 0;
-                countries[countriesN] = country;
-                countriesN++;
-              }
-
-              citiesN = data[country].CitiesN;
-              data[country].Confirmed = confirmed;
-              data[country].Hospitalized = hospitalized;
-              data[country].Deaths = deaths;
-              data[country].Recovered = recovered;
-              data[country].RecoveryRate = (recovered / confirmed * 100).toFixed(2);
-              data[country].MortalityRate = (deaths / confirmed * 100).toFixed(2);
-
-              if (city != '') {
-                data[country].Cities[citiesN] = city;
-                data[country].CitiesN = citiesN + 1;
-              }
-
-            case 50:
-              i++;
-              _context.next = 31;
-              break;
-
-            case 53:
-              //console.log(data);
-              mapGlobalData = this.processMapGlobalData(countries, data);
-              this.setState({
-                countries: countries,
-                globalData: data,
-                mapGlobalData: mapGlobalData
-              });
-
-            case 55:
-              this.globalRanking(this.state.selectCategory);
-
-            case 56:
-            case "end":
-              return _context.stop();
-          }
+    key: "renderSourceInfo",
+    value: function renderSourceInfo() {
+      var data_text = this.state.data_text;
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["MuiThemeProvider"], {
+        theme: _components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["darkTheme"],
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 138,
+          columnNumber: 4
         }
-      }, null, this, [[17, 25]], Promise);
-    } //When foreign country is selected
-    //Provides retrospective data and graph functionalities
-    //Taxing, over 200 days/files must be processed
-    //Somehow sometimes fast, sometimes slow. Cause still unknown.
-
-  }, {
-    key: "callAPIGlobalTimeline",
-    value: function callAPIGlobalTimeline(city, country) {
-      var data, dataN, prevConfirmed, prevHospitalized, prevDeaths, prevRecovered, sourceRef, sourcePrefix, markDate, tomorrow, now, cityIndex, countryIndex, conIndex, deathIndex, recIndex, lastIndex, formatChange, lines, markDateStr, sourceDate, cancelToken, response, date, values, i, _i, confirmed, hospitalized, deaths, recovered;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobalTimeline$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              if (city == 'Overall') {
-                city = '';
-              }
-
-              data = [{}];
-              dataN = 0;
-              prevConfirmed = 0;
-              prevHospitalized = 0;
-              prevDeaths = 0;
-              prevRecovered = 0;
-              sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
-              sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
-              markDate = new Date(2020, 0, 23);
-              tomorrow = new Date();
-              tomorrow.setDate(tomorrow.getDate() + 1);
-              now = tomorrow.getTime();
-              cityIndex = 0;
-              countryIndex = 1;
-              conIndex = 3;
-              deathIndex = 4;
-              recIndex = 5;
-              lastIndex = 1;
-              formatChange = new Date(2020, 2, 22).getTime();
-
-            case 20:
-              if (!(markDate.getTime() < now)) {
-                _context2.next = 72;
-                break;
-              }
-
-              lines = '';
-              markDateStr = markDate.toISOString();
-              sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
-              console.log(sourceDate); //console.log(lastIndex);
-              //Workaround for source's formatting inconsistencies
-
-              if (cityIndex == 0 && markDate.getTime() >= formatChange) {
-                cityIndex = 2;
-                countryIndex = 3;
-                conIndex = 7;
-                deathIndex = 8;
-                recIndex = 9;
-              }
-
-              _context2.prev = 26;
-              cancelToken = this.cancelSource.token;
-              _context2.next = 30;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(sourcePrefix + sourceDate + '.csv', {
-                headers: {
-                  'Content-Type': 'text/csv'
-                },
-                cancelToken: cancelToken
-              }));
-
-            case 30:
-              response = _context2.sent;
-              lines = response.data.split(/\r?\n/);
-              _context2.next = 38;
-              break;
-
-            case 34:
-              _context2.prev = 34;
-              _context2.t0 = _context2["catch"](26);
-              console.log(_context2.t0);
-              return _context2.abrupt("return", undefined);
-
-            case 38:
-              markDate.setDate(markDate.getDate() + 1);
-
-              if (!(lines == '')) {
-                _context2.next = 41;
-                break;
-              }
-
-              return _context2.abrupt("continue", 20);
-
-            case 41:
-              console.log(lastIndex);
-              date = sourceDate.replace('-', '\/').replace('-', '\/');
-              values = undefined;
-              if (lines[lastIndex]) values = lines[lastIndex].split(',');else lastIndex = 1;
-
-              if (!(values == undefined || city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
-                _context2.next = 69;
-                break;
-              }
-
-              i = lastIndex + 1;
-
-            case 47:
-              if (!(i < lines.length)) {
-                _context2.next = 57;
-                break;
-              }
-
-              values = lines[i].split(',');
-
-              if (!(city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
-                _context2.next = 52;
-                break;
-              }
-
-              values = undefined;
-              return _context2.abrupt("continue", 54);
-
-            case 52:
-              lastIndex = i;
-              return _context2.abrupt("break", 57);
-
-            case 54:
-              i++;
-              _context2.next = 47;
-              break;
-
-            case 57:
-              if (!(values == undefined)) {
-                _context2.next = 69;
-                break;
-              }
-
-              _i = 1;
-
-            case 59:
-              if (!(_i < lastIndex)) {
-                _context2.next = 69;
-                break;
-              }
-
-              values = lines[_i].split(',');
-
-              if (!(city != '' && city != values[cityIndex] || country != '' && country != values[countryIndex])) {
-                _context2.next = 64;
-                break;
-              }
-
-              values = undefined;
-              return _context2.abrupt("continue", 66);
-
-            case 64:
-              lastIndex = _i;
-              return _context2.abrupt("break", 69);
-
-            case 66:
-              _i++;
-              _context2.next = 59;
-              break;
-
-            case 69:
-              if (values != undefined) {
-                confirmed = values[conIndex] == '' ? 0 : parseInt(values[conIndex]);
-                hospitalized = values[10] == '' ? 0 : parseInt(values[10]);
-                deaths = values[deathIndex] == '' ? 0 : parseInt(values[deathIndex]);
-                recovered = values[recIndex] == '' ? 0 : parseInt(values[recIndex]);
-                data[dataN] = {
-                  Date: date,
-                  Confirmed: confirmed,
-                  Hospitalized: hospitalized,
-                  Deaths: deaths,
-                  Recovered: recovered,
-                  NewConfirmed: confirmed - prevConfirmed,
-                  NewHospitalized: hospitalized - prevHospitalized,
-                  NewDeaths: deaths - prevDeaths,
-                  NewRecovered: recovered - prevRecovered
-                };
-                prevConfirmed = confirmed;
-                prevHospitalized = hospitalized;
-                prevDeaths = deaths;
-                prevRecovered = recovered;
-                dataN++;
-              }
-
-              _context2.next = 20;
-              break;
-
-            case 72:
-              console.log(data);
-              this.processData(sourceRef, data);
-
-            case 74:
-            case "end":
-              return _context2.stop();
-          }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        align: "left",
+        color: "textPrimary",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 139,
+          columnNumber: 5
         }
-      }, null, this, [[26, 34]], Promise);
-    } //When foreign country is selected
-    //No streak data or timeline functionality
-    //Only data from two days/files is processed
-
-  }, {
-    key: "callAPIGlobal",
-    value: function callAPIGlobal(city, country, markDate) {
-      var process,
-          data,
-          thisData,
-          sourceRef,
-          sourcePrefix,
-          lines,
-          markDateStr,
-          sourceDate,
-          cancelToken,
-          response,
-          i,
-          values,
-          confirmed,
-          deaths,
-          recovered,
-          prevData,
-          _args3 = arguments;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIGlobal$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              process = _args3.length > 3 && _args3[3] !== undefined ? _args3[3] : true;
-
-              if (city == 'Overall') {
-                city = '';
-              }
-
-              data = [{}];
-              data[0] = {
-                Date: '',
-                Confirmed: 0,
-                Hospitalized: 0,
-                Deaths: 0,
-                Recovered: 0,
-                RecoveryRate: 0,
-                MortalityRate: 0,
-                NewConfirmed: 0,
-                NewHospitalized: 0,
-                NewDeaths: 0,
-                NewRecovered: 0
-              };
-              thisData = data[0];
-              sourceRef = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports';
-              sourcePrefix = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
-              lines = '';
-
-            case 8:
-              if (!(lines == '')) {
-                _context3.next = 27;
-                break;
-              }
-
-              markDateStr = markDate.toISOString();
-              sourceDate = markDateStr.slice(5, 8) + markDateStr.slice(8, 10) + '-' + markDate.getFullYear();
-              markDate.setDate(markDate.getDate() - 1); //console.log(sourceDate);
-
-              _context3.prev = 12;
-              cancelToken = this.cancelSource.token;
-              _context3.next = 16;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(sourcePrefix + sourceDate + '.csv', {
-                headers: {
-                  'Content-Type': 'text/csv'
-                },
-                cancelToken: cancelToken
-              }));
-
-            case 16:
-              response = _context3.sent;
-              lines = response.data.split(/\r?\n/);
-              thisData.Date = sourceDate.replace('-', '\/').replace('-', '\/');
-              _context3.next = 25;
-              break;
-
-            case 21:
-              _context3.prev = 21;
-              _context3.t0 = _context3["catch"](12);
-              console.log(_context3.t0);
-              return _context3.abrupt("return", undefined);
-
-            case 25:
-              _context3.next = 8;
-              break;
-
-            case 27:
-              i = 1;
-
-            case 28:
-              if (!(i < lines.length)) {
-                _context3.next = 46;
-                break;
-              }
-
-              if (!((lines[i].match(/"/g) || []).length > 2)) {
-                _context3.next = 31;
-                break;
-              }
-
-              return _context3.abrupt("continue", 43);
-
-            case 31:
-              values = lines[i].split(',');
-
-              if (!(city != '' && city != values[2] || country != '' && country != values[3])) {
-                _context3.next = 34;
-                break;
-              }
-
-              return _context3.abrupt("continue", 43);
-
-            case 34:
-              confirmed = thisData["Confirmed"] + (values[7] == '' ? 0 : parseInt(values[7]));
-              deaths = thisData["Deaths"] + (values[8] == '' ? 0 : parseInt(values[8]));
-              recovered = thisData["Recovered"] + (values[9] == '' ? 0 : parseInt(values[9]));
-              thisData.Confirmed = confirmed;
-              thisData.Hospitalized = thisData["Hospitalized"] + (values[10] == '' ? 0 : parseInt(values[10]));
-              thisData.Deaths = deaths;
-              thisData.Recovered = recovered;
-              thisData.RecoveryRate = recovered / confirmed * 100;
-              thisData.MortalityRate = deaths / confirmed * 100;
-
-            case 43:
-              i++;
-              _context3.next = 28;
-              break;
-
-            case 46:
-              if (!process) {
-                _context3.next = 55;
-                break;
-              }
-
-              _context3.next = 49;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.callAPIGlobal(city, country, markDate, false));
-
-            case 49:
-              prevData = _context3.sent;
-              thisData.NewConfirmed = thisData.Confirmed - prevData.Confirmed;
-              thisData.NewHospitalized = thisData.Hospitalized - prevData.Hospitalized;
-              thisData.NewDeaths = thisData.Deaths - prevData.Deaths;
-              thisData.NewRecovered = thisData.Recovered - prevData.Recovered; //console.log(data);
-
-              this.processData(sourceRef, data, false);
-
-            case 55:
-              return _context3.abrupt("return", thisData);
-
-            case 56:
-            case "end":
-              return _context3.stop();
-          }
+      }, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 140,
+          columnNumber: 6
         }
-      }, null, this, [[12, 21]], Promise);
-    } //For when Thailand is selected
-    //Provides retrospective data and graph functionalities
-    //Local scoped source, data from over 200 days are stored within only one file
-
-  }, {
-    key: "callAPIThailand",
-    value: function callAPIThailand() {
-      var source, data, cancelToken, response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function callAPIThailand$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              source = 'https://covid19.th-stat.com/api/open/timeline';
-              data = [];
-              _context4.prev = 2;
-              cancelToken = this.cancelSource.token;
-              _context4.next = 6;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_17___default.a.get(source, {
-                cancelToken: cancelToken
-              }));
-
-            case 6:
-              response = _context4.sent;
-              data = response.data['Data'];
-              _context4.next = 14;
-              break;
-
-            case 10:
-              _context4.prev = 10;
-              _context4.t0 = _context4["catch"](2);
-              console.log(_context4.t0);
-              return _context4.abrupt("return", undefined);
-
-            case 14:
-              if (data.length > 0) this.processData(source, data);
-
-            case 15:
-            case "end":
-              return _context4.stop();
-          }
+      }), "Last updated: ", data_text.updatedDate), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "subtitle2",
+        align: "left",
+        color: "textPrimary",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 143,
+          columnNumber: 5
         }
-      }, null, this, [[2, 10]], Promise);
+      }, __jsx("a", {
+        href: data_text.source,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 144,
+          columnNumber: 6
+        }
+      }, " ", data_text.source)));
     }
   }, {
-    key: "getLastDate",
-    value: function getLastDate(type, data) {
-      for (var i = data.length - 1; i >= 0; i--) {
-        if (data[i][type] != 0) return data[i]['Date'];
+    key: "renderFetchControls",
+    value: function renderFetchControls(which) {
+      var _this2 = this;
+
+      if (which == 0) {
+        //Button Fast/Full Mode Select
+        var fastMode = this.state.fastMode;
+        return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("br", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 161,
+            columnNumber: 5
+          }
+        }), __jsx("br", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 161,
+            columnNumber: 10
+          }
+        }), __jsx("button", {
+          style: {
+            height: '32px',
+            width: '128px',
+            "float": 'right',
+            color: fastMode ? cDRed : 'blue'
+          },
+          onClick: function onClick() {
+            return _this2.setState({
+              fastMode: !fastMode
+            });
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 162,
+            columnNumber: 5
+          }
+        }, __jsx("b", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 171,
+            columnNumber: 6
+          }
+        }, fastMode ? "FAST MODE" : "FULL MODE")));
+      } else if (which == 1) {
+        //Dropdown Country Select
+        var _this$state = this.state,
+            countries = _this$state.countries,
+            selectCountry = _this$state.selectCountry;
+        return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("br", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 180,
+            columnNumber: 5
+          }
+        }), __jsx("br", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 180,
+            columnNumber: 10
+          }
+        }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_8___default.a, {
+          options: countries,
+          value: selectCountry,
+          onChange: function onChange(select) {
+            return _this2.setState({
+              selectCountry: select.value,
+              selectCity: 'Overall'
+            });
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 181,
+            columnNumber: 5
+          }
+        }));
+      } else {
+        //Dropdown City Select
+        var _this$state2 = this.state,
+            _selectCountry = _this$state2.selectCountry,
+            selectCity = _this$state2.selectCity;
+        var selectedCountryData = this.state.globalData[_selectCountry];
+        var cityChoice = ["Overall"];
+
+        if (selectedCountryData != undefined && selectedCountryData.CitiesN != 0) {
+          cityChoice = selectedCountryData.Cities.slice(0);
+          cityChoice.splice(0, 0, "Overall");
+        }
+
+        return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("br", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 197,
+            columnNumber: 5
+          }
+        }), __jsx("br", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 197,
+            columnNumber: 10
+          }
+        }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_8___default.a, {
+          options: cityChoice,
+          value: selectCity,
+          onChange: function onChange(select) {
+            return _this2.setState({
+              selectCity: select.value
+            });
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 198,
+            columnNumber: 5
+          }
+        }));
       }
     }
   }, {
-    key: "getDateDiff",
-    value: function getDateDiff(date) {
-      var now = new Date().getTime();
-      return Math.floor((now - new Date(date).getTime()) / 86400000);
+    key: "renderNumbers",
+    value: function renderNumbers(which) {
+      var data_text = this.state.data_text;
+      var classes = this.props.classes;
+
+      if (which == 0) {
+        return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+          className: classes.paper,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 211,
+            columnNumber: 5
+          }
+        }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'steelblue'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 212,
+            columnNumber: 6
+          }
+        }, __jsx("b", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 212,
+            columnNumber: 49
+          }
+        }, "Confirmed")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: cBlue
+          },
+          variant: "h3",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 213,
+            columnNumber: 6
+          }
+        }, data_text.confirmed.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'steelblue'
+          },
+          variant: "h5",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 214,
+            columnNumber: 6
+          }
+        }, "+ ", data_text.newConfirmed.toLocaleString()));
+      } else if (which == 1) {
+        return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+          className: classes.paper,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 220,
+            columnNumber: 5
+          }
+        }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'goldenrod'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 221,
+            columnNumber: 6
+          }
+        }, __jsx("b", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 221,
+            columnNumber: 49
+          }
+        }, "Hospitalized")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: cOrange
+          },
+          variant: "h3",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 222,
+            columnNumber: 6
+          }
+        }, data_text.hospitalized.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'goldenrod'
+          },
+          variant: "h5",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 223,
+            columnNumber: 6
+          }
+        }, data_text.newHospitalized >= 0 ? '+' : '-', " ", Math.abs(data_text.newHospitalized).toLocaleString()));
+      } else if (which == 2) {
+        return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+          className: classes.paper,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 231,
+            columnNumber: 5
+          }
+        }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'fireBrick'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 232,
+            columnNumber: 6
+          }
+        }, __jsx("b", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 232,
+            columnNumber: 49
+          }
+        }, "Deaths")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: cRed
+          },
+          variant: "h3",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 233,
+            columnNumber: 6
+          }
+        }, data_text.deaths.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'fireBrick'
+          },
+          variant: "h5",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 234,
+            columnNumber: 6
+          }
+        }, "+ ", data_text.newDeaths.toLocaleString()));
+      } else {
+        return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+          className: classes.paper,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 240,
+            columnNumber: 5
+          }
+        }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'green'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 241,
+            columnNumber: 6
+          }
+        }, __jsx("b", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 241,
+            columnNumber: 45
+          }
+        }, "Recovered")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: cGreen
+          },
+          variant: "h3",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 242,
+            columnNumber: 6
+          }
+        }, data_text.recovered.toLocaleString()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+          style: {
+            color: 'green'
+          },
+          variant: "h5",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 243,
+            columnNumber: 6
+          }
+        }, "+ ", data_text.newRecovered.toLocaleString()));
+      }
     }
   }, {
-    key: "processData",
-    value: function processData(source, data) {
-      var hasTimeline = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-      if (data.length <= 0) return;
-      var lastData = data.slice(-1)[0];
-      var dataReformatted = data.slice().map(function (d) {
-        return Object.assign({}, d, {
-          Date: d.Date.slice(3, 6) + d.Date.slice(0, 2)
-        });
-      });
-      var lastUpdated = lastData['Date'];
-      var lastConfirmedFormatted = 0;
-      var lastDeathFormatted = 0;
-      var noConfirmedStreak = 0;
-      var noDeathStreak = 0;
-
-      if (hasTimeline) {
-        var lastConfirmed = this.getLastDate('NewConfirmed', data);
-        var lastDeath = this.getLastDate('NewDeaths', data);
-        lastConfirmedFormatted = lastConfirmed.slice(3, 6) + lastConfirmed.slice(0, 3) + lastConfirmed.slice(6);
-        lastDeathFormatted = lastDeath.slice(3, 6) + lastDeath.slice(0, 3) + lastDeath.slice(6);
-        noConfirmedStreak = this.getDateDiff(lastConfirmed);
-        noDeathStreak = this.getDateDiff(lastDeath);
-      }
-
-      this.setState({
-        hasTimeline: hasTimeline,
-        dataTimeline: dataReformatted,
-        dataTimeline15: dataReformatted.slice(1).slice(-15),
-        data_text: {
-          source: source,
-          updatedDate: lastUpdated.slice(3, 6) + lastUpdated.slice(0, 3) + lastUpdated.slice(6),
-          confirmed: lastData['Confirmed'],
-          hospitalized: lastData['Hospitalized'],
-          deaths: lastData['Deaths'],
-          recovered: lastData['Recovered'],
-          newConfirmed: lastData['NewConfirmed'],
-          newHospitalized: lastData['NewHospitalized'],
-          newDeaths: lastData['NewDeaths'],
-          newRecovered: lastData['NewRecovered']
+    key: "renderStreaks",
+    value: function renderStreaks() {
+      var classes = this.props.classes;
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 252,
+          columnNumber: 4
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "h6",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 253,
+          columnNumber: 5
+        }
+      }, "Last confirmed: ", this.state.lastConfirmed, " (", this.state.noConfirmedStreak, " days ago)"), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "h6",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 256,
+          columnNumber: 5
+        }
+      }, "Last death: ", this.state.lastDeath, " (", this.state.noDeathStreak, " days ago)"));
+    }
+  }, {
+    key: "renderRates",
+    value: function renderRates() {
+      var classes = this.props.classes;
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 266,
+          columnNumber: 4
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "h6",
+        style: {
+          color: 'green'
         },
-        data_pie: [{
-          name: 'Hospitalized',
-          value: lastData['Hospitalized']
-        }, {
-          name: 'Deaths',
-          value: lastData['Deaths']
-        }, {
-          name: 'Recovered',
-          value: lastData['Recovered']
-        }],
-        lastConfirmed: lastConfirmedFormatted,
-        lastDeath: lastDeathFormatted,
-        noConfirmedStreak: noConfirmedStreak,
-        noDeathStreak: noDeathStreak,
-        rateRecovery: (100 * lastData['Recovered'] / lastData['Confirmed']).toFixed(2) + '%',
-        rateDeath: (100 * lastData['Deaths'] / lastData['Confirmed']).toFixed(2) + '%'
-      });
-    }
-  }, {
-    key: "countryCompare",
-    value: function countryCompare(category) {
-      return function innerSort(a, b) {
-        var valA = a[category];
-        var valB = b[category];
-
-        if (typeof valA == "string") {
-          valA = parseInt(valA);
-          valB = parseInt(valB);
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 267,
+          columnNumber: 5
         }
-
-        if (valA > valB) return -1;else if (valA < valB) return 1;else return 0;
-      };
+      }, "Recovery Rate: ", this.state.rateRecovery), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "h6",
+        style: {
+          color: cDRed
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 270,
+          columnNumber: 5
+        }
+      }, "Mortality Rate: ", this.state.rateDeath));
     }
   }, {
-    key: "globalRankSelect",
-    value: function globalRankSelect(ranking, country) {
-      return ranking.findIndex(function (x) {
-        return x.Country == country;
-      });
+    key: "renderGraphButton",
+    value: function renderGraphButton() {
+      var _this3 = this;
+
+      var classes = this.props.classes;
+      return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("button", {
+        style: {
+          height: '32px',
+          width: '144px',
+          "float": 'right',
+          color: this.state.showGraph ? 'grey' : 'steelblue'
+        },
+        onClick: function onClick() {
+          return _this3.setState({
+            showGraph: !_this3.state.showGraph
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 281,
+          columnNumber: 4
+        }
+      }, "Show/Hide Graphs"), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 292,
+          columnNumber: 4
+        }
+      }));
     }
   }, {
-    key: "globalRankTopTen",
-    value: function globalRankTopTen(ranking) {
-      return ranking.slice(0, 10);
+    key: "renderGraphs",
+    value: function renderGraphs() {
+      var _this4 = this;
+
+      var classes = this.props.classes;
+      var _this$state3 = this.state,
+          dataTimeline = _this$state3.dataTimeline,
+          dataTimeline15 = _this$state3.dataTimeline15,
+          data_pie = _this$state3.data_pie;
+      return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        container: true,
+        spacing: 2,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 302,
+          columnNumber: 4
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        item: true,
+        xs: 12,
+        sm: 6,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 305,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 306,
+          columnNumber: 6
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["ResponsiveContainer"], {
+        width: "100%",
+        height: 300,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 307,
+          columnNumber: 7
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["BarChart"], {
+        width: 500,
+        height: 300,
+        data: dataTimeline15,
+        margin: {
+          top: 5,
+          right: 5,
+          left: 0,
+          bottom: 5
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 308,
+          columnNumber: 8
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["CartesianGrid"], {
+        strokeDasharray: "3 3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 314,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["XAxis"], {
+        dataKey: "Date",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 315,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["YAxis"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 316,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Tooltip"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 317,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Legend"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 318,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Bar"], {
+        dataKey: "NewConfirmed",
+        fill: cBlue,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 319,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Bar"], {
+        dataKey: "NewDeaths",
+        fill: cRed,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 320,
+          columnNumber: 9
+        }
+      }))))), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        item: true,
+        xs: 12,
+        sm: 6,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 327,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 328,
+          columnNumber: 6
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["ResponsiveContainer"], {
+        width: "100%",
+        height: 300,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 329,
+          columnNumber: 7
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["PieChart"], {
+        width: 400,
+        height: 400,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 330,
+          columnNumber: 8
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Legend"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 331,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Pie"], {
+        dataKey: "value",
+        isAnimationActive: false,
+        data: data_pie,
+        outerRadius: 100,
+        label: true,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 332,
+          columnNumber: 9
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Cell"], {
+        fill: cOrange,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 333,
+          columnNumber: 10
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Cell"], {
+        fill: cRed,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 334,
+          columnNumber: 10
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Cell"], {
+        fill: cGreen,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 335,
+          columnNumber: 10
+        }
+      })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Tooltip"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 337,
+          columnNumber: 9
+        }
+      }))))), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        item: true,
+        xs: 12,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 344,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 345,
+          columnNumber: 6
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["ResponsiveContainer"], {
+        width: "100%",
+        height: 500,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 346,
+          columnNumber: 7
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["LineChart"], {
+        data: dataTimeline,
+        margin: {
+          top: 5,
+          right: 5,
+          left: 0,
+          bottom: 5
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 347,
+          columnNumber: 8
+        }
+      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["CartesianGrid"], {
+        strokeDasharray: "3 3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 351,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["XAxis"], {
+        dataKey: "Date",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 352,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["YAxis"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 353,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Tooltip"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 354,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Legend"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 355,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
+        type: "monotone",
+        strokeWidth: 2,
+        dataKey: "Confirmed",
+        stroke: cBlue,
+        dot: false,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 356,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
+        type: "monotone",
+        strokeWidth: 2,
+        dataKey: "Hospitalized",
+        stroke: cOrange,
+        dot: false,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 357,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
+        type: "monotone",
+        strokeWidth: 2,
+        dataKey: "Deaths",
+        stroke: cRed,
+        dot: false,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 358,
+          columnNumber: 9
+        }
+      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_10__["Line"], {
+        type: "monotone",
+        strokeWidth: 2,
+        dataKey: "Recovered",
+        stroke: cGreen,
+        dot: false,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 359,
+          columnNumber: 9
+        }
+      })))))), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 367,
+          columnNumber: 4
+        }
+      }), __jsx("button", {
+        style: {
+          height: '32px',
+          width: '144px',
+          "float": 'right',
+          color: 'grey'
+        },
+        onClick: function onClick() {
+          return _this4.setState({
+            showGraph: !_this4.state.showGraph
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 368,
+          columnNumber: 4
+        }
+      }, "Hide Graphs"), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 374,
+          columnNumber: 4
+        }
+      }), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 374,
+          columnNumber: 9
+        }
+      }));
     }
   }, {
-    key: "globalRanking",
-    value: function globalRanking(category) {
-      var countries = Object.values(this.state.globalData);
-      countries.sort(this.countryCompare(category)); //console.log(countries);
-
-      this.setState({
-        rankSelect: this.globalRankSelect(countries, this.state.selectCountry),
-        rankTopTen: this.globalRankTopTen(countries)
-      });
+    key: "renderRankingHeader",
+    value: function renderRankingHeader() {
+      return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "h5",
+        style: {
+          color: cRed
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 383,
+          columnNumber: 4
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 384,
+          columnNumber: 5
+        }
+      }, "Global Ranking based on:")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "h5",
+        style: {
+          color: cDRed
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 386,
+          columnNumber: 4
+        }
+      }, this.globalRankingHeading(this.state.selectCategory)));
     }
   }, {
-    key: "globalRankingHeading",
-    value: function globalRankingHeading(category) {
-      if (category == 'Confirmed') return "Confirmed Cases Count";else if (category == 'Hospitalized') return "Active Cases Count";else if (category == 'Deaths') return "Deceased Cases Count";else if (category == 'Recovered') return "Recovered Cases Count";else if (category == 'RecoveryRate') return "Recovery Rate";else if (category == 'MortalityRate') return "Mortality Rate";
+    key: "renderCategoryDropdown",
+    value: function renderCategoryDropdown() {
+      var _this5 = this;
+
+      var categoryChoice = ['Confirmed', 'Hospitalized', 'Deaths', 'Recovered', 'RecoveryRate', 'MortalityRate'];
+      return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 397,
+          columnNumber: 4
+        }
+      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        options: categoryChoice,
+        value: 'Hospitalized',
+        onChange: function onChange(select) {
+          return _this5.setState({
+            selectCategory: select.value
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 398,
+          columnNumber: 4
+        }
+      }));
     }
   }, {
-    key: "countryEncodeAssist",
-    value: function countryEncodeAssist(country, countriesName) {
-      if (!countriesName.includes(country)) {
-        if (country == "Bolivia") country = "Bolivia, Plurinational State of";else if (country == "Brunei") country = "Brunei Darussalam";else if (country == "Burma") country = "Myanmar";else if (country == "Congo (Brazzaville)") country = "Congo";else if (country == "Congo (Kinshasa)") country = "Congo, Democratic Republic of the";else if (country == "Cote d'Ivoire") country = "Côte d'Ivoire";else if (country == "Iran") country = "Iran, Islamic Republic of";else if (country == "Kosovo") country = "Serbia";else if (country == "Laos") country = "Lao People's Democratic Republic";else if (country == "Moldova") country = "Moldova, Republic of";else if (country == "Russia") country = "Russian Federation";else if (country == "Syria") country = "Syrian Arab Republic";else if (country == "Taiwan*") country = "Taiwan, Province of China";else if (country == "Tanzania") country = "Tanzania, United Republic of";else if (country == "US") country = "United States of America";else if (country == "United Kingdom") country = "United Kingdom of Great Britain and Northern Ireland";else if (country == "Venezuela") country = "Venezuela, Bolivarian Republic of";else if (country == "Vietnam") country = "Viet Nam";else if (country == "West Bank and Gaza") country = "Palestine, State of";else return undefined;
-      }
+    key: "renderRanking",
+    value: function renderRanking() {
+      var _this6 = this;
 
-      var _require2 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
-          getCode = _require2.getCode;
-
-      return getCode(country);
-    }
-  }, {
-    key: "countryDecodeAssist",
-    value: function countryDecodeAssist(code) {
-      var _require3 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
-          getName = _require3.getName,
-          getNames = _require3.getNames;
-
-      var countriesName = getNames();
-      var country = getName(code);
-      if (country == "Bolivia, Plurinational State of") country = "Bolivia";else if (country == "Brunei Darussalam") country = "Brunei";else if (country == "Myanmar") country = "Burma";else if (country == "Congo") country = "Congo (Brazzaville)";else if (country == "Congo, Democratic Republic of the") country = "Congo (Kinshasa)";else if (country == "Côte d'Ivoire") country = "Cote d'Ivoire";else if (country == "Iran, Islamic Republic of") country = "Iran";else if (country == "Serbia") country = "Kosovo";else if (country == "Lao People's Democratic Republic") country = "Laos";else if (country == "Moldova, Republic of") country = "Moldova";else if (country == "Russian Federation") country = "Russia";else if (country == "Syrian Arab Republic") country = "Syria";else if (country == "Taiwan") country = "Taiwan*";else if (country == "Tanzania, United Republic of") country = "Tanzania";else if (country == "United States of America") country = "US";else if (country == "United Kingdom of Great Britain and Northern Ireland") country = "United Kingdom";else if (country == "Venezuela, Bolivarian Republic of") country = "Venezuela";else if (country == "Viet Nam") country = "Vietnam";else if (country == "Palestine, State of") country = "West Bank and Gaza";
-      return country;
-    }
-  }, {
-    key: "processMapGlobalData",
-    value: function processMapGlobalData(countries, globalData) {
-      var _require4 = __webpack_require__(/*! country-list */ "./node_modules/country-list/country-list.js"),
-          getCode = _require4.getCode,
-          getNames = _require4.getNames;
-
-      var countriesName = getNames();
-      var mapGlobalData = {
-        Confirmed: {},
-        Hospitalized: {},
-        Deaths: {},
-        Recovered: {},
-        RecoveryRate: {},
-        MortalityRate: {}
-      };
-
-      for (var i = 0; i < countries.length; i++) {
-        var country = countries[i];
-        var data = globalData[country];
-        var code = this.countryEncodeAssist(country, countriesName);
-        if (code == undefined) continue;
-        mapGlobalData['Confirmed'][code] = data['Confirmed'];
-        mapGlobalData['Hospitalized'][code] = data['Hospitalized'];
-        mapGlobalData['Deaths'][code] = data['Deaths'];
-        mapGlobalData['Recovered'][code] = data['Recovered'];
-        mapGlobalData['RecoveryRate'][code] = parseFloat(data['RecoveryRate']);
-        mapGlobalData['MortalityRate'][code] = parseFloat(data['MortalityRate']);
-      } //console.log(mapGlobalData);
-
-
-      return mapGlobalData;
+      if (this.state.rankSelect < 0) return null;
+      var classes = this.props.classes;
+      var _this$state4 = this.state,
+          selectCountry = _this$state4.selectCountry,
+          selectCategory = _this$state4.selectCategory;
+      var rankSuffix = " cases";
+      if (selectCategory == 'RecoveryRate' || selectCategory == 'MortalityRate') rankSuffix = "%";
+      return __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        item: true,
+        xs: 3,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 416,
+          columnNumber: 4
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        container: true,
+        spacing: 2,
+        direction: "column",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 417,
+          columnNumber: 5
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        item: true,
+        xs: 12,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 418,
+          columnNumber: 6
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 419,
+          columnNumber: 7
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        align: "center",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 420,
+          columnNumber: 8
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 421,
+          columnNumber: 9
+        }
+      }, "Rank ", this.state.rankSelect, ". ", selectCountry, " - ", this.state.globalData[selectCountry][selectCategory], rankSuffix), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 422,
+          columnNumber: 9
+        }
+      }), "out of ", this.state.countries.length, " countries"))), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
+        item: true,
+        xs: 12,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 426,
+          columnNumber: 6
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 427,
+          columnNumber: 7
+        }
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        variant: "h6",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 428,
+          columnNumber: 8
+        }
+      }, __jsx("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 429,
+          columnNumber: 9
+        }
+      }, "Top 10 Countries"), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 429,
+          columnNumber: 32
+        }
+      })), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 431,
+          columnNumber: 8
+        }
+      }, this.state.rankTopTen.map(function (c, i) {
+        return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("b", {
+          __self: _this6,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 433,
+            columnNumber: 11
+          }
+        }, i + 1, "."), " ", c.Country, " - ", c[selectCategory], rankSuffix, __jsx("br", {
+          __self: _this6,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 433,
+            columnNumber: 70
+          }
+        }));
+      }))))));
     }
   }, {
     key: "renderMap",
-    value: function renderMap(category) {
-      var _this2 = this;
+    value: function renderMap() {
+      var _this7 = this;
+
+      if (this.state.mapGlobalData == null) return null;
 
       var handleClick = function handleClick(e, code) {
-        var country = _this2.countryDecodeAssist(code);
+        var country = _this7.countryDecodeAssist(code);
 
-        if (_this2.state.countries.includes(country)) _this2.setState({
+        if (_this7.state.countries.includes(country)) _this7.setState({
           selectCountry: country,
           selectCity: 'Overall'
         });
       };
 
+      var category = this.state.selectCategory;
       var data = this.state.mapGlobalData;
       var mapData = data[category]; //console.log(mapData);
 
@@ -70071,7 +71210,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 764,
+          lineNumber: 468,
           columnNumber: 4
         }
       }, __jsx(VectorMap, {
@@ -70087,7 +71226,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         containerClassName: "map",
         regionStyle: {
           initial: {
-            fill: "#C0C0C0",
+            fill: "#A0A0A0",
             "fill-opacity": 1,
             stroke: "white",
             "stroke-width": 0.2,
@@ -70116,7 +71255,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 765,
+          lineNumber: 469,
           columnNumber: 5
         }
       }));
@@ -70124,980 +71263,190 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
+      if (!this.state.hasData) return "ERROR: Cannot fetch data";
       var classes = this.props.classes;
-      var _this$state = this.state,
-          selectCountry = _this$state.selectCountry,
-          selectCity = _this$state.selectCity,
-          fastMode = _this$state.fastMode,
-          dataTimeline = _this$state.dataTimeline,
-          dataTimeline15 = _this$state.dataTimeline15,
-          data_text = _this$state.data_text,
-          data_pie = _this$state.data_pie,
-          selectCategory = _this$state.selectCategory;
-      var selectedCountryData = this.state.globalData[selectCountry];
-      var cityChoice = ["Overall"];
-
-      if (selectedCountryData != undefined && selectedCountryData.CitiesN != 0) {
-        cityChoice = selectedCountryData.Cities.slice(0);
-        cityChoice.splice(0, 0, "Overall");
-      }
-
-      var categoryChoice = ['Confirmed', 'Hospitalized', 'Deaths', 'Recovered', 'RecoveryRate', 'MortalityRate'];
-      var rankSuffix = " cases";
-
-      if (selectCategory == 'RecoveryRate' || selectCategory == 'MortalityRate') {
-        rankSuffix = "%";
-      }
-
       return __jsx("div", {
         className: classes.root,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 838,
+          lineNumber: 526,
           columnNumber: 4
         }
-      }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["CssBaseline"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 839,
+          lineNumber: 527,
           columnNumber: 5
         }
-      }), __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["AppBar"], {
         style: {
           background: cDRed
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 840,
+          lineNumber: 530,
           columnNumber: 5
         }
-      }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Toolbar"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 841,
+          lineNumber: 531,
           columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
         variant: "h4",
         className: classes.title,
         align: "center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 842,
+          lineNumber: 532,
           columnNumber: 7
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 843,
+          lineNumber: 533,
           columnNumber: 8
         }
-      }, "Simple COVID-19 Dashboard")))), __jsx("div", {
+      }, "COVID-19 Dashboard")))), __jsx("div", {
         className: classes.appBarSpacer,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 847,
+          lineNumber: 537,
           columnNumber: 5
         }
-      }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Container"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 848,
+          lineNumber: 539,
           columnNumber: 5
         }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         container: true,
         spacing: 2,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 850,
+          lineNumber: 542,
           columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 4,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 854,
+          lineNumber: 544,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["MuiThemeProvider"], {
-        theme: darkTheme,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 855,
-          columnNumber: 8
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        align: "left",
-        color: "textPrimary",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 856,
-          columnNumber: 9
-        }
-      }, __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 857,
-          columnNumber: 10
-        }
-      }), "Last updated: ", data_text.updatedDate), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "subtitle2",
-        align: "left",
-        color: "textPrimary",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 860,
-          columnNumber: 9
-        }
-      }, __jsx("a", {
-        href: data_text.source,
-        target: "_blank",
-        rel: "noopener noreferrer",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 861,
-          columnNumber: 10
-        }
-      }, " ", data_text.source)))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderSourceInfo()), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 2,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 874,
+          lineNumber: 546,
           columnNumber: 7
         }
-      }, __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 875,
-          columnNumber: 8
-        }
-      }), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 875,
-          columnNumber: 13
-        }
-      }), __jsx("button", {
-        style: {
-          height: '32px',
-          width: '128px',
-          "float": 'right',
-          color: fastMode ? cDRed : 'blue'
-        },
-        onClick: function onClick() {
-          return _this3.setState({
-            fastMode: !fastMode
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 876,
-          columnNumber: 8
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 885,
-          columnNumber: 9
-        }
-      }, fastMode ? "FAST MODE" : "FULL MODE"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderFetchControls(0)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 888,
+          lineNumber: 547,
           columnNumber: 7
         }
-      }, __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 889,
-          columnNumber: 8
-        }
-      }), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 889,
-          columnNumber: 13
-        }
-      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
-        options: this.state.countries,
-        value: selectCountry,
-        onChange: function onChange(select) {
-          return _this3.setState({
-            selectCountry: select.value,
-            selectCity: 'Overall'
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 890,
-          columnNumber: 8
-        }
-      })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderFetchControls(1)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 894,
+          lineNumber: 548,
           columnNumber: 7
         }
-      }, __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 895,
-          columnNumber: 8
-        }
-      }), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 895,
-          columnNumber: 13
-        }
-      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
-        options: cityChoice,
-        value: selectCity,
-        onChange: function onChange(select) {
-          return _this3.setState({
-            selectCity: select.value
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 896,
-          columnNumber: 8
-        }
-      })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderFetchControls(2)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 903,
+          lineNumber: 550,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 904,
-          columnNumber: 8
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'steelblue'
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 905,
-          columnNumber: 9
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 905,
-          columnNumber: 52
-        }
-      }, "Confirmed")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: cBlue
-        },
-        variant: "h3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 906,
-          columnNumber: 9
-        }
-      }, data_text.confirmed.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'steelblue'
-        },
-        variant: "h5",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 907,
-          columnNumber: 9
-        }
-      }, "+ ", data_text.newConfirmed.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderNumbers(0)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 910,
+          lineNumber: 551,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 911,
-          columnNumber: 8
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'goldenrod'
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 912,
-          columnNumber: 9
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 912,
-          columnNumber: 52
-        }
-      }, "Hospitalized")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: cOrange
-        },
-        variant: "h3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 913,
-          columnNumber: 9
-        }
-      }, data_text.hospitalized.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'goldenrod'
-        },
-        variant: "h5",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 914,
-          columnNumber: 9
-        }
-      }, data_text.newHospitalized >= 0 ? '+' : '-', " ", Math.abs(data_text.newHospitalized).toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderNumbers(1)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 919,
+          lineNumber: 552,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 920,
-          columnNumber: 8
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'fireBrick'
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 921,
-          columnNumber: 9
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 921,
-          columnNumber: 52
-        }
-      }, "Deaths")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: cRed
-        },
-        variant: "h3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 922,
-          columnNumber: 9
-        }
-      }, data_text.deaths.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'fireBrick'
-        },
-        variant: "h5",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 923,
-          columnNumber: 9
-        }
-      }, "+ ", data_text.newDeaths.toLocaleString()))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderNumbers(2)), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 6,
         sm: 3,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 926,
+          lineNumber: 553,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 927,
-          columnNumber: 8
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'green'
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 928,
-          columnNumber: 9
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 928,
-          columnNumber: 48
-        }
-      }, "Recovered")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: cGreen
-        },
-        variant: "h3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 929,
-          columnNumber: 9
-        }
-      }, data_text.recovered.toLocaleString()), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        style: {
-          color: 'green'
-        },
-        variant: "h5",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 930,
-          columnNumber: 9
-        }
-      }, "+ ", data_text.newRecovered.toLocaleString()))), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderNumbers(3)), " ", this.state.hasTimeline && __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 6,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 938,
-          columnNumber: 8
+          lineNumber: 555,
+          columnNumber: 38
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 939,
-          columnNumber: 9
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h6",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 940,
-          columnNumber: 10
-        }
-      }, "Last confirmed: ", this.state.lastConfirmed, " (", this.state.noConfirmedStreak, " days ago)"), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h6",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 943,
-          columnNumber: 10
-        }
-      }, "Last death: ", this.state.lastDeath, " (", this.state.noDeathStreak, " days ago)")))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderStreaks()), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: this.state.hasTimeline ? 6 : 12,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 953,
+          lineNumber: 556,
           columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
+      }, this.renderRates()), " "), __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 954,
-          columnNumber: 8
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h6",
-        style: {
-          color: 'green'
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 955,
-          columnNumber: 9
-        }
-      }, "Recovery Rate: ", this.state.rateRecovery), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h6",
-        style: {
-          color: cDRed
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 958,
-          columnNumber: 9
-        }
-      }, "Mortality Rate: ", this.state.rateDeath)))), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 969,
+          lineNumber: 561,
           columnNumber: 6
         }
-      }), this.state.hasTimeline && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("button", {
-        style: {
-          height: '32px',
-          width: '144px',
-          "float": 'right',
-          color: this.state.showGraph ? 'grey' : 'steelblue'
-        },
-        onClick: function onClick() {
-          return _this3.setState({
-            showGraph: !_this3.state.showGraph
-          });
-        },
+      }), this.state.hasTimeline && this.renderGraphButton(), " ", __jsx("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 972,
-          columnNumber: 7
-        }
-      }, "Show/Hide Graphs"), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 983,
-          columnNumber: 7
-        }
-      })), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 986,
+          lineNumber: 562,
           columnNumber: 6
         }
-      }), this.state.showGraph && //Whether or not to display graphs
-      __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        container: true,
-        spacing: 2,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 990,
-          columnNumber: 6
-        }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        item: true,
-        xs: 12,
-        sm: 6,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 992,
-          columnNumber: 7
-        }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 993,
-          columnNumber: 8
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
-        width: "100%",
-        height: 300,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 994,
-          columnNumber: 9
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["BarChart"], {
-        width: 500,
-        height: 300,
-        data: dataTimeline15,
-        margin: {
-          top: 5,
-          right: 5,
-          left: 0,
-          bottom: 5
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 995,
-          columnNumber: 10
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
-        strokeDasharray: "3 3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1001,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
-        dataKey: "Date",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1002,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1003,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1004,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1005,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
-        dataKey: "NewConfirmed",
-        fill: cBlue,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1006,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Bar"], {
-        dataKey: "NewDeaths",
-        fill: cRed,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1007,
-          columnNumber: 11
-        }
-      }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        item: true,
-        xs: 12,
-        sm: 6,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1014,
-          columnNumber: 7
-        }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1015,
-          columnNumber: 8
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
-        width: "100%",
-        height: 300,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1016,
-          columnNumber: 9
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["PieChart"], {
-        width: 400,
-        height: 400,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1017,
-          columnNumber: 10
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1018,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Pie"], {
-        dataKey: "value",
-        isAnimationActive: false,
-        data: data_pie,
-        outerRadius: 100,
-        label: true,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1019,
-          columnNumber: 11
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
-        fill: cOrange,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1020,
-          columnNumber: 12
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
-        fill: cRed,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1021,
-          columnNumber: 12
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Cell"], {
-        fill: cGreen,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1022,
-          columnNumber: 12
-        }
-      })), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1024,
-          columnNumber: 11
-        }
-      }))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        item: true,
-        xs: 12,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1031,
-          columnNumber: 7
-        }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1032,
-          columnNumber: 8
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["ResponsiveContainer"], {
-        width: "100%",
-        height: 500,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1033,
-          columnNumber: 9
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["LineChart"], {
-        data: dataTimeline,
-        margin: {
-          top: 5,
-          right: 5,
-          left: 0,
-          bottom: 5
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1034,
-          columnNumber: 10
-        }
-      }, __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["CartesianGrid"], {
-        strokeDasharray: "3 3",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1038,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["XAxis"], {
-        dataKey: "Date",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1039,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["YAxis"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1040,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Tooltip"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1041,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Legend"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1042,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
-        type: "monotone",
-        strokeWidth: 2,
-        dataKey: "Confirmed",
-        stroke: cBlue,
-        dot: false,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1043,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
-        type: "monotone",
-        strokeWidth: 2,
-        dataKey: "Hospitalized",
-        stroke: cOrange,
-        dot: false,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1044,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
-        type: "monotone",
-        strokeWidth: 2,
-        dataKey: "Deaths",
-        stroke: cRed,
-        dot: false,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1045,
-          columnNumber: 11
-        }
-      }), __jsx(recharts__WEBPACK_IMPORTED_MODULE_18__["Line"], {
-        type: "monotone",
-        strokeWidth: 2,
-        dataKey: "Recovered",
-        stroke: cGreen,
-        dot: false,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1046,
-          columnNumber: 11
-        }
-      })))))), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1053,
-          columnNumber: 6
-        }
-      }), __jsx("button", {
-        style: {
-          height: '32px',
-          width: '144px',
-          "float": 'right',
-          color: 'grey'
-        },
-        onClick: function onClick() {
-          return _this3.setState({
-            showGraph: !_this3.state.showGraph
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1054,
-          columnNumber: 6
-        }
-      }, "Hide Graphs"), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1060,
-          columnNumber: 6
-        }
-      }), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1060,
-          columnNumber: 11
-        }
-      })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }), this.state.showGraph && this.renderGraphs(), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         container: true,
         spacing: 2,
         justify: "space-between",
@@ -71105,252 +71454,85 @@ var App = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1067,
-          columnNumber: 8
+          lineNumber: 566,
+          columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 6,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1068,
-          columnNumber: 9
+          lineNumber: 567,
+          columnNumber: 7
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h5",
-        style: {
-          color: cRed
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1069,
-          columnNumber: 10
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1070,
-          columnNumber: 11
-        }
-      }, "Global Ranking based on:")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h5",
-        style: {
-          color: cDRed
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1072,
-          columnNumber: 10
-        }
-      }, this.globalRankingHeading(selectCategory))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderRankingHeader()), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 2,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1076,
-          columnNumber: 9
-        }
-      }, __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1077,
-          columnNumber: 10
-        }
-      }), __jsx(react_dropdown__WEBPACK_IMPORTED_MODULE_15___default.a, {
-        options: categoryChoice,
-        value: 'Hospitalized',
-        onChange: function onChange(select) {
-          return _this3.setState({
-            selectCategory: select.value
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1078,
-          columnNumber: 10
-        }
-      }))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        container: true,
-        spacing: 2,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1084,
-          columnNumber: 6
-        }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        item: true,
-        xs: 3,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1086,
+          lineNumber: 568,
           columnNumber: 7
         }
-      }, this.state.rankSelect >= 0 && __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderCategoryDropdown()), " "), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         container: true,
         spacing: 2,
-        direction: "column",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1088,
-          columnNumber: 9
+          lineNumber: 573,
+          columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        item: true,
-        xs: 12,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1089,
-          columnNumber: 10
-        }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1090,
-          columnNumber: 11
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        align: "center",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1091,
-          columnNumber: 12
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1092,
-          columnNumber: 13
-        }
-      }, "Rank ", this.state.rankSelect, ". ", selectCountry, " - ", this.state.globalData[selectCountry][selectCategory], rankSuffix), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1093,
-          columnNumber: 13
-        }
-      }), "out of ", this.state.countries.length, " countries"))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        item: true,
-        xs: 12,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1097,
-          columnNumber: 10
-        }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paper,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1098,
-          columnNumber: 11
-        }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "h6",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1099,
-          columnNumber: 12
-        }
-      }, __jsx("b", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1100,
-          columnNumber: 13
-        }
-      }, "Top 10 Countries"), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1100,
-          columnNumber: 36
-        }
-      })), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 1102,
-          columnNumber: 12
-        }
-      }, this.state.rankTopTen.map(function (c, i) {
-        return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("b", {
-          __self: _this3,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 1104,
-            columnNumber: 15
-          }
-        }, i + 1, "."), " ", c.Country, " - ", c[selectCategory], rankSuffix, __jsx("br", {
-          __self: _this3,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 1104,
-            columnNumber: 74
-          }
-        }));
-      })))))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, this.renderRanking(), " ", __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Grid"], {
         item: true,
         xs: 9,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1115,
+          lineNumber: 575,
           columnNumber: 7
         }
-      }, this.state.mapGlobalData != null && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, this.renderMap(selectCategory))))), __jsx("footer", {
+      }, this.renderMap()), " ")), __jsx("footer", {
         className: classes.footer,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1129,
+          lineNumber: 581,
           columnNumber: 5
         }
-      }, __jsx(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        className: classes.paperFoot,
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Paper"], {
+        className: classes.paper,
+        style: {
+          background: "#8F8080"
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1130,
+          lineNumber: 582,
           columnNumber: 6
         }
-      }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
         variant: "h6",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1131,
+          lineNumber: 583,
           columnNumber: 7
         }
       }, __jsx("b", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1132,
+          lineNumber: 584,
           columnNumber: 8
         }
-      }, "Simple Covid-19 Dashboard for Tencent Thailand's Internship Project")), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, "COVID-19 Dashboard for Tencent Thailand's Internship Project")), __jsx(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["Typography"], {
         component: "p",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 1134,
+          lineNumber: 586,
           columnNumber: 7
         }
       }, "By Thanjira S. and Woottipat H."))));
@@ -71360,7 +71542,7 @@ var App = /*#__PURE__*/function (_React$Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["withStyles"])(styles)(App));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["withStyles"])(_components_muiComponents_js__WEBPACK_IMPORTED_MODULE_7__["styles"])(App));
 
 /***/ }),
 
@@ -71433,7 +71615,7 @@ if (true) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! next-client-pages-loader?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./");
-module.exports = __webpack_require__(/*! C:\Users\Vava\Desktop\covid-19-dashboard\node_modules\next\dist\client\router.js */"./node_modules/next/dist/client/router.js");
+module.exports = __webpack_require__(/*! C:\Users\Herabat\react-js\covid-19-dashboard\node_modules\next\dist\client\router.js */"./node_modules/next/dist/client/router.js");
 
 
 /***/ }),
